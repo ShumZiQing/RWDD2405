@@ -1,0 +1,50 @@
+/* RESET MAIN */
+main {
+  margin: 0;
+  padding: 0;
+}
+
+/* IMAGE SCROLL */
+.imageScroll {
+  margin-top: 60px;
+}
+
+.imageScroll img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* PROGRAMS */
+.programs {
+  padding: 15px;
+}
+
+.programs h2 {
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+}
+
+.card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .imageScroll img {
+    max-height: 350px; 
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .imageScroll img {
+    max-height: 450px;
+  }
+}

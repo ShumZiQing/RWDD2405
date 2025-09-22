@@ -1,0 +1,112 @@
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #FBF6EF;
+  color: #333;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  background: #FBF6EF;
+  border-bottom: 2px solid #075085;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.site-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #075085;
+}
+
+/* BUTTONS */
+.btn {
+  background: #075085;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #256528;
+}
+
+/* LINKS */
+.text-small a {
+  color: #075085;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.text-small a:hover {
+  text-decoration: underline;
+}
+
+/* DROPDOWN HAMBURGER */
+.dropdown-nav {
+  display: none;
+  position: absolute;
+  top: 60px; /* below header */
+  right: 0;
+  background: #e0ecf4;
+  width: 100%;
+}
+
+.dropdown-nav ul {
+  list-style: none;
+}
+
+.dropdown-nav li {
+  border-bottom: 1px solid #075085;
+}
+
+.dropdown-nav a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.dropdown-nav a:hover {
+  background: #cfe2f3;
+}
+
