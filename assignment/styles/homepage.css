@@ -7,32 +7,118 @@ main {
 /* IMAGE SCROLL */
 .imageScroll {
   margin-top: 60px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel{
+  display: flex;
 }
 
 .imageScroll img {
-  width: 100%;
+  flex: 0 0 100%;
   max-height: 250px;
   object-fit: cover;
-  display: block;
-  margin: 0 auto 10px;
+  scroll-snap-align: start;
+}
+
+.imageScroll::-webkit-scrollbar {
+  display: none;
 }
 
 /* PROGRAMS */
-.programs {
+section{
   padding: 15px;
 }
 
-.programs h2 {
+section h2{
   font-size: 1.2rem;
-  margin: 0 0 10px 0;
+  margin: 10px 0;
+}
+
+.scroll-container{
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
+  flex: 0 0 220px;
   background: #f9f9f9;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 15px;
-  margin-bottom: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card h3{
+  margin: 0 0 8px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.icon-btn{
+  align-self: flex-end;
+  background: #075085;
+  border: none;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.project-card{
+  flex: 0 0 240px;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5); /* semi-transparent */
+  color: #fff;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.project-card h3{
+  margin: 0 0 5px;
+  font-size: 1rem;
+}
+
+.project-card button{
+  margin-top: 5px;
+  background: #075085;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.goals p{
+  line-height: 1.5;
+  margin: 0;
+  padding: 10px;
+  background: #FBF6EF;
+  border-radius: 8px;
 }
 
 /* TABLET */
@@ -40,11 +126,17 @@ main {
   .imageScroll img {
     max-height: 350px; 
   }
+  .card{
+    flex: 0 0 250px;
+  }
 }
 
 /* DESKTOP */
 @media (min-width: 1024px) {
   .imageScroll img {
     max-height: 450px;
+  }
+  .card{
+    flex: 0 0 300px;
   }
 }

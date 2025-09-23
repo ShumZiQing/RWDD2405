@@ -33,16 +33,100 @@
 
     <main>
         <section class="imageScroll">
-            <img src="images/betterImageScrollRecycling.jpeg" alt="scroll image">
+            <div class="carousel">
+                <img src="images/homepageImg1.jpeg" alt="scroll image">
+                <img src="images/homepageImg2.jpg" alt="scroll image">
+                <img src="images/homepageImg3.jpg" alt="scroll image">
+            </div>
         </section>
 
         <section class="programs">
             <h2>Our Programs</h2>
-            <div class="card">Recycling</div>
-            <div class="card">Donations</div>
+            <div class="scroll-container">
+                <div class="card">
+                    <h3>Recycling</h3>
+                    <p>Explore EcoConnect's recycling and collection schedules. Click to see schedules and get involved.</p>
+                    <button class="icon-btn">🔍</button>
+                </div>
+
+                <div class="card">
+                    <h3>Donations</h3>
+                    <p>Join our donation drives to support NGOs and community projects.</p>
+                    <button class="icon-btn">🔍</button>
+                </div>
+
+                <div class="card"><b>Bottle Collector</b></div>
+                <div class="card"><b>Newspaper Collection</b></div>
+            </div>
         </section>
+
+        <section class="tips">
+            <h2>User's Tips</h2>
+            <div class="scroll-container">
+                <div class="card">"If you're new, join recycling programs to get to know more!"</div>
+                <div class="card">"Collection schedules may be confusing, feel free to ask!"</div>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Upcoming Projects</h2>
+            <div class="scroll-container">
+                <div class="project-card" style="background-image: url('images/homepageImg5.jpg');">
+                    <div class="overlay">
+                        <h3>Produce Donations</h3>
+                        <p>Donate fresh produce for a small fee. Funds go to local NGOs!</p>
+                        <button>More</button>
+                    </div>
+                </div>
+
+                <div class="project-card" style="background-image: url('images/homepageImg4.jpg');">
+                    <div class="overlay">
+                        <h3>Plastic Collection</h3>
+                        <p>Join an NGO to collect and reuse plastics for eco projects.</p>
+                        <button>More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="goals">
+            <h2>Our Goals</h2>
+            <p>
+                EcoConnect aims to provide a shared platform for eco-focused groups, 
+                including NGOs, local communities, and conservation experts, to connect 
+                and collaborate. Through this space, we bring people together by hosting 
+                events, sharing sustainable living tips, and encouraging community-driven 
+                initiatives. Our mission is to raise awareness, reduce carbon footprints, 
+                and promote sustainable lifestyles within the community. By fostering eco-friendly 
+                behaviors, we strive to combat global warming and create a greener, more sustainable 
+                future for everyone.
+            </p>
+        </section>  
     </main>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p><img src="images/icon-location.png" alt="Location"> 123 Greenway Street, EcoTown, 56789</p>
+                <p><img src="images/icon-phone.png" alt="Phone"> +6012-345 6789</p>
+                <p><img src="images/icon-mail.png" alt="Email"> contact@ecoconnect.org</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#"><img src="images/icon-instagram.png" alt="icon-instagram"> Instagram</a>
+                <a href="#"><img src="images/icon-facebook.png" alt="Facebook"> Facebook</a>
+                <a href="#"><img src="images/icon-X.png" alt="X"> X</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 EcoConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="scripts/hamburger.js"></script>
+    <script src="scripts/homepage.js"></script>
 </body>
 </html>
