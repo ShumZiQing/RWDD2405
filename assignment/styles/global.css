@@ -75,6 +75,17 @@ body {
   color: #075085;
 }
 
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-link .site-title {
+  color: #075085;
+}
+
 /* BUTTONS */
 .btn {
   background: #075085;
@@ -107,7 +118,7 @@ body {
 .dropdown-nav {
   display: none;
   position: fixed;
-  top: 60px; /* below header */
+  top: 60px;
   right: 0;
   background: #e0ecf4;
   width: 100%;
