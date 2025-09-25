@@ -6,18 +6,18 @@ main {
 
 /* IMAGE SCROLL */
 .imageScroll {
-  margin-top: 60px;
+  margin-top: 50px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 
-.carousel{
+.carousel {
   display: flex;
 }
 
 .imageScroll img {
   flex: 0 0 100%;
-  max-height: 250px;
+  height: 220px; 
   object-fit: cover;
   scroll-snap-align: start;
 }
@@ -27,16 +27,17 @@ main {
 }
 
 /* PROGRAMS */
-section{
-  padding: 15px;
+section {
+  padding: 20px;
 }
 
-section h2{
-  font-size: 1.2rem;
-  margin: 10px 0;
+section h2 {
+  font-size: 1.4rem;
+  margin: 15px 0;
+  color: #075085;
 }
 
-.scroll-container{
+.scroll-container {
   display: flex;
   gap: 10px;
   overflow-x: auto;
@@ -58,7 +59,7 @@ section h2{
   justify-content: space-between;
 }
 
-.card h3{
+.card h3 {
   margin: 0 0 8px;
 }
 
@@ -67,7 +68,7 @@ section h2{
   flex-grow: 1;
 }
 
-.icon-btn{
+.icon-btn {
   align-self: flex-end;
   background: #075085;
   border: none;
@@ -77,7 +78,7 @@ section h2{
   cursor: pointer;
 }
 
-.project-card{
+.project-card {
   flex: 0 0 240px;
   height: 160px;
   background-size: cover;
@@ -87,23 +88,23 @@ section h2{
   overflow: hidden;
 }
 
-.project-card .overlay{
+.project-card .overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.5); /* semi-transparent */
+  background: rgba(0,0,0,0.5);
   color: #fff;
   padding: 10px;
   font-size: 0.9rem;
 }
 
-.project-card h3{
+.project-card h3 {
   margin: 0 0 5px;
   font-size: 1rem;
 }
 
-.project-card button{
+.project-card button {
   margin-top: 5px;
   background: #075085;
   border: none;
@@ -113,30 +114,38 @@ section h2{
   cursor: pointer;
 }
 
-.goals p{
+/* GOALS */
+.goals p {
   line-height: 1.5;
   margin: 0;
   padding: 10px;
   background: #FBF6EF;
   border-radius: 8px;
+  text-align: justify;
 }
 
 /* TABLET */
 @media (min-width: 768px) {
   .imageScroll img {
-    max-height: 350px; 
+    height: 300px;
   }
-  .card{
+  .card {
     flex: 0 0 250px;
+  }
+  section {
+    padding: 30px;
   }
 }
 
 /* DESKTOP */
 @media (min-width: 1024px) {
   .imageScroll img {
-    max-height: 450px;
+    height: 380px;
   }
-  .card{
+  .card {
     flex: 0 0 300px;
+  }
+  section {
+    padding: 40px;
   }
 }
