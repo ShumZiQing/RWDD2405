@@ -1,0 +1,209 @@
+/*edit arrow of add activites, dynamic display, hover for the others*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.icons{
+  padding-right: 35%; 
+  text-align: center;
+}
+
+
+.icons img{
+  height: 20px;
+  width: 20px;
+}
+
+.arrow{
+  margin-left: auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#profile{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+main{
+  padding-top: 70px;
+}
+
+a, a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+.home{
+  font-family: "Inter", sans-serif;
+  padding-top: 90px;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+#sub{
+  font-family: "Inter", sans-serif;
+  font-size: x-large;
+  font-weight: 200;
+}
+
+.selection-box, .selection-dropdown{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: #075085;
+  color: white;
+  font-family: "Inter", sans-serif;
+  width: 40%;
+  padding: 15px;
+  margin: 30px auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.selection-box:hover, .selection-dropdown:hover{
+  background-color: #1f72ad;
+}
+#nav-collab, #nav-act{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-collab ul, #nav-act ul{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #1a85d2;
+  font-family: "Inter", sans-serif;
+  color: white;
+  border-radius: 10px;
+  z-index: 1000;
+
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#nav-collab ul li, #nav-act ul li{
+  background: #559ed2;
+  padding: 10px 30px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+}
+
+#nav-act ul li .arrow{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#nav-collab:hover>ul, #nav-act:hover>ul{
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#nav-collab ul li:hover, #nav-act ul li:hover{
+  background-color: #88bbdf;
+  cursor: pointer;
+}
+
+#nav-act ul li ul{
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  width: 180px;
+  left: 35%;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#nav-act ul li:hover >ul{
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#nav-act ul li ul li{
+  background-color: #2296e9;
+}
+
+#nav-act ul li ul:hover{
+  background: #c9e4f7;
+}
+
+/* phone */
+@media(max-width: 600px){
+  .home{
+    padding-top: 10px;
+  }
+  .home h2{
+    font-size: larger;
+  }
+  #sub{
+    font-size: large;
+  }
+  .selection-box,.selection-dropdown{
+    width: 60%;
+    margin: 5% auto;
+  }
+  .icons{
+    padding-right: 0%;
+  }
+  #nav-act ul li ul{
+    width: 60%;
+    left: 20%;
+  }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 900px){
+  .home{
+    padding-top: 20;
+  }
+  .home h2{
+    font-size:70px;
+  }
+  #sub{
+    font-size: 30px;
+  }
+  .selection-box, .selection-dropdown{
+    width: 50%;
+    height: auto;
+    margin: 50px auto;
+    font-size: 25px;
+  }
+  .icons{
+    padding-right: 20%;
+  }
+  .arrow{
+    margin-left: auto;
+  }
+  #nav-act ul li ul{
+    width: 70%;
+    left:15%;
+  }
+}
