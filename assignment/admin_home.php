@@ -13,8 +13,6 @@
             <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
             <h1 class="site-title">EcoConnect</h1> 
         </div>
-        
-        <!--ADD NAV FOR MOBILE VIEW-->
 
         <nav class="header-nav">
             <button id="profile">
@@ -22,7 +20,7 @@
             </button>
         </nav>
     </header>
-
+    
     <main>
         <section class="home">
             <h2>Hello Admin!</h2>   

@@ -1,79 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{
+    padding: 0;
+    margin: 0;
 }
 
-#profile{
-    background: transparent;
-    border: none;
+a, a:hover{
+    color: white;
+    text-decoration: none;
 }
 
-.icons{
-  padding-right: 35%; 
-  text-align: center;
+.vmenu{
+    display: block;
+    width: 10%;
+    font-size: small;
+    margin-left: 10px;
+    margin-top: 70px;
 }
 
-
-.icons img{
-  height: 20px;
-  width: 20px;
+.vmenu img{
+    width: 20px;
+    height: 20px;
 }
 
 .arrow{
   margin-left: auto;
   display: flex;
   position: relative;
-  align-items: center;
+  align-items: flex-end;
   width: 20px;
   height: 20px;
   cursor: pointer;
-}
-
-#profile{
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-main{
-  padding-top: 70px;
-}
-
-a, a:hover{
-  text-decoration: none;
-  color: white;
-}
-
-.home{
-  font-family: "Inter", sans-serif;
-  padding-top: 90px;
-  text-align: center;
-  font-size: xx-large;
-  font-weight: 700;
-}
-
-#sub{
-  font-family: "Inter", sans-serif;
-  font-size: x-large;
-  font-weight: 200;
 }
 
 .selection-box, .selection-dropdown{
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 10px;
   background-color: #075085;
   color: white;
   font-family: "Inter", sans-serif;
-  width: 40%;
   padding: 15px;
-  margin: 30px auto;
+  margin: 15px auto;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -81,6 +49,7 @@ a, a:hover{
 .selection-box:hover, .selection-dropdown:hover{
   background-color: #1f72ad;
 }
+
 #nav-collab, #nav-act{
   position: relative;
   display: flex;
@@ -93,8 +62,6 @@ a, a:hover{
   top: 100%;
   left: 0;
   width: 100%;
-  margin: 0;
-  padding: 0;
   list-style: none;
   background-color: #1a85d2;
   font-family: "Inter", sans-serif;
@@ -107,6 +74,13 @@ a, a:hover{
   visibility: hidden;
 }
 
+#collabArrow{
+    margin-left: -9px;
+}
+
+#actArrow{
+    margin-left: 24px;
+}
 #nav-collab ul li, #nav-act ul li{
   background: #559ed2;
   padding: 10px 30px;
@@ -139,7 +113,7 @@ a, a:hover{
   margin: 0;
   position: absolute;
   width: 180px;
-  left: 35%;
+  left: 20%;
   display: none;
   opacity: 0;
   visibility: hidden;
@@ -157,57 +131,4 @@ a, a:hover{
 
 #nav-act ul li ul:hover{
   background: #c9e4f7;
-}
-
-/* phone */
-@media(max-width: 600px){
-  .home{
-    padding-top: 10px;
-  }
-  .home h2{
-    font-size: larger;
-  }
-  #sub{
-    font-size: large;
-  }
-  .selection-box,.selection-dropdown{
-    width: 60%;
-    margin: 5% auto;
-  }
-  .icons{
-    padding-right: 0%;
-  }
-  #nav-act ul li ul{
-    width: 60%;
-    left: 20%;
-  }
-}
-
-/* tablet */
-@media(min-width: 601px) and (max-width: 1024px){
-  .home{
-    padding-top: 20;
-  }
-  .home h2{
-    font-size:70px;
-  }
-  #sub{
-    font-size: 30px;
-  }
-  .selection-box, .selection-dropdown{
-    width: 50%;
-    height: auto;
-    margin: 50px auto;
-    font-size: 25px;
-  }
-  .icons{
-    padding-right: 20%;
-  }
-  .arrow{
-    margin-left: auto;
-  }
-  #nav-act ul li ul{
-    width: 70%;
-    left:15%;
-  }
 }
