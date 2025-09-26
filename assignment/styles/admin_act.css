@@ -16,8 +16,8 @@ body{
 }
 
 #side {
-    width: 100%;
-    position: absolute;
+    width: 10%;
+    position: fixed;
 }
 
 #main{
@@ -87,8 +87,8 @@ h1{
 #add ul{
     list-style: none;
     position: absolute;
-    top: 19%;
-    left: 90%;
+    top: 21%;
+    left: 87%;
     width: 100px;
     background-color: #41A3E9;
     border-radius: 10px;

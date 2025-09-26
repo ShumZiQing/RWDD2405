@@ -10,9 +10,9 @@ a, a:hover{
 
 .vmenu{
     display: block;
-    width: 10%;
+    /* width: 10%; */
     font-size: small;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 70px;
 }
 
@@ -33,7 +33,7 @@ a, a:hover{
 
 .selection-box, .selection-dropdown{
   position: relative;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
