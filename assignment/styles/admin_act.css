@@ -16,8 +16,10 @@ body{
 }
 
 #side {
-    width: 10%;
+    width: 11%;
+    height: auto;
     position: fixed;
+    margin-left: 20px;
 }
 
 #main{

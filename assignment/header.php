@@ -1,28 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/admin_header.css">
-    <link rel="stylesheet" href="styles/global.css">
-</head>
-<body>
-    <header class="header">
-        <div class="logo-container">
-            <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
-            <h1 class="site-title">EcoConnect</h1> 
-        </div>
+<link rel="stylesheet" href="styles/admin_header.css">
 
-        <div class="header-nav">
-            <button id="profile">
-                <img src="images/user.png" alt="user icon">
-            </button>
-            <button class="menu-toggle" id="hamburger">
-                ☰
-            </button>
-        </div>
+<div class="header">
+    <div class="logo-container">
+        <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
+        <h1 class="site-title">EcoConnect</h1> 
+    </div>
 
-    </header>
-</body>
-</html>
+    <div class="header-nav">
+        <button id="profile">
+            <img src="images/user.png" alt="user icon">
+        </button>
+        <button class="menu-toggle" id="hamburger">
+            <div id="dropdown">
+            ☰
+                <ul>
+                    <li>Manage Users</li>
+                    <li>Collaborators
+                        <ul>
+                            <li>Add Collaborators</li>
+                            <li>View Collaborators</li>
+                        </ul>
+                    </li>
+
+                    <li>All Activities
+                        <ul>
+                            <li>Add Activities
+                                <ul>
+                                    <li>Add Project</li>
+                                    <li>Add Program</li>
+                                </ul>
+                            </li>
+                            <li>View Activities</li>
+                        </ul>
+                    </li>
+
+                    <li>Edit About Us</li>
+                    <li>All Businesses</li>
+                </ul>
+            </div>
+        </button>
+    </div>
+
+</div>
