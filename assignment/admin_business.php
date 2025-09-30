@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
-    <?php include "header.php" ?>
+    <?php include "admin_header.php" ?>
     <div id="side">
         <?php include "admin_sideMenu.php" ?>
     </div>

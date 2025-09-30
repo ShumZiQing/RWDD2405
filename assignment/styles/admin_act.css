@@ -185,11 +185,6 @@ h1{
 
 /* phone */
 @media(max-width: 600px){
-    #side{
-        visibility: hidden;
-        opacity: 0;
-        display: none;
-    }
     #features{
         height: 30px;
         justify-content: flex-end;
@@ -251,11 +246,6 @@ h1{
 
 /* tablet */
 @media(min-width: 601px) and (max-width: 1024px){
-    #side{
-        visibility: hidden;
-        opacity: 0;
-        display: none;
-    }
   #features{
     justify-content: flex-end;
     height: 40px;

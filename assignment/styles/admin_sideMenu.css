@@ -132,3 +132,21 @@ a, a:hover{
 #nav-act ul li ul:hover{
   background: #c9e4f7;
 }
+
+/* phone */
+@media(max-width: 600px){
+    .vmenu{
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    .vmenu{
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+    }
+}
