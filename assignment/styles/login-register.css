@@ -1,6 +1,6 @@
 /* FORM CONTAINER */
 .container {
-  margin: 100px auto 0; /* push down under header */
+  margin: 100px auto 0;
   width: 100%;
   max-width: 350px;
   padding: 20px;

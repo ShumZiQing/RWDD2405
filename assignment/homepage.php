@@ -1,39 +1,23 @@
+<?php 
+// (Optional) start PHP logic here if needed, like checking login ??
+$pageTitle = "EcoConnect - Homepage";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoConnect - Homepage</title>
+    <title><?php echo $pageTitle; ?></title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/homepage.css">
 </head>
-
 <body>
-    <header class="header">
-        <div class="logo-container">
-            <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
-            <h1 class="site-title">EcoConnect</h1> 
-        </div>
-        
-        <nav class="nav">
-            <a href="#" class="profile">
-                <img src="images/icon-profile.png" alt="Profile" class="profile-icon">
-            </a>
-            <button class="menu-toggle" aria-label="Menu">☰</button>
-        </nav>
-    </header>
 
-    <nav class="dropdown-nav">
-        <ul>
-            <li><a href="aboutUs.html">About Us</a></li>
-            <li><a href="#">Recycling Program</a></li>
-            <li><a href="#">Energy Conservation Tips</a></li>
-            <li><a href="#">Community Gardening</a></li>
-            <li><a href="#">Eco-friendly Product Swap</a></li>
-            <li><a href="#">Local Business Guide</a></li>
-        </ul>
-    </nav>
+    <!-- HEADER -->
+    <?php include 'header.php'; ?>
 
+    <!-- CONTENT -->
     <main>
         <section class="imageScroll">
             <div class="carousel">
@@ -107,28 +91,10 @@
         </section>  
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <p><img src="images/icon-location.png" alt="Location"> 123 Greenway Street, EcoTown, 56789</p>
-                <p><img src="images/icon-phone.png" alt="Phone"> +6012-345 6789</p>
-                <p><img src="images/icon-mail.png" alt="Email"> contact@ecoconnect.org</p>
-            </div>
+    <!-- FOOTER -->
+    <?php include 'footer.php'; ?>
 
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <a href="#"><img src="images/icon-instagram.png" alt="icon-instagram"> Instagram</a>
-                <a href="#"><img src="images/icon-facebook.png" alt="Facebook"> Facebook</a>
-                <a href="#"><img src="images/icon-X.png" alt="X"> X</a>
-            </div>
-
-            <div class="footer-bottom">
-                <p>© 2025 EcoConnect. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- SCRIPTS -->
     <script src="scripts/hamburger.js"></script>
     <script src="scripts/homepage.js"></script>
 </body>

@@ -1,44 +1,26 @@
-<link rel="stylesheet" href="styles/admin_header.css">
-
-<div class="header">
+<header class="header">
     <div class="logo-container">
-        <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
-        <h1 class="site-title">EcoConnect</h1> 
+        <a href="homepage.php" class="logo-link">
+            <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
+            <h1 class="site-title">EcoConnect</h1>
+        </a>
     </div>
 
-    <div class="header-nav">
-        <button id="profile">
-            <img src="images/user.png" alt="user icon">
-        </button>
-        <button class="menu-toggle" id="hamburger">
-            <div id="dropdown">
-            ☰
-                <ul>
-                    <li>Manage Users</li>
-                    <li>Collaborators
-                        <ul>
-                            <li>Add Collaborators</li>
-                            <li>View Collaborators</li>
-                        </ul>
-                    </li>
+    <nav class="nav">
+        <a href="profile.php" class="profile">
+            <img src="images/icon-profile.png" alt="Profile" class="profile-icon">
+        </a>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+    </nav>
+</header>
 
-                    <li>All Activities
-                        <ul>
-                            <li>Add Activities
-                                <ul>
-                                    <li>Add Project</li>
-                                    <li>Add Program</li>
-                                </ul>
-                            </li>
-                            <li>View Activities</li>
-                        </ul>
-                    </li>
-
-                    <li>Edit About Us</li>
-                    <li>All Businesses</li>
-                </ul>
-            </div>
-        </button>
-    </div>
-
-</div>
+<nav class="dropdown-nav">
+    <ul>
+        <li><a href="aboutUs.php">About Us</a></li>
+        <li><a href="recycling.php">Recycling Programs</a></li>
+        <li><a href="energyTips.php">Energy Conservation Tips</a></li>
+        <li><a href="communityGardening.php">Community Gardening</a></li>
+        <li><a href="productSwap.php">Eco-friendly Product Swap</a></li>
+        <li><a href="businessGuide.php">Local Business Guide</a></li>
+    </ul>
+</nav>
