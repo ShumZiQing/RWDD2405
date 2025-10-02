@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#side {
+    width: 11%;
+    position: fixed;
+    margin-left: 20px;
+}
+
+#top{
+    display: flex;
+    margin-top: 80px;
+    margin-left: 25%;
+}
+
+#top h2{
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+}
+
+#arrowBck{
+    border: 0.5px solid black;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#arrow{
+    width: 20px;
+    height: 20px;
+    margin-left: 17px;
+    margin-top: 4px;
+}
+
+#mainInfo{
+    display: flex;
+    margin: 30px 33%;
+}
+
+#mainInfo img{
+    width: 10vh;
+    height: 10vh;
+    margin-top: 2%;
+    margin-right: 15px;
+    margin: 20px;
+}
+
+#desc{
+    width: 50vh;
+}
+
+#desc h1{
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    color: #0066AF;
+}
+
+#desc h2{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #0066AF;
+    margin-bottom: 10px;
+}
+
+#subInfo{
+    margin: 4% 35%;
+}
+
+#title, #attr{
+    padding: 20px;
+    font-size: 17px;
+}
+
+#attr{
+    color: #666666;
+}
+
+/* phone */
+@media(max-width: 600px){
+    #arrowBck{
+        width: 40px ;
+        margin-left: -60px;
+    }
+
+    #arrow{
+        margin-left: 7px;
+    }
+
+    #top h2{
+        font-size: 20px;
+        margin-top: 4px;
+    }
+
+    #mainInfo{
+        margin-left: 19%;
+        margin-bottom: 0;
+        width: 35vh;
+        height: 30vh;
+    }
+
+    #mainInfo img{
+        margin-top: 0;
+    }
+    #mainInfo h1{
+        font-size: 25px;
+    }
+
+    #mainInfo h2{
+        font-size: 17px;
+    }
+
+    #mainInfo p{
+        font-size: small;
+    }
+    #subInfo{
+        margin-top: -20px;
+        margin-left: 14%;
+        width: 40vh;
+    }
+
+    #title, #attr{
+        font-size: small;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    #top{
+        margin-left: 10%;
+    }
+    #mainInfo{
+        width: 35vh;
+        height: 20vh;
+        margin-left: 25%;
+        font-size: larger;
+        margin-top: 80px;
+    }
+
+    #mainInfo p{
+        font-family: "Inter", sans-serif;
+        font-size: large;
+        font-weight: 400;
+    }
+
+    #subInfo{
+        width: 35vh;
+        height: auto;
+        margin-left: 26%;
+    }
+
+    #title, #attr{
+        font-size: 20px;
+    }
+}
