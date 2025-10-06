@@ -21,20 +21,13 @@
     font-weight: 700;
 }
 
-#arrowBck{
-    border: 0.5px solid black;
-    width: 60px;
-    height: 30px;
-    border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
+.arrowBck{
+    margin-top: 15px;
+    margin-right: 8px;
 }
 
-#arrow{
-    width: 20px;
-    height: 20px;
-    margin-left: 17px;
-    margin-top: 4px;
+.arrowBck:hover{
+    color:#0066AF;
 }
 
 #mainInfo{
@@ -81,15 +74,30 @@
     color: #666666;
 }
 
+#delete{
+    padding: 10px;
+    margin-left: 65%;
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    width: 8%;
+    cursor: pointer;
+}
+
+#delete:hover{
+    background-color: rgb(185, 3, 3);
+}
+
 /* phone */
 @media(max-width: 600px){
-    #arrowBck{
+    .arrowBck{
         width: 40px ;
         margin-left: -60px;
-    }
-
-    #arrow{
-        margin-left: 7px;
     }
 
     #top h2{
@@ -127,6 +135,14 @@
     #title, #attr{
         font-size: small;
     }
+
+    #delete{
+        width: 10vh;
+        height: 25px;
+        padding: 5px;
+        font-size: small;
+        margin-top: -20px;
+    }
 }
 
 /* tablet */
@@ -156,5 +172,12 @@
 
     #title, #attr{
         font-size: 20px;
+    }
+
+    #delete{
+        font-size: medium;
+        padding: 10px;
+        width: 10vh;
+        margin-left: 80%;
     }
 }

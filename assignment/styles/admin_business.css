@@ -90,14 +90,22 @@
     margin-left: 55%;
 }
 
-#edit, #delete{
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    display: inline;
+.editIcon{
+    color: #075085;
+    padding: 40px;
 }
 
-#edit:hover, #delete:hover{
+.editIcon:hover{
+    cursor: pointer;
+    color: #0e78c4;
+}
+
+.deleteIcon{
+    color: red;
+}
+
+.deleteIcon:hover{
+    color: rgb(171, 5, 5);
     cursor: pointer;
 }
 
@@ -134,9 +142,8 @@
         margin-left: 7%;
     }
 
-    #edit,#delete{
-        width: 20px;
-        height: 20px;
+    .editIcon, .deleteIcon{
+        padding: 10px;
     }
 }
 

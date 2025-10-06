@@ -6,6 +6,7 @@
     <title>Edit Collaborator | Admin</title>
     <link rel="stylesheet" href="styles/admin_collab.css">
     <link rel="stylesheet" href="styles/global.css">
+    <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -21,33 +22,33 @@
 
         <div id="uploadProfile">
             <img src="images/upload-user.png" alt="upload-user" id="user">
-            <img src="images/upload.png" alt="upload" id="upload">
+            <i class="fa-solid fa-arrow-up-from-bracket upload"></i>
         </div>
 
         <!--set to get data when link to db-->
         <div class="form">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>
              <form action="#" method="post">
                 <input type="text" name="txtName" value="Name" id="indiForm">
              </form>
         </div>
 
         <div class="form">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-envelope fa-lg email"></i></div>
              <form action="#" method="post">
                 <input type="email" name="txtEmail" value="E-mail" id="indiForm">
              </form>
         </div>
 
         <div class="form">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-phone fa-lg phone"></i></div>
              <form action="#" method="post">
                 <input type="text" name="txtPhoneNo" value="Phone Number" id="indiForm">
              </form>
         </div>
 
         <div class="form">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
              <form action="#" method="post">
                 <select name="selCollab" id="indiSel">
                     <option value="INS">Internal</option>

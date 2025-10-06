@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/admin_business.css">
     <link rel="stylesheet" href="styles/admin_viewCollab.css">
     <link rel="stylesheet" href="styles/global.css">
+    <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <?php include "admin_header.php" ?>
@@ -40,8 +42,8 @@
                 </div>
 
                 <div id="icons">
-                    <img src="images/edit_blue.png" alt="edit" id="edit">
-                    <img src="images/delete.png" alt="" id="delete">
+                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                 </div>
             </div>
         </div>
@@ -56,8 +58,8 @@
                 </div>
 
                 <div id="icons">
-                    <img src="images/edit_blue.png" alt="edit" id="edit">
-                    <img src="images/delete.png" alt="" id="delete">
+                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                 </div>
             </div>
         </div>
@@ -72,8 +74,8 @@
                 </div>
 
                 <div id="icons">
-                    <img src="images/edit_blue.png" alt="edit" id="edit">
-                    <img src="images/delete.png" alt="" id="delete">
+                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                 </div>
             </div>
         </div>
@@ -88,8 +90,8 @@
                 </div>
 
                 <div id="icons">
-                    <img src="images/edit_blue.png" alt="edit" id="edit">
-                    <img src="images/delete.png" alt="" id="delete">
+                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                 </div>
             </div>
         </div>
@@ -104,8 +106,8 @@
                 </div>
 
                 <div id="icons">
-                    <img src="images/edit_blue.png" alt="edit" id="edit">
-                    <img src="images/delete.png" alt="" id="delete">
+                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                 </div>
             </div>
         </div>

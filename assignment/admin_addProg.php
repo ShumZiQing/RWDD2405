@@ -6,6 +6,7 @@
     <title>Add Program | Admin</title>
     <link rel="stylesheet" href="styles/admin_prog.css">
     <link rel="stylesheet" href="styles/global.css">
+    <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
 
     <style>
         #indiForm, #indiTxtArea, #indiSmallForm{
@@ -30,32 +31,32 @@
 
     <div id="box">
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-calendar fa-lg dateIcon"></i></div>
             <form action="#" method="post">
-                <input type="text" name="txtStartDate" value="Start Date" id="indiSmallForm">
+                <input type="date" name="txtStartDate" id="indiSmallForm">
                 to
-                <input type="text" name="txtEndDate" value="End Date" id="indiSmallForm">
+                <input type="date" name="txtEndDate" id="indiSmallForm">
             </form>
         </div>
 
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-clock fa-lg timeIcon"></i></div>
             <form action="#" method="post">
-                <input type="text" name="txtStartTime" value="Start Time" id="indiSmallForm">
+                <input type="time" name="txtStartTime" id="indiSmallForm">
                 to
-                <input type="text" name="txtEndTime" value="End Time" id="indiSmallForm">
+                <input type="time" name="txtEndTime" id="indiSmallForm">
             </form>
         </div>
 
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-pen fa-lg descIcon"></i></div>
             <form action="#" method="post">
                 <textarea name="txtProgDetails" id="indiTxtArea">Program Details</textarea>
             </form>
         </div>
 
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
             <form action="#" method="post">
                 <select name="selRecyclable" id="indiSel">
                     <option value="PLT">Plastic</option>
@@ -67,7 +68,7 @@
         </div>
 
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-location-dot fa-lg locationIcon"></i></div>
             <form action="#" method="post">
                 <select name="selRecyclable" id="indiSel">
                     <option value="ESP">Taman Esplanad</option>
@@ -80,7 +81,7 @@
         </div>
 
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-repeat fa-lg freqIcon"></i></div>
             <form action="#" method="post">
                 <select name="selFrequency" id="indiSel">
                     <option value="day">Daily</option>
@@ -91,7 +92,7 @@
         </div>
 
         <div class="forms">
-            <div id="circle"></div>
+            <div id="circle"><i class="fa-solid fa-users fa-lg collabIcon"></i></div>
             <form action="#" method="post">
                 <select name="selCollab" id="indiSel">
                     <option value="ESGAM">ESG Association of Malaysia</option>

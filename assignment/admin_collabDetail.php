@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="styles/admin_collabDetail.css">
     <link rel="stylesheet" href="styles/global.css">
+    <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <?php include "admin_header.php"?>
@@ -17,9 +19,7 @@
 
     <div id="content">
         <div id="top">
-            <div id="arrowBck">
-                <img src="images/left-arrow_black.png" alt="" id="arrow">
-            </div>
+            <i class="fa-solid fa-arrow-left fa-xl arrowBck"></i>
             <h2>Collaborator Details</h2>
         </div>
 
@@ -55,6 +55,8 @@
                 </tr>
             </table>
         </div>
+
+        <input type="submit" value="Delete" name="btnDelete" id="delete">
     </div>
 </body>
 </html>

@@ -6,6 +6,7 @@
     <title>All Activites | Admin</title>
     <link rel="stylesheet" href="styles/admin_act.css">
     <link rel="stylesheet" href="styles/global.css">
+    <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -45,12 +46,12 @@
                 
                 <div class="actIcon">
                     <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
+                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
                         <p>Collaborator</p>
                     </div>
                     
                     <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit" class="actIcon">
+                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                         <p>Edit</p>
                     </div>
                 </div>
@@ -67,12 +68,12 @@
                 
                 <div class="actIcon">
                     <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
+                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
                         <p>Collaborator</p>
                     </div>
                     
                     <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit">
+                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                         <p>Edit</p>
                     </div>
                 </div>
@@ -89,12 +90,12 @@
                     
                     <div class="actIcon">
                         <div id="collab">
-                            <img src="images/collab_blue.png" alt="collab">
+                            <i class="fa-solid fa-users fa-xl collabIcon"></i>
                             <p>Collaborator</p>
                         </div>
                         
                         <div id="edit">
-                            <img src="images/edit_blue.png" alt="edit">
+                            <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                             <p>Edit</p>
                         </div>
                     </div>
@@ -111,12 +112,12 @@
                 
                 <div class="actIcon">
                     <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
+                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
                         <p>Collaborator</p>
                     </div>
                     
                     <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit">
+                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                         <p>Edit</p>
                     </div>
                 </div>
@@ -133,12 +134,12 @@
                 
                 <div class="actIcon">
                     <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
+                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
                         <p>Collaborator</p>
                     </div>
                     
                     <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit">
+                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                         <p>Edit</p>
                     </div>
                 </div>

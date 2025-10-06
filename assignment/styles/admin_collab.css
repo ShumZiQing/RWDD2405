@@ -30,10 +30,25 @@
     cursor: pointer;
 }
 
-#upload{
+#circle{
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+.upload{
     position: relative;
     margin-left: 94%;
     margin-top: 5px;
+    color: #075085;
+    width: 30px;
+    height: 20px;
+}
+
+.upload:hover{
+    color: #147ec9;
 }
 
 #user{
@@ -42,17 +57,16 @@
     width: 80px;
 }
 
-#circle{
-    background-color: #8195a1;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 10px;
+.name, .email, .phone, .selection{
+    position: relative;
+    text-align: center;
+    margin-left: 18%;
+    margin-top: 10px;
 }
 
 .form{
     display: flex;
-    margin: 25px 30%; 
+    margin: 25px 31%; 
 }
 
 #indiForm, #indiSel{
@@ -96,7 +110,7 @@
         width: 30vh;
     }
 
-    #upload{
+    .upload{
         margin-left: 85%;
         width: 20px;
     }
@@ -141,7 +155,7 @@
         margin-left: 22%;
     }
 
-    #upload{
+    .upload{
         margin-left: 93%;
     }
     
