@@ -10,6 +10,17 @@
     margin-left: 20px;
 }
 
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
 #content h1{
     margin-top: 100px;
     text-align: center;
@@ -133,6 +144,11 @@
 
 /* phone */
 @media(max-width: 600px){
+    .returnArrow{
+        left: 7%;
+        top: 18%;
+    }
+
     #content h1{
         font-size: 30px;
     }
@@ -201,6 +217,11 @@
 
 /* tablet */
 @media(min-width: 601px) and (max-width: 1024px){
+    .returnArrow{
+        left: 20%;
+        top: 12%;
+    }
+    
     #uploadPic{
         width: 40vh;
         margin: 30px 25%;

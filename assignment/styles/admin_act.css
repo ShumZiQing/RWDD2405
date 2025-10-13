@@ -10,6 +10,17 @@ body{
     font-family: "Inter", sans-serif;
 }
 
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
 #content{
     display: flex;
     align-items: flex-start;
@@ -56,9 +67,27 @@ h1{
     cursor: pointer;
 }
 
-#search p{
-    padding-top: 1.5px;
-    padding-right: 10px;
+#searchBar{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 80%;
+}
+
+#searchBar:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+::placeholder{
+    color: white;
+}
+
+#searchButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 #add{
@@ -125,6 +154,7 @@ h1{
     margin-left: 23%;
     margin-top: 35px;
     display: flex;
+    padding: 10px;
 }
 
 #desc{
@@ -136,6 +166,7 @@ h1{
 }
 
 .prog h2{
+    width: 40vh;
     font-family: "Inter", sans-serif;
     color: #054675;
 }
@@ -195,6 +226,11 @@ h1{
 
 /* phone */
 @media(max-width: 600px){
+    .returnArrow{
+        left: 7%;
+        top: 16%;
+    }
+
     #features{
         height: 30px;
         justify-content: flex-end;
@@ -233,9 +269,11 @@ h1{
     .prog, .proj{
         margin-left: 10%;
         width: 80%;
+        padding: 0;
     }
     .prog h2, .proj h2{
         font-size: large;
+        width: 20vh;
     }
     .prog p, .proj p{
         font-size: small;
@@ -256,6 +294,11 @@ h1{
 
 /* tablet */
 @media(min-width: 601px) and (max-width: 1024px){
+    .returnArrow{
+        left: 20%;
+        top: 12%;
+    }
+
   #features{
     justify-content: flex-end;
     height: 40px;

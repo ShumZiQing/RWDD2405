@@ -14,11 +14,11 @@
             <div id="dropdown">
             ☰
                 <ul>
-                    <li>Manage Users</li>
+                    <a href="#"><li>Manage Users</li></a>
                     <li>Collaborators
                         <ul>
-                            <li>Add Collaborators</li>
-                            <li>View Collaborators</li>
+                            <a href="admin_addCollab.php"><li>Add Collaborators</li></a>
+                            <a href="admin_collab.php"><li>View Collaborators</li></a>
                         </ul>
                     </li>
 
@@ -26,16 +26,16 @@
                         <ul>
                             <li>Add Activities
                                 <ul>
-                                    <li>Add Project</li>
-                                    <li>Add Program</li>
+                                    <a href="#"><li>Add Project</li></a>
+                                    <a href="admin_addProg.php"><li>Add Program</li></a>
                                 </ul>
                             </li>
-                            <li>View Activities</li>
+                            <a href="admin_activities.php"><li>View Activities</li></a>
                         </ul>
                     </li>
 
-                    <li>Edit About Us</li>
-                    <li>All Businesses</li>
+                    <a href="#"><li>Edit About Us</li></a>
+                    <a href="admin_business.php"><li>All Businesses</li></a>
                 </ul>
             </div>
         </button>

@@ -1,3 +1,31 @@
+<?php
+    include "dbConnect.php";
+
+    session_start();
+
+    if(isset($_POST['btnSave'])){
+        $name = $_POST['txtName'];
+        $email = $_POST['txtEmail'];
+        $phoneNo = $_POST['txtPhoneNo'];
+        $orgType = $_POST['selCollab'];
+
+        $sql = "INSERT INTO tblcollaborator(name, email, phoneNum, orgType) VALUES('$name', '$email', '$phoneNo', '$orgType')";
+
+        if(mysqli_query($conn, $sql)){
+            //redirect with html instead
+
+           echo'<script>
+                alert("New Collaborator added!");
+                window.location.href="admin_addCollab.php";
+            </script>';
+
+            exit();
+        }else{
+            echo "Error: ".$sql ."<br>" .mysqli_error($conn);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +38,6 @@
 
     <style>
         #indiForm, #indiSel{
-            color: #8F8F8F;
             font-style: normal;
         }
 
@@ -23,11 +50,12 @@
 <body>
     <?php include "admin_header.php" ?>
     
-    <div id="content">
     <div id="side">
-        <?php include "admin_sideMenu.php"?> 
+            <?php include "admin_sideMenu.php"?> 
     </div> 
 
+    <div id="content">
+        <a href="admin_collab.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Add Collaborator</h1>
 
         <div id="uploadProfile">
@@ -35,41 +63,35 @@
             <i class="fa-solid fa-arrow-up-from-bracket upload"></i>
         </div>
 
-        <!--set to get data when link to db-->
+        <form action="#" method="post">
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>
-             <form action="#" method="post">
-                <input type="text" name="txtName" value="Name" id="indiForm">
-             </form>
+                <input type="text" name="txtName" placeholder="Name" id="indiForm" required>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-envelope fa-lg email"></i></div>
-             <form action="#" method="post">
-                <input type="email" name="txtEmail" value="E-mail" id="indiForm">
-             </form>
+                <input type="email" name="txtEmail" placeholder="E-mail" id="indiForm" required>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-phone fa-lg phone"></i></div>
-             <form action="#" method="post">
-                <input type="text" name="txtPhoneNo" value="Phone Number" id="indiForm">
-             </form>
+                <input type="text" name="txtPhoneNo" placeholder="Phone Number" id="indiForm" required>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
-             <form action="#" method="post">
-                <select name="selCollab" id="indiSel">
+                <select name="selCollab" id="indiSel" required>
                     <option value="INS">Internal</option>
                     <option value="EXT">External</option>
                     <option value="NGO">Non-Governmental Organization</option>
                     <option value="GO">Government Organization</option>
                 </select>
-             </form>
         </div>
 
         <input type="submit" value="Save" name="btnSave" id="save">
+
+        </form>
     </div>
 </body>
 </html>

@@ -1,3 +1,33 @@
+<?php
+    include 'dbConnect.php';
+    session_start();
+
+    $busID = $_GET['busID'];
+
+    //get frm client side
+    if(isset($_POST['btnSave'])){
+        $name = $_POST['txtBusName'];
+        $busType = $_POST['txtBusType'];
+        $desc = $_POST['txtBusDetails'];
+        $location = $_POST['txtBusLoc'];
+        $phoneNum = $_POST['txtBusPhone'];
+        
+        $sql = "UPDATE tblbusiness
+        SET name = '$name', busType = '$busType', description = '$desc', location = '$location', phoneNum = '$phoneNum'
+        WHERE busID = $busID";
+
+        if(mysqli_query($conn, $sql)){
+            echo"<script> 
+                alert('Business edited successfully!');
+                window.location.href='admin_business.php';
+            </script>";
+
+        }else{
+            echo "Error: ".mysqli_error($conn);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +47,20 @@
     </div>
 
     <div id="content">
+        <a href="admin_business.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Edit Business</h1>
+
+        <?php
+            $sql = "SELECT * FROM tblbusiness WHERE busID = '".$_GET['busID']."'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $name = $row['name'];
+            $busType = $row['busType'];
+            $desc = $row['description'];
+            $location = $row['location'];
+            $phoneNum = $row['phoneNum'];
+        ?>
 
         <div id="uploadPic">
             <i class="fa-solid fa-angle-left fa-xl LArrow"></i>
@@ -32,39 +75,31 @@
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>
             <form action="#" method="post">
-                <input type="text" name="txtBusName" id="indiForm" value="Business Name">
-            </form>
+                <input type="text" name="txtBusName" id="indiForm" value="<?php echo $name?>" required>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
-            <form action="#" method="post">
-                <input type="text" name="txtBusType" id="indiForm" value="Business Type">
-            </form>
+                <input type="text" name="txtBusType" id="indiForm" value="<?php echo $busType?>" required>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-pen fa-lg descIcon"></i></div>
-            <form action="#" method="post">
-                <textarea name="txtBusDetails" id="indiTxtArea" rows="6" cols="23">Business Details</textarea>
-            </form>
+                <textarea name="txtBusDetails" id="indiTxtArea" rows="6" cols="23" required><?php echo $desc?></textarea>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-location-dot fa-lg locationIcon"></i></div>
-            <form action="#" method="post">
-                <input type="text" name="txtBusLoc" id="indiForm" value="Location">
-            </form>
+                <input type="text" name="txtBusLoc" id="indiForm" value="<?php echo $location?>" required>
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-phone fa-lg phone"></i></div>
-            <form action="#" method="post">
-                <input type="text" name="txtBusPhone" id="indiForm" value="Phone Number">
-            </form>
+                <input type="text" name="txtBusPhone" id="indiForm" value="<?php echo $phoneNum?>" required>
         </div>
 
-        <input type="submit" value="Save" id="save">
+        <input type="submit" value="Save" id="save" name = 'btnSave'>
+        </form>
     </div>
 </body>
 </html>

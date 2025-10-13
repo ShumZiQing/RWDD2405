@@ -10,6 +10,17 @@
     margin-left: 20px;
 }
 
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
 .icon{
     width: 20px;
     height: 20px;
@@ -40,11 +51,27 @@
     cursor: pointer;
 }
 
-#search p{
-    padding-top: 1.5px;
-    padding-right: 17px;
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
+#searchBar{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 80%;
+}
+
+#searchBar:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+::placeholder{
+    color: white;
+}
+
+#searchButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .indiBus{
@@ -63,6 +90,7 @@
 }
 
 #text{
+    width: 50%;
     margin: auto 10px;
 }
 
@@ -85,9 +113,9 @@
     font-size: small;
 }
 
-#icons{
+#busIcons{
+    position: relative;
     margin: auto;
-    margin-left: 55%;
 }
 
 .editIcon{
@@ -111,6 +139,11 @@
 
 /* phone */
 @media(max-width: 600px){
+    .returnArrow{
+        left: 7%;
+        top: 18%;
+    }
+
     .icon{
         width: 20px;
         height: 20px;
@@ -138,8 +171,8 @@
         font-size: 95%;
     }
 
-    #icons{
-        margin-left: 7%;
+    #busIcons{
+        width: 30%;
     }
 
     .editIcon, .deleteIcon{
@@ -149,7 +182,13 @@
 
 /* tablet */
 @media(min-width: 601px) and (max-width: 1024px){
+    .returnArrow{
+        left: 20%;
+        top: 12%;
+    }
+    
     #search{
+        width: 20%;
         margin-left: 60%;
         margin-top: 20px;
     }
@@ -159,8 +198,9 @@
         margin: 40px auto;
     }
 
-    #icons{
-        margin-left: 30%;
+    #busIcons{
+        width: 30%;
+        margin-left: 10%;
     }
 
     #text{

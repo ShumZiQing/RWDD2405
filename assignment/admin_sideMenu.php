@@ -1,17 +1,19 @@
 <link rel="stylesheet" href="styles/admin_sideMenu.css">
 <div class="vmenu">
+    <a href="#">
     <div class="selection-box">
         <img src="images/user-icon.png" alt="icon" class="icons">
-        <a href="#">Manage Users</a>
+        Manage Users
     </div>
+    </a>
     
     <div id="nav-collab" class="selection-dropdown">
         <img src="images/collab.png" alt="icon" class="icons" >
             Collaborators
             <img src="images/down-arrow.png" alt="icon" class="arrow" id="collabArrow">
             <ul>
-                <li>Add Collaborator</li>
-                <li>View Collaborator</li>
+                <a href="admin_addCollab.php"><li>Add Collaborator</li></a>
+                <a href="admin_collab.php"><li>View Collaborator</li></a>
             </ul>
     </div>
 
@@ -23,20 +25,25 @@
                 <li>Add activities 
                     <img src="images/down-arrow.png" alt="icon" class="arrow">
                     <ul>
-                        <li>Add Project</li>
-                        <li>Add Program</li>
+                        <a href="#"><li>Add Project</li></a>
+                        <a href="admin_addProg.php"><li>Add Program</li></a>
                     </ul>
                 </li>
-                <li>View activities</li>
+                <a href="admin_activities.php"><li>View activities</li></a>
             </ul>
     </div>
     
+    <a href="#">
     <div class="selection-box">
         <img src="images/edit.png" alt="icon" class="icons">
-        <a href="#">Edit About Us</a>
+        Edit About Us
     </div>
+    </a>
+
+    <a href="admin_business.php">
     <div class="selection-box">
         <img src="images/briefcase (1).png" alt="icon" class="icons">
-        <a href="#">All Businesses</a>
+        All Businesses
     </div>
+    </a>
 </div>
