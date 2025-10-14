@@ -69,7 +69,8 @@
                     
                     <div class="actIcon">
                         <div id="collab">
-                            <a href="admin_collab.php"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
+                            <!-- direct to collab details--> 
+                            <a href="admin_collabDetail.php?collabName=<?php echo $row['collabName'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
                             <p>Collaborator</p>
                         </div>
                         

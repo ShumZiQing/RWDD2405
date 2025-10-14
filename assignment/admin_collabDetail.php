@@ -1,3 +1,23 @@
+<?php
+    include 'dbConnect.php';
+    session_start();
+
+    $collabID = "";
+    $collabName = "";
+
+    if (isset($_GET['collabID'])) {
+        $collabID = $_GET['collabID'];
+        $sql = "SELECT * FROM tblcollaborator WHERE collabID = '$collabID'";
+
+    }else if (isset($_GET['collabName'])) {
+        $collabName = $_GET['collabName'];
+        $sql = "SELECT * FROM tblcollaborator WHERE name = '$collabName'";
+
+    }else{
+        echo "<script>alert('No collaborator selected.'); window.location='admin_collab.php';</script>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,16 +39,26 @@
 
     <div id="content">
         <div id="top">
-            <i class="fa-solid fa-arrow-left fa-xl arrowBck"></i>
+            <a href="admin_collab.php"><i class="fa-solid fa-arrow-left fa-xl returnArrow"></i></a>
             <h2>Collaborator Details</h2>
         </div>
+
+        <?php
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $name = $row['name'];
+            $email = $row['email'];
+            $phoneNo = $row['phoneNum'];
+            $orgType = $row['orgType'];
+            $progInvolved = $row['progInvolved'];
+        ?>
 
         <div id="mainInfo">
             <img src="images/upload-user.png" alt="">
             <div id="desc">
-                <h1>Collab ID</h1>
-                <h2>Collab Name</h2>
-                <p>Contributes resources, knowledge, and innovation to help achieve sustainable living among the communities.</p>
+                <h1>Collaborator <?php echo $collabID?></h1>
+                <h2><?php echo $name?></h2>
             </div>
         </div>
 
@@ -36,27 +66,42 @@
             <table>
                 <tr>
                     <td id="title">Phone No: </td>
-                    <td id="attr">+60 123456789</td>
+                    <td id="attr"><?php echo $phoneNo?></td>
                 </tr>
 
                 <tr>
                     <td id="title">Email: </td>
-                    <td id="attr">username@gmail.com</td>
+                    <td id="attr"><?php echo $email?></td>
                 </tr>
 
                 <tr>
                     <td id="title">Type: </td>
-                    <td id="attr">Non-Government Organization (NGO)</td>
+                    <td id="attr">
+                        <?php if($orgType == "INS"){
+                                echo "Internal";
+                            }else if ($orgType == "EXT"){
+                                echo "External";
+                            }else if($orgType == "NGO"){
+                                echo "Non-governmental Organization";
+                            }else if ($orgType == "GO"){
+                                echo "Governmental Organization";
+                            }?>
+                    </td>
                 </tr>
 
                 <tr>
                     <td id="title">Currently Involved: </td>
-                    <td id="attr">Program A, Program B</td>
+                    <td id="attr"> <?php echo $progInvolved;?>
+                    </td>
                 </tr>
             </table>
         </div>
 
-        <input type="submit" value="Delete" name="btnDelete" id="delete">
+        <a href="admin_deleteCollab.php?collabID=<?php echo $row['collabID'];?>" onclick="return confirm('Are you sure you want to delete this collaborator?');">
+            <div id="delete">
+                <p>Delete</p>
+            </div>
+        </a>
     </div>
 </body>
 </html>

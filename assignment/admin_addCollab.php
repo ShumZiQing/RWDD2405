@@ -8,8 +8,9 @@
         $email = $_POST['txtEmail'];
         $phoneNo = $_POST['txtPhoneNo'];
         $orgType = $_POST['selCollab'];
+        $progInvolved = isset($_POST['selProgram']) ? implode(',', $_POST['selProgram']) : '';
 
-        $sql = "INSERT INTO tblcollaborator(name, email, phoneNum, orgType) VALUES('$name', '$email', '$phoneNo', '$orgType')";
+        $sql = "INSERT INTO tblcollaborator(name, email, phoneNum, orgType, progInvolved) VALUES('$name', '$email', '$phoneNo', '$orgType', '$progInvolved')";
 
         if(mysqli_query($conn, $sql)){
             //redirect with html instead
@@ -37,7 +38,7 @@
     <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
 
     <style>
-        #indiForm, #indiSel{
+        #indiForm, #indiSel, #multiSel{
             font-style: normal;
         }
 
@@ -87,6 +88,23 @@
                     <option value="NGO">Non-Governmental Organization</option>
                     <option value="GO">Government Organization</option>
                 </select>
+        </div>
+
+        <div class="form">
+            <div id="circle"><i class="fa-solid fa-tree fa-lg progIcon"></i></div>
+            <select name="selProgram[]" id="multiSel" required multiple>
+                <?php
+                    $sql = "SELECT * FROM tblprogram";
+                    $result = mysqli_query($conn, $sql);
+
+                    while($row = mysqli_fetch_assoc($result)){
+                        $name = $row['name'];?>
+
+                        <option value="<?php echo $name?>"><?php echo $name?></option>
+                    <?php
+                    }
+                ?>
+            </select>
         </div>
 
         <input type="submit" value="Save" name="btnSave" id="save">

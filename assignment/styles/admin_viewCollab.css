@@ -35,6 +35,10 @@
     width: 20vh;
 }
 
+.indiBus:hover{
+    background-color: #676666;
+}
+
 #add{
     background-color: #187DC6;
     color: white;

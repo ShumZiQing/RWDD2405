@@ -59,7 +59,7 @@
                 $name = $row['name'];
                 ?>
 
-                <div class="indiBus">
+            <div class="indiBus" onclick='window.location="admin_collabDetail.php?collabID=<?php echo $collabID;?>"'>
                     <img src="images/upload-user.png" alt="user" id="picture">
 
                     <div id="text">
@@ -71,7 +71,7 @@
                     <a href="admin_editCollab.php?collabID=<?php echo $row['collabID'];?>">
                         <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                     </a>
-                    <a href="admin_deleteCollab.php?collabID=<?php echo $row['collabID'];?>" onclick="return confirm('Are you sure you want to delete this collaborator?');">
+                    <a href="admin_deleteCollab.php?collabID=<?php echo $row['collabID'];?>" onclick="event.stopPropagation(); return confirm('Are you sure you want to delete this collaborator?');">
                         <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                     </a>
                 </div>

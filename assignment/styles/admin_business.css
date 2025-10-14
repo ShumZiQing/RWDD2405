@@ -116,6 +116,7 @@
 #busIcons{
     position: relative;
     margin: auto;
+    margin-left: 20%;
 }
 
 .editIcon{
@@ -189,6 +190,7 @@
     
     #search{
         width: 20%;
+        height: 41px;
         margin-left: 60%;
         margin-top: 20px;
     }

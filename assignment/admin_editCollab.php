@@ -9,9 +9,10 @@
         $email = $_POST['txtEmail'];
         $phoneNo = $_POST['txtPhoneNo'];
         $orgType = $_POST['selCollab'];
+        $progInvolved = implode(',', $_POST['selProgram']);
         
         $sql = "UPDATE tblcollaborator
-        SET name = '$name', email = '$email', phoneNum = '$phoneNo', orgType = '$orgType'
+        SET name = '$name', email = '$email', phoneNum = '$phoneNo', orgType = '$orgType', progInvolved = '$progInvolved'
         WHERE collabID = $collabID";
 
         if(mysqli_query($conn, $sql)){
@@ -56,6 +57,7 @@
             $email = $row['email'];
             $phoneNo = $row['phoneNum'];
             $orgType = $row['orgType'];
+            $progInvolved = $row['progInvolved'];
         ?>
 
         <div id="uploadProfile">
@@ -87,6 +89,24 @@
                     <option value="NGO" <?php if($orgType == "NGO") echo "selected";?>>Non-governmental Organization</option>
                     <option value="GO" <?php if($orgType == "GO") echo "selected";?>>Governmental Organization</option>
                 </select>
+        </div>
+
+        <div class="form">
+            <div id="circle"><i class="fa-solid fa-tree fa-lg progIcon"></i></div>
+            <select name="selProgram[]" id="multiSel" required multiple>
+                <?php
+                    $progSQL = "SELECT * FROM tblprogram";
+                    $progResult = mysqli_query($conn, $progSQL);
+
+                    $currentProgs = explode(',', $progInvolved);
+
+                    while($progRow = mysqli_fetch_assoc($progResult)){
+                        $progName = $progRow['name'];
+                        $selected = in_array($progName, $currentProgs) ? "selected" : "";
+                        echo "<option value = '$progName' $selected>$progName</option>";
+                    }
+                ?>
+            </select>
         </div>
 
         <input type="submit" value="Save" name="btnSave" id="save">

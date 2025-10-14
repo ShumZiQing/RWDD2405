@@ -15,7 +15,6 @@
     $freq = $row['frequency'];
     $collabName = $row['collabName'];
 
-    //put multiple option into array
     $recyclablesArr = explode(',', $recyclables);
     $neighbourhoodArr = explode(',', $neighbourhood);
 
