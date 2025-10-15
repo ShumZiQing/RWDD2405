@@ -103,7 +103,7 @@ $pageTitle = "EcoConnect - Recycling Programs";
     <!-- FOOTER -->
     <?php include 'footer.php'; ?>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="scripts/hamburger.js"></script>
     <script src="scripts/recycling.js"></script>
 </body>

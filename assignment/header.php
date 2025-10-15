@@ -24,9 +24,30 @@ if (!isset($pageTitle)) {
     </div>
 
     <nav class="nav">
-        <a href="profile.php" class="profile">
-            <img src="images/icon-profile.png" alt="Profile" class="profile-icon">
-        </a>
+        <?php 
+        if (isset($_SESSION['userid']) && $_SESSION['userid'] != "") {
+        ?>
+            <div class="profile-dropdown">
+            <button class="profile-btn">
+                <img src="images/icon-profile.png" alt="Profile" class="profile-icon">
+            </button>
+                <div class="dropdown-menu">
+                    <a href="manageProfile.php">Manage Profile</a>
+                    <a href="logout.php">Logout</a>
+                </div>
+            </div>
+        <?php
+        } else {
+        ?>
+            <div class="guest-links">
+                <a href="login.php">Login</a>
+                <a href="register.php">Register</a>
+            </div>
+        <?php
+        }
+        ?>
+
+
         <button class="menu-toggle" aria-label="Menu">☰</button>
     </nav>
 </header>

@@ -1,0 +1,151 @@
+/* BANNER */
+.energy .banner {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.energy .banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.energy .banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: #075085;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* TABS (like filter in recycling) */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #075085;
+  border-radius: 6px;
+  background: #fff;
+  color: #075085;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #075085;
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: #075085;
+  color: #fff;
+}
+
+/* TIPS LIST */
+.tips-list {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.tips-list.active {
+  display: flex;
+}
+
+/* TIP CARD */
+.tip-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit;
+  padding: 20px;
+  text-align: center;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.tip-card img {
+  width: 120px;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+.tip-card h3 {
+  color: #075085;
+  margin-bottom: 10px;
+}
+
+.tip-card ul {
+  list-style: disc;
+  text-align: left;
+  padding-left: 20px;
+  color: #333;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .energy .banner img {
+    height: 300px;
+  }
+
+  .tabs{
+    padding: 30px;
+  }
+
+  .energy .banner h2 {
+    font-size: 2.2rem;
+  }
+
+  .tips-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+  }
+
+  .tip-card {
+    flex: 0 0 calc(50% - 20px); /* 2 columns */
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .energy .banner img {
+    height: 380px;
+  }
+
+  .tabs{
+    padding: 40px;
+  }
+
+  .energy .banner h2 {
+    font-size: 2.4rem;
+  }
+
+  .tips-list {
+    padding: 40px;
+  }
+
+  .tip-card {
+    flex: 0 0 calc(33.333% - 20px); /* 3 columns */
+  }
+}

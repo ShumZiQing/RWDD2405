@@ -1,6 +1,6 @@
 <?php 
-// (Optional) start PHP logic here if needed, like checking login ??
 $pageTitle = "EcoConnect - Homepage";
+
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,18 @@ $pageTitle = "EcoConnect - Homepage";
                 <img src="images/homepageImg2.jpg" alt="scroll image">
                 <img src="images/homepageImg3.jpg" alt="scroll image">
             </div>
+        </section>
+
+        <section class="welcome-section">
+            <?php if (isset($_SESSION['fullname'])): ?>
+                <h2 class="welcome-text">
+                Welcome, <?php echo $_SESSION['fullname']; ?>!
+                </h2>
+            <?php else: ?>
+                <h2 class="welcome-text">
+                Welcome to EcoConnect!
+                </h2>
+            <?php endif; ?>
         </section>
 
         <section class="programs">
