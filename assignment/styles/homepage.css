@@ -26,6 +26,15 @@ main {
   display: none;
 }
 
+/* WELCOME MSG*/
+.welcome-text {
+  color: #075085;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
 /* PROGRAMS */
 section {
   padding: 20px;
@@ -135,6 +144,10 @@ section h2 {
   section {
     padding: 30px;
   }
+
+  .welcome-text {
+    font-size: 1.8rem;
+  }
 }
 
 /* DESKTOP */
@@ -147,5 +160,9 @@ section h2 {
   }
   section {
     padding: 40px;
+  }
+
+  .welcome-text {
+    font-size: 2rem;
   }
 }
