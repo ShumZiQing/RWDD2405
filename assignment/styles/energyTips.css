@@ -24,12 +24,21 @@
   text-align: center;
 }
 
-/* TABS (like filter in recycling) */
+/* TABS */
+.tabs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+
 .tabs {
   display: flex;
   gap: 10px;
-  margin: 20px 0;
-  padding: 20px;
 }
 
 .tab-btn {
@@ -51,6 +60,27 @@
 .tab-btn.active {
   background: #075085;
   color: #fff;
+}
+
+/* ADD TIP BUTTON */
+.add-btn-container {
+  flex-shrink: 0;
+}
+
+.add-tip-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #F5B841;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-tip-btn:hover {
+  background: #d9a12f;
 }
 
 /* TIPS LIST */
@@ -107,8 +137,8 @@
     height: 300px;
   }
 
-  .tabs{
-    padding: 30px;
+  .tabs-row {
+    padding: 0 30px;
   }
 
   .energy .banner h2 {
@@ -123,7 +153,7 @@
   }
 
   .tip-card {
-    flex: 0 0 calc(50% - 20px); /* 2 columns */
+    flex: 0 0 calc(50% - 20px);
   }
 }
 
@@ -133,8 +163,8 @@
     height: 380px;
   }
 
-  .tabs{
-    padding: 40px;
+  .tabs-row {
+    padding: 0 40px;
   }
 
   .energy .banner h2 {
@@ -146,6 +176,6 @@
   }
 
   .tip-card {
-    flex: 0 0 calc(33.333% - 20px); /* 3 columns */
+    flex: 0 0 calc(33.333% - 20px);
   }
 }

@@ -1,10 +1,19 @@
 <?php
 session_start();
-
+if (!isset($pageTitle)) {
+    $pageTitle = "EcoConnect";
+}
 ?>
 
-
-<header class="header">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $pageTitle; ?></title>
+</head>
+<body>
+    <header class="header">
     <div class="logo-container">
         <a href="homepage.php" class="logo-link">
             <img src="images/logo.jpg" alt="EcoConnect Logo" class="logo">
@@ -51,3 +60,5 @@ session_start();
         <li><a href="businessGuide.php">Local Business Guide</a></li>
     </ul>
 </nav>
+
+

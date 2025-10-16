@@ -19,3 +19,5 @@
         <p>© 2025 EcoConnect. All rights reserved.</p>
     </div>
 </footer>
+</body>
+</html>
