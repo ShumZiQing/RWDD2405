@@ -83,6 +83,51 @@
   background: #d9a12f;
 }
 
+.card-actions {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  background: #fff;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* LIKE BUTTON */
+.like-btn {
+  background: none;
+  border: none;
+  color: #0B6623;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, color 0.2s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+  color: #075085;
+}
+
+.like-btn.liked {
+  color: #28a745;
+}
+
+
 /* TIPS LIST */
 .tips-list {
   display: none;
@@ -106,6 +151,7 @@
   color: inherit;
   padding: 20px;
   text-align: center;
+  position: relative;
 }
 
 .tip-card:hover {
@@ -129,6 +175,7 @@
   text-align: left;
   padding-left: 20px;
   color: #333;
+  margin-bottom: 45px;
 }
 
 /* TABLET */

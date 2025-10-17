@@ -74,7 +74,7 @@
 }
 
 /* BUTTON */
-.btn {
+.btn-add {
   width: 100%;
   padding: 14px;
   background: #075085;
@@ -87,8 +87,25 @@
   transition: background 0.2s ease;
 }
 
-.btn:hover {
+.btn-cancel {
+  width: 100%;
+  padding: 14px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-add:hover {
   background: #06426d;
+}
+
+.btn-cancel:hover {
+  background: #a11e2b;
 }
 
 /* SUCCESS & ERROR MESSAGES */

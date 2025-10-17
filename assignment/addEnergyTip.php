@@ -82,7 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="file" name="tipImage" accept="image/png" required>
 
-        <button type="submit" class="btn">Add Tip</button>
+        <button type="submit" class="btn-add">Add Tip</button>
+        <button type="button" class="btn-cancel" onclick="window.location.href='energyTips.php'">Cancel</button>
 
         <?php
             if (isset($successMsg)) {
