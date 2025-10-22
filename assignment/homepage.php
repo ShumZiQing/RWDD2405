@@ -95,10 +95,10 @@ $pageTitle = "EcoConnect - Homepage";
         </section>
 
         <section class="projects">
-            <h2><a href="" class="section-link">Upcoming Projects →</a></h2>
+            <h2><a href="gardenProject.php" class="section-link">Upcoming Projects →</a></h2>
             <div class="scroll-container">
                 <?php
-                $sqlProjects = "SELECT * FROM tblproject WHERE status='Upcoming' ORDER BY startDate ASC LIMIT 6";
+                $sqlProjects = "SELECT * FROM tblprojects WHERE status='Upcoming' ORDER BY startDate ASC LIMIT 6";
                 $resultProjects = mysqli_query($conn, $sqlProjects);
 
                 if (mysqli_num_rows($resultProjects) > 0) {
