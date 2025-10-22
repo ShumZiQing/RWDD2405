@@ -2,7 +2,7 @@
 include 'dbConn.php';
 session_start();
 
-$pageTitle = "EcoConnect - Community Gardening";
+$pageTitle = "EcoConnect - Community Gardening Projects";
 include 'header.php';
 ?>
 
@@ -19,7 +19,7 @@ include 'header.php';
   <main class="community-gardening">
     <section class="banner">
       <img src="images/banner1.jpg" alt="Banner">
-      <h2>Community Gardening</h2>
+      <h2>Community Gardening Projects</h2>
     </section>
 
     <div class="tabs">
