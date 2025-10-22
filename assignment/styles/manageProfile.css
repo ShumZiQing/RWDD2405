@@ -1,8 +1,8 @@
 /* Banner section */
 .manageProfile .banner {
   position: relative;
+  margin-top: 50px;
   width: 100%;
-  margin-top: 50px; /* remove the gap */
 }
 
 .manageProfile .banner img {
@@ -25,7 +25,7 @@
 }
 
 /* Profile content */
-.manageProfile .container {
+.manage-profile .container {
   max-width: 900px;
   margin: 30px auto;
   background: #fff;
@@ -34,7 +34,7 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.manageProfile .success-msg {
+.manage-profile .success-msg {
   background-color: #d4edda;
   color: #155724;
   padding: 10px 15px;
@@ -44,29 +44,29 @@
   text-align: center;
 }
 
-.manageProfile h3 {
+.manage-profile h3 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.manageProfile table {
+.manage-profile table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.manageProfile th,
-.manageProfile td {
+.manage-profile th,
+.manage-profile td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.manageProfile th {
+.manage-profile th {
   background-color: #f0f0f0;
 }
 
-.manageProfile button,
-.manageProfile input[type="submit"] {
+.manage-profile button,
+.manage-profile input[type="submit"] {
   background-color: #007bff;
   border: none;
   color: white;
@@ -75,8 +75,8 @@
   border-radius: 4px;
 }
 
-.manageProfile button:hover,
-.manageProfile input[type="submit"]:hover {
+.manage-profile button:hover,
+.manage-profile input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
@@ -168,6 +168,26 @@
 
   .form-group label {
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .manageProfile .banner img {
+    height: 300px;
+  }
+
+  .manageProfile .banner h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .manageProfile .banner img {
+    height: 380px;
+  }
+
+  .manageProfile .banner h2 {
+    font-size: 2.4rem;
   }
 }
 

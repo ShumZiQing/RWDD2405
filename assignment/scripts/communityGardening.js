@@ -23,8 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
         likeSpan.textContent = current + 1;
       }
 
-      fetch("likeTip.php", {
+      fetch("likeGTip.php", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `tipID=${encodeURIComponent(tipID)}`
       })
