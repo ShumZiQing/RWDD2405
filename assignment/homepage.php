@@ -84,6 +84,15 @@ $pageTitle = "EcoConnect - Homepage";
                 if (mysqli_num_rows($resultTips) > 0) {
                     while ($tip = mysqli_fetch_assoc($resultTips)) {
                         echo '<div class="card">';
+
+                
+                        if (!empty($tip['gTipImage'])) {
+                            echo '<img src="gTipsImages/' . htmlspecialchars($tip['gTipImage']) . '" 
+                                alt="' . $tip['gTipName'] . '" 
+                                style="width:100%; border-radius:8px; height:140px; object-fit:cover; margin-bottom:10px;">';
+                        }
+                        
+                        echo '<h3>' . $tip['gTipName'] . '</h3>';
                         echo '<p>"' . substr($tip['gTipContent'], 0, 120) . '..."</p>';
                         echo '</div>';
                     }
@@ -120,20 +129,18 @@ $pageTitle = "EcoConnect - Homepage";
                 ?>
             </div>
         </section>
+
+        <?php
+        $sqlCompany = "SELECT * FROM tblcompany LIMIT 1";
+        $resultCompany = mysqli_query($conn, $sqlCompany);
+        $company = mysqli_fetch_assoc($resultCompany);
+        ?>
         
         <section class="goals">
-            <h2>Our Goals</h2>
-            <p>
-                EcoConnect aims to provide a shared platform for eco-focused groups, 
-                including NGOs, local communities, and conservation experts, to connect 
-                and collaborate. Through this space, we bring people together by hosting 
-                events, sharing sustainable living tips, and encouraging community-driven 
-                initiatives. Our mission is to raise awareness, reduce carbon footprints, 
-                and promote sustainable lifestyles within the community. By fostering eco-friendly 
-                behaviors, we strive to combat global warming and create a greener, more sustainable 
-                future for everyone.
-            </p>
+            <h2><a href="aboutUs.php" class="section-link">Our Goal →</a></h2>
+            <p><?php echo nl2br($company['goalDtl']); ?></p>
         </section>  
+
     </main>
 
     <!-- FOOTER -->

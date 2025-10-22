@@ -213,7 +213,7 @@
   color: #0B6623;
   font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease;   
 }
 
 .like-btn:hover {
@@ -295,7 +295,14 @@
   font-weight:700;
 }
 
-@media(min-width:700px){
+@media(min-width:768px){
   .card{ padding:16px; }
   .card img{ width:150px; height:130px; }
+  .community-gardening .banner img {height: 300px;}
+  .community-gardening .banner h2 {font-size: 2.2rem;}
+}
+
+@media (min-width: 1024px) {
+  .community-gardening .banner img {height: 380px;}
+  .community-gardening .banner h2 {font-size: 2.4rem;}
 }

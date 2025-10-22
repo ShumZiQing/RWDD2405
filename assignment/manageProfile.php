@@ -51,6 +51,7 @@ if(isset($_POST['btnSave'])){
             <img src="images/banner1.jpg" alt="Banner">
             <h2>Manage Profile</h2>
         </section>
+
     <div class="manage-profile">
         <div class="container">
             <?php if (isset($successMsg) && !empty($successMsg)) : ?>
@@ -139,6 +140,5 @@ if(isset($_POST['btnSave'])){
 
     <!-- SCRIPTS -->
     <script src="scripts/hamburger.js"></script>
-    <script src="scripts/energyTips.js"></script>
 </body>
 </html>
