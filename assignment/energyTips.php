@@ -1,5 +1,6 @@
 <?php 
 include 'dbConn.php';
+session_start();
 
 $pageTitle = "EcoConnect - Energy Conservation Tips";
 ?>
@@ -51,7 +52,7 @@ $pageTitle = "EcoConnect - Energy Conservation Tips";
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
             echo '
-            <div class="tip-card">
+            <div class="tip-card" data-id="' . $row['eTipID'] . '">
               <img src="images/' . $row['eTipImage'] . '" alt="' . $row['eTipName'] . '">
               <h3>' . $row['eTipName'] . '</h3>
               <ul>';
@@ -63,6 +64,18 @@ $pageTitle = "EcoConnect - Energy Conservation Tips";
               }
               
             echo '</ul>
+            
+            <div class="card-actions">
+              <button class="like-btn" data-id="' . $row['eTipID'] . '">
+                👍 <span>' . $row['eTipLikes'] . '</span>
+              </button>';
+
+              if (isset($_SESSION['userid']) && $_SESSION['userid'] == $row['userID']) {
+                echo '<button class="delete-btn" data-id="' . $row['eTipID'] . '">Delete</button>';
+              }
+
+            echo '</div>
+
             </div>';
           }
         } else {
@@ -80,7 +93,7 @@ $pageTitle = "EcoConnect - Energy Conservation Tips";
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
             echo '
-            <div class="tip-card">
+            <div class="tip-card" data-id="' . $row['eTipID'] . '">
               <img src="images/' . $row['eTipImage'] . '" alt="' . $row['eTipName'] . '">
               <h3>' . $row['eTipName'] . '</h3>
               <ul>';
@@ -91,6 +104,18 @@ $pageTitle = "EcoConnect - Energy Conservation Tips";
               }
               
             echo '</ul>
+            
+            <div class="card-actions">
+              <button class="like-btn" data-id="' . $row['eTipID'] . '">
+                👍 <span>' . $row['eTipLikes'] . '</span>
+              </button>';
+
+              if (isset($_SESSION['userid']) && $_SESSION['userid'] == $row['userID']) {
+                echo '<button class="delete-btn" data-id="' . $row['eTipID'] . '">Delete</button>';
+              }
+
+            echo '</div>
+
             </div>';
           }
         } else {
