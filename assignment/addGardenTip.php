@@ -60,12 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
   <main class="community-gardening">
     <!-- Replaces old banner + form with unified section -->
-    <section class="add-tip-form">
-      <div class="banner">
+    <section class="banner">
         <img src="images/banner1.jpg" alt="Add a Gardening Tip">
         <h2>Share Your Gardening Tip</h2>
-      </div>
+    </section>
 
+    <section class="add-tip-form">
       <form class="form-box" action="" method="POST" enctype="multipart/form-data">
         <input type="text" name="tipName" placeholder="Tip Title" required>
         <textarea name="tipContent" placeholder="Write your tip here..." rows="6" required></textarea>
