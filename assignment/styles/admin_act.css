@@ -162,7 +162,7 @@ h1{
 }
 
 .proj #desc{
-    margin-right: 61%;
+    margin-right: 20%;
 }
 
 .prog h2{
@@ -203,6 +203,10 @@ h1{
 
 #collab{
     margin-right: 15px;
+}
+
+.proj #collab{
+    margin-left: 57%;
 }
 
 #edit{
@@ -290,6 +294,9 @@ h1{
     .proj #desc{
         margin-right: 0;
     }
+    .proj #collab{
+        margin-left: 0;
+    }
 }
 
 /* tablet */
@@ -324,7 +331,13 @@ h1{
     margin-right: 0;
     flex: 1;
   }
+  .proj{
+    width: 55vh;
+  }
   .proj #desc{
     margin-right: 0;
+  }
+  .proj #collab{
+    margin-left: 15%;
   }
 }

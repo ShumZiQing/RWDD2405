@@ -11,12 +11,12 @@
        $endTime = $_POST['txtEndTime'];
        $desc = $_POST['txtProgDetails'];
        $recyclables = isset($_POST['selRecyclable']) ? implode(',', $_POST['selRecyclable']) : '';
-       $neighbourhoods = isset($_POST['selNeighbourhood']) ? implode(',', $_POST['selNeighbourhood']) : '';
+       $location = isset($_POST['selNeighbourhood']) ? implode(',', $_POST['selNeighbourhood']) : '';
        $freq = $_POST['selFrequency'];
        $collab = $_POST['selCollab'];
 
-       $sql = "INSERT INTO tblprogram(name, startDate, endDate, startTime, endTime, description, recyclablesType, neighbourhood, frequency, collabName)
-        VALUES ('$name', '$startDate', '$endDate', '$startTime', '$endTime', '$desc', '$recyclables', '$neighbourhoods', '$freq', '$collab')";
+       $sql = "INSERT INTO tblprogram(progName, startDate, endDate, startTime, endTime, progDetails, recyclablesType, location, frequency, collaborators)
+        VALUES ('$name', '$startDate', '$endDate', '$startTime', '$endTime', '$desc', '$recyclables', '$location', '$freq', '$collab')";
 
         if(mysqli_query($conn, $sql)){
             //redirect with html instead
@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-    <?php include "admin_header.php"?>
+    <div id="header"><?php include "admin_header.php"?></div>
 
     <div id="side">
         <?php include "admin_sideMenu.php"?>

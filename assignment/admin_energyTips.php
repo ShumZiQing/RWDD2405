@@ -5,10 +5,10 @@
     //get frm client side
     if(isset($_GET['btnSearch'])){
         $search = $_GET['txtSearch'];
-        $sql = "SELECT * FROM tblBusiness WHERE name LIKE '%$search%'";
+        $sql = "SELECT * FROM energytips WHERE eTipName LIKE '%$search%'";
 
     }else{
-        $sql = "SELECT * FROM tblBusiness";
+        $sql = "SELECT * FROM energytips";
     }
 ?>
 
@@ -17,10 +17,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Businesses | Admin</title>
+    <title>Energy Tips | Admin</title>
     <link rel="stylesheet" href="styles/admin_business.css">
     <link rel="stylesheet" href="styles/global.css">
     <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
+
+    <style>
+        @media(max-width: 600px){
+            #search{
+                margin-top: 10px;
+            }
+            
+            .indiBus{
+                height: auto;
+            }
+
+            .indiBus h2{
+                font-size: 15px;
+            }
+
+            .indiBus p{
+                font-size: 10px;
+            }
+
+            #busIcons{
+                margin-left: 0;
+                width: 35%;
+            }
+        }
+    </style>
 
 </head>
 <body>
@@ -32,10 +57,10 @@
     <div id="content">
         <div id="top">
             <a href="admin_home.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
-            <h1>All Businesses</h1>
+            <h1>All Energy Tips</h1>
             <div id="search">
                 <form action="" method = "get">
-                        <input type="text" name="txtSearch" placeholder="Search program" id="searchBar" autocomplete = "off">
+                        <input type="text" name="txtSearch" placeholder="Search tips" id="searchBar" autocomplete = "off">
                         <button type="submit" name="btnSearch" id="searchButton"><img src="images/magnifying-glass.png" alt="search" class="icon"></button>
                 </form>
             </div>
@@ -45,11 +70,12 @@
             $result = mysqli_query($conn, $sql);
 
             while($row = mysqli_fetch_assoc($result)){
-                $busID = $row['busID'];
-                $name = $row['name'];
-                $desc = $row['description'];
-                $userID = $row['user'];
-                $img = $row['image'];
+                $eTipID = $row['eTipID'];
+                $name = $row['eTipName'];
+                $content = $row['eTipContent'];
+                $type = $row['eTipType'];
+                $userID = $row['userID'];
+                $img = $row['eTipImage'];
 
                 $userSQL= "SELECT * FROM user WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);
@@ -62,17 +88,16 @@
                     <img src="<?php echo $img?>" alt="picture" id="picture">
 
                     <div id="text">
-                        <!--get picture-->
                         <h2><?php echo $name?></h2>
-                        <p><?php echo $desc?></p>
+                        <p><?php echo $content?></p>
                         <p>Added by: <?php echo $userName?></p>
                     </div>
                 
                     <div id="busIcons">
-                        <a href="admin_editBusiness.php?busID=<?php echo $row['busID'];?>">
+                        <a href="admin_editETips.php?eTipID=<?php echo $row['eTipID'];?>">
                                 <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                         </a>
-                        <a href="admin_deleteBusiness.php?busID=<?php echo $row['busID'];?>" onclick="return confirm('Are you sure you want to delete this business?');">
+                        <a href="admin_deleteETip.php?eTipID=<?php echo $row['eTipID'];?>" onclick="return confirm('Are you sure you want to delete this energy tip?');">
                                 <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
                         </a>
                     </div>

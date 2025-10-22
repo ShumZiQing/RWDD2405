@@ -50,14 +50,14 @@ a, a:hover{
   background-color: #1f72ad;
 }
 
-#nav-collab, #nav-act{
+#nav-collab, #nav-act, #nav-tips{
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#nav-collab ul, #nav-act ul{
+#nav-collab ul, #nav-act ul, #nav-tips ul{
   position: absolute;
   top: 100%;
   left: 0;
@@ -81,7 +81,7 @@ a, a:hover{
 #actArrow{
     margin-left: 24px;
 }
-#nav-collab ul li, #nav-act ul li{
+#nav-collab ul li, #nav-act ul li, #nav-tips ul li{
   background: #559ed2;
   padding: 10px 30px;
   text-align: center;
@@ -97,13 +97,13 @@ a, a:hover{
   transform: translateY(-50%);
 }
 
-#nav-collab:hover>ul, #nav-act:hover>ul{
+#nav-collab:hover>ul, #nav-act:hover>ul, #nav-tips:hover>ul{
   display: block;
   opacity: 1;
   visibility: visible;
 }
 
-#nav-collab ul li:hover, #nav-act ul li:hover{
+#nav-collab ul li:hover, #nav-act ul li:hover, #nav-tips ul li:hover{
   background-color: #88bbdf;
   cursor: pointer;
 }

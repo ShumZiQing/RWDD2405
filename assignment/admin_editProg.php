@@ -1,22 +1,24 @@
 <?php
     include 'dbConnect.php';
+
+    $progID = $_GET['progID'];
     $sql = "SELECT * FROM tblprogram WHERE progID = '".$_GET['progID']."'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
-    $name = $row['name'];
+    $name = $row['progName'];
     $startDate = $row['startDate'];
     $endDate = $row['endDate'];
     $startTime = $row['startTime'];
     $endTime = $row['endTime'];
-    $desc = $row['description'];
+    $desc = $row['progDetails'];
     $recyclables = $row['recyclablesType'];
-    $neighbourhood = $row['neighbourhood'];
+    $location = $row['location'];
     $freq = $row['frequency'];
-    $collabName = $row['collabName'];
+    $collabName = $row['collaborators'];
 
     $recyclablesArr = explode(',', $recyclables);
-    $neighbourhoodArr = explode(',', $neighbourhood);
+    $locationArr = explode(',', $location);
 
     if(isset($_POST['btnSave'])){
         $name = $_POST['txtName'];
@@ -26,13 +28,13 @@
         $endTime = $_POST['txtEndTime'];
         $desc = $_POST['txtProgDetails'];
         $recyclables = isset($_POST['selRecyclable']) ? implode(',', $_POST['selRecyclable']) : '';
-        $neighbourhood = isset($_POST['selNeighbourhood']) ? implode(',', $_POST['selNeighbourhood']) : '';
+        $location = isset($_POST['selNeighbourhood']) ? implode(',', $_POST['selNeighbourhood']) : '';
         $freq = $_POST['selFrequency'];
         $collabName = $_POST['selCollab'];
 
         $sql="UPDATE tblprogram 
-        SET name = '$name', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', description = '$desc', 
-        recyclablesType = '$recyclables', neighbourhood = '$neighbourhood', frequency = '$freq', collabName = '$collabName'
+        SET progName = '$name', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', progDetails = '$desc', 
+        recyclablesType = '$recyclables', location = '$location', frequency = '$freq', collaborators = '$collabName'
         WHERE progID = '".$_GET['progID']."'";
 
         if(mysqli_query($conn, $sql)){
@@ -57,6 +59,12 @@
     <link rel="stylesheet" href="styles/admin_prog.css">
     <link rel="stylesheet" href="styles/global.css">
     <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
+
+    <style>
+        #bottomFeature{
+            width: 650px;
+        }
+    </style>
     
 </head>
 <body>
@@ -109,11 +117,11 @@
         <div class="forms">
             <div id="circle"><i class="fa-solid fa-location-dot fa-lg locationIcon"></i></div>
                 <select name="selNeighbourhood[]" id="indiSel" multiple required>
-                    <option value="ESP" <?php if(in_array('ESP', $neighbourhoodArr)) echo 'selected';?>>Taman Esplanad</option>
-                    <option value="LTAT" <?php if(in_array('LTAT', $neighbourhoodArr)) echo 'selected';?>>Taman LTAT</option>
-                    <option value="PUJ" <?php if(in_array('PUJ', $neighbourhoodArr)) echo 'selected';?>>Taman Puncak Jalil</option>
-                    <option value="YAR" <?php if(in_array('YAR', $neighbourhoodArr)) echo 'selected';?>>Taman Yarl</option>
-                    <option value="EQP" <?php if(in_array('EQP', $neighbourhoodArr)) echo 'selected';?>>Taman Equine Park</option>
+                    <option value="ESP" <?php if(in_array('ESP', $locationArr)) echo 'selected';?>>Taman Esplanad</option>
+                    <option value="LTAT" <?php if(in_array('LTAT', $locationArr)) echo 'selected';?>>Taman LTAT</option>
+                    <option value="PUJ" <?php if(in_array('PUJ', $locationArr)) echo 'selected';?>>Taman Puncak Jalil</option>
+                    <option value="YAR" <?php if(in_array('YAR', $locationArr)) echo 'selected';?>>Taman Yarl</option>
+                    <option value="EQP" <?php if(in_array('EQP', $locationArr)) echo 'selected';?>>Taman Equine Park</option>
                 </select>
         </div>
 
@@ -141,9 +149,17 @@
                     ?>
                 </select>
         </div>
+        
+        <div id="bottomFeature">
+        <a href="admin_deleteProg.php?progID=<?php echo $progID;?>" onclick="return confirm('Are you sure you want to delete this program?');">
+            <div id="delete">
+                <p>Delete</p>
+            </div>
+        </a>
 
         <input type="submit" name = "btnSave" value="Save" id="save">
         </form>
+        </div>
     </div>
     </div>
 </body>

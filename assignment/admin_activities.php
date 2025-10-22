@@ -4,10 +4,12 @@
 
     if(isset($_GET['btnSearch'])){
         $search = $_GET['txtSearch'];
-        $sql = "SELECT * FROM tblprogram WHERE name LIKE '%$search%'";
+        $progSql = "SELECT * FROM tblprogram WHERE progName LIKE '%$search%'";
+        $projSql = "SELECT * FROM tblproject WHERE prjName LIKE '%$search%'";
 
     }else{
-        $sql = "SELECT * FROM tblprogram";
+        $progSql = "SELECT * FROM tblprogram";
+        $projSql = "SELECT * FROM tblproject";
     }
 ?>
 
@@ -52,29 +54,63 @@
             </div>
 
             <?php
-                //add proj table too
-                $result = mysqli_query($conn, $sql);
+                $progResult = mysqli_query($conn, $progSql);
 
-                while($row = mysqli_fetch_assoc($result)){
-                    $progID = $row['progID'];
-                    $name = $row['name'];
-                    $desc = $row['description'];
+                while($progRow = mysqli_fetch_assoc($progResult)){
+                    $progID = $progRow['progID'];
+                    $progName = $progRow['progName'];
+                    $progDesc = $progRow['progDetails'];
                     ?>
 
                     <div class="prog">
                     <div id="desc">
-                        <h2><?php echo $name?></h2>
-                        <p><?php echo $desc?></p>
+                        <h2><?php echo $progName?></h2>
+                        <p><?php echo $progDesc?></p>
                     </div>
                     
                     <div class="actIcon">
                         <div id="collab">
-                            <!-- direct to collab details--> 
-                            <a href="admin_collabDetail.php?collabName=<?php echo $row['collabName'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
+                            <a href="admin_collabDetail.php?collabName=<?php echo $progRow['collaborators'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
                             <p>Collaborator</p>
                         </div>
                         
-                        <a href="admin_editProg.php?progID=<?php echo $row['progID'];?>">
+                        <a href="admin_editProg.php?progID=<?php echo $progRow['progID'];?>">
+                            <div id="edit">
+                                <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                                <p>Edit</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            <?php
+                }
+
+            ?>
+
+            <?php
+                $projResult = mysqli_query($conn, $projSql);
+
+                while($projRow = mysqli_fetch_assoc($projResult)){
+                    $projID = $projRow['prjID'];
+                    $projName = $projRow['prjName'];
+                    $projDesc = $projRow['prjDetails'];
+                    ?>
+
+                    <div class="proj">
+                    <div id="desc">
+                        <h2><?php echo $projName?></h2>
+                        <p><?php echo $projDesc?></p>
+                    </div>
+                    
+                    <div class="actIcon">
+                        <div id="collab">
+                            <a href="admin_collabDetail.php?collabName=<?php echo $projRow['collaborator'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
+                            <p>Collaborator</p>
+                        </div>
+                        
+                        <a href="#">
+                            <!-- link php-->
                             <div id="edit">
                                 <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                                 <p>Edit</p>

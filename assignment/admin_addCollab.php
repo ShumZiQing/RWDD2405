@@ -10,11 +10,28 @@
         $orgType = $_POST['selCollab'];
         $progInvolved = isset($_POST['selProgram']) ? implode(',', $_POST['selProgram']) : '';
 
-        $sql = "INSERT INTO tblcollaborator(name, email, phoneNum, orgType, progInvolved) VALUES('$name', '$email', '$phoneNo', '$orgType', '$progInvolved')";
+        #handle img upload
+        $target_dir = "images/collaborator/";
+        $defaultImg = "images/upload-user.png";
+        $imgName = $defaultImg;
+
+        if(!empty($_FILES["fileToUpload"]["name"])){
+            $fileName = basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $target_dir . $fileName;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $imgName = $target_file; 
+                }
+            }
+        }
+
+        $sql = "INSERT INTO tblcollaborator(name, email, phoneNum, orgType, progInvolved, image) VALUES('$name', '$email', '$phoneNo', '$orgType', '$progInvolved', '$imgName')";
 
         if(mysqli_query($conn, $sql)){
             //redirect with html instead
-
            echo'<script>
                 alert("New Collaborator added!");
                 window.location.href="admin_addCollab.php";
@@ -60,8 +77,10 @@
         <h1>Add Collaborator</h1>
 
         <div id="uploadProfile">
-            <img src="images/upload-user.png" alt="upload-user" id="user">
-            <i class="fa-solid fa-arrow-up-from-bracket upload"></i>
+            <form action="" method="post" enctype="multipart/form-data">
+                <img src="images/upload-user.png" alt="upload-user" id="user">
+                <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
         </div>
 
         <form action="#" method="post">
@@ -111,5 +130,25 @@
 
         </form>
     </div>
+
+    <script>
+        //upload img
+        document.getElementById('uploadIcon').addEventListener('click', () => {
+            document.getElementById('fileToUpload').click();
+        });
+
+
+        //preview img
+        document.getElementById('fileToUpload').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('user').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

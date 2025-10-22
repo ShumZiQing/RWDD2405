@@ -11,8 +11,26 @@
         $orgType = $_POST['selCollab'];
         $progInvolved = implode(',', $_POST['selProgram']);
         
+        //handle img upload
+        $target_dir = "images/collaborator/";
+        $defaultImg = "images/upload-user.png";
+        $imgName = $defaultImg;
+
+        if(!empty($_FILES["fileToUpload"]["name"])){
+            $fileName = basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $target_dir . $fileName;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $imgName = $target_file; 
+                }
+            }
+        }
+
         $sql = "UPDATE tblcollaborator
-        SET name = '$name', email = '$email', phoneNum = '$phoneNo', orgType = '$orgType', progInvolved = '$progInvolved'
+        SET name = '$name', email = '$email', phoneNum = '$phoneNo', orgType = '$orgType', progInvolved = '$progInvolved', image = '$imgName'
         WHERE collabID = $collabID";
 
         if(mysqli_query($conn, $sql)){
@@ -58,16 +76,18 @@
             $phoneNo = $row['phoneNum'];
             $orgType = $row['orgType'];
             $progInvolved = $row['progInvolved'];
+            $img = $row['image'];
         ?>
 
         <div id="uploadProfile">
-            <img src="images/upload-user.png" alt="upload-user" id="user">
-            <i class="fa-solid fa-arrow-up-from-bracket upload"></i>
+            <form action="" method="post" enctype="multipart/form-data">
+                <img src= <?php echo $img ?> alt="upload-user" id="user">
+                <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
         </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>
-             <form action="#" method="post">
                 <input type="text" name="txtName" value="<?php echo $name?>" id="indiForm" required>
         </div>
 
@@ -101,7 +121,7 @@
                     $currentProgs = explode(',', $progInvolved);
 
                     while($progRow = mysqli_fetch_assoc($progResult)){
-                        $progName = $progRow['name'];
+                        $progName = $progRow['progName'];
                         $selected = in_array($progName, $currentProgs) ? "selected" : "";
                         echo "<option value = '$progName' $selected>$progName</option>";
                     }
@@ -112,5 +132,25 @@
         <input type="submit" value="Save" name="btnSave" id="save">
         </form>
     </div>
+
+    <script>
+        //upload img
+        document.getElementById('uploadIcon').addEventListener('click', () => {
+            document.getElementById('fileToUpload').click();
+        });
+
+
+        //preview img
+        document.getElementById('fileToUpload').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('user').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

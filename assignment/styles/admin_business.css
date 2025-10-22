@@ -87,6 +87,8 @@
     width: 60px;
     height: 60px;
     margin: auto 30px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 #text{
@@ -140,6 +142,9 @@
 
 /* phone */
 @media(max-width: 600px){
+    .indiBus{
+        height: auto;
+    }
     .returnArrow{
         left: 7%;
         top: 18%;
@@ -173,7 +178,8 @@
     }
 
     #busIcons{
-        width: 30%;
+        margin-left: 10px;
+        width: 40%;
     }
 
     .editIcon, .deleteIcon{
@@ -198,6 +204,7 @@
     .indiBus{
         width: 70%;
         margin: 40px auto;
+        height: auto;
     }
 
     #busIcons{

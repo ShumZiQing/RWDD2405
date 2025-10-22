@@ -57,10 +57,11 @@
             while($row = mysqli_fetch_assoc($result)){
                 $collabID = $row['collabID'];
                 $name = $row['name'];
-                ?>
+                $img = $row['image'];
+            ?>
 
             <div class="indiBus" onclick='window.location="admin_collabDetail.php?collabID=<?php echo $collabID;?>"'>
-                    <img src="images/upload-user.png" alt="user" id="picture">
+                    <img src="<?php echo $img?>" alt="user" id="picture">
 
                     <div id="text">
                         <h2>Collab #<?php echo $collabID?></h2>

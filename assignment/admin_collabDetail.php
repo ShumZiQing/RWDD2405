@@ -52,10 +52,12 @@
             $phoneNo = $row['phoneNum'];
             $orgType = $row['orgType'];
             $progInvolved = $row['progInvolved'];
+            $image = $row['image'];
         ?>
 
         <div id="mainInfo">
-            <img src="images/upload-user.png" alt="">
+            <img src="<?php echo $image?>" alt="" id="collabImg">
+
             <div id="desc">
                 <h1>Collaborator <?php echo $collabID?></h1>
                 <h2><?php echo $name?></h2>

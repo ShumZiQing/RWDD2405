@@ -36,6 +36,13 @@
 
                     <a href="#"><li>Edit About Us</li></a>
                     <a href="admin_business.php"><li>All Businesses</li></a>
+
+                    <li>All Tips
+                        <ul>
+                            <a href="admin_energyTips.php"><li>Energy Tips</li></a>
+                            <a href="admin_gardenTips.php"><li>Gardening Tips</li></a>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </button>

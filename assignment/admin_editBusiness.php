@@ -4,6 +4,9 @@
 
     $busID = $_GET['busID'];
 
+    $target_dir = "images/business/";
+    $defaultImg = "images/image(6).png";
+
     //get frm client side
     if(isset($_POST['btnSave'])){
         $name = $_POST['txtBusName'];
@@ -12,8 +15,24 @@
         $location = $_POST['txtBusLoc'];
         $phoneNum = $_POST['txtBusPhone'];
         
+        //handle img upload
+        $imgName = $defaultImg;
+
+        if(!empty($_FILES["fileToUpload"]["name"])){
+            $fileName = basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $target_dir . $fileName;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $imgName = $target_file; 
+                }
+            }
+        }
+
         $sql = "UPDATE tblbusiness
-        SET name = '$name', busType = '$busType', description = '$desc', location = '$location', phoneNum = '$phoneNum'
+        SET name = '$name', busType = '$busType', description = '$desc', location = '$location', phoneNum = '$phoneNum', image = '$imgName'
         WHERE busID = $busID";
 
         if(mysqli_query($conn, $sql)){
@@ -60,21 +79,28 @@
             $desc = $row['description'];
             $location = $row['location'];
             $phoneNum = $row['phoneNum'];
+            $img = $row['image'];
         ?>
 
         <div id="uploadPic">
+            <form action="" method="post" enctype="multipart/form-data">
+                <img src= <?php echo $img ?> alt="upload-image" id="user">
+                <i class="fa-solid fa-arrow-up-from-bracket upld" id="uploadIcon"></i>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+        </div>
+
+        <!-- <div id="uploadPic">
             <i class="fa-solid fa-angle-left fa-xl LArrow"></i>
             <img src="images/image (6).png" alt="image" id="pic">
             <i class="fa-solid fa-angle-right fa-xl RArrow"></i>
             <i class="fa-solid fa-trash fa-lg dlt"></i>
             <i class="fa-solid fa-arrow-up-from-bracket fa-lg upld"></i>
 
-            <!-- add pic number when link to db -->
-        </div>
+            add pic number when link to db 
+        </div> -->
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>
-            <form action="#" method="post">
                 <input type="text" name="txtBusName" id="indiForm" value="<?php echo $name?>" required>
         </div>
 
@@ -101,5 +127,25 @@
         <input type="submit" value="Save" id="save" name = 'btnSave'>
         </form>
     </div>
+
+    <script>
+        //upload img
+        document.getElementById('uploadIcon').addEventListener('click', () => {
+            document.getElementById('fileToUpload').click();
+        });
+
+
+        //preview img
+        document.getElementById('fileToUpload').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('user').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

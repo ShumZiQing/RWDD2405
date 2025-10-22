@@ -10,6 +10,10 @@
     margin-left: 20px;
 }
 
+#fileToUpload{
+    display: none;
+}
+
 .returnArrow{
     position: absolute;
     left: 35%;
@@ -45,10 +49,11 @@
     color: #0E4369;
 }
 
-#pic{
+#user{
     position: absolute;
-    margin: 30px 12%;
+    margin: 30px 14%;
     width: 80px;
+    object-fit: contain;
 }
 
 .RArrow{
@@ -63,21 +68,11 @@
     cursor: pointer;
 }
 
-.dlt,.upld{
+.upld{
     position: absolute;
     margin: 5px;
-    top: 24.5%;
+    top: 23.5%;
     left: 64%;
-}
-
-.dlt{
-    left: 62%;
-    color: red;
-}
-
-.dlt:hover{
-    color: rgb(181, 0, 0);
-    cursor: pointer;
 }
 
 .upld{
@@ -96,7 +91,7 @@
     margin: 10px;
 }
 
-.name, .descIcon, .phone, .selection, .locationIcon{
+.name, .descIcon, .phone, .selection, .locationIcon, .dateIcon, .selection{
     position: relative;
     text-align: center;
     margin-left: 18%;
@@ -180,11 +175,6 @@
         left: 68%;
         top:27%
     }
-    
-    .dlt{
-        left: 61%;
-        top:27%
-    }
 
     .form{
         width: 40vh;
@@ -245,15 +235,10 @@
         top: 18%;
         left: 74%;
     }
-
-    .dlt{
-        top: 18%;
-        left: 70.5%;
-    }
     
     .form{
         margin-left: 13%;
-        width: 70vh;
+        width: 60vh;
     }
 
     #circle{
