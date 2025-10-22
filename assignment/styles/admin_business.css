@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#side {
+    width: 11%;
+    position: fixed;
+    margin-left: 20px;
+}
+
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+#top{
+    display: inline;
+}
+
+#top h1{
+    margin-top: 100px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+#search{
+    background-color: #187DC6;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    margin-left: 60%;
+    padding: 10px;
+    height: auto;
+    width: 25vh;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#searchBar{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 80%;
+}
+
+#searchBar:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+::placeholder{
+    color: white;
+}
+
+#searchButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.indiBus{
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    width: 60%;
+    height: 120px;
+    margin: 30px auto;
+    display: flex;
+}
+
+#picture{
+    width: 60px;
+    height: 60px;
+    margin: auto 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#text{
+    width: 50%;
+    margin: auto 10px;
+}
+
+#text h2{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #075085;
+}
+
+#summary, #user{
+    color: #8F8F8F;
+    margin: 3px;
+}
+
+#summary{
+    margin-top: 5px;
+}
+
+#user{
+    font-size: small;
+}
+
+#busIcons{
+    position: relative;
+    margin: auto;
+    margin-left: 20%;
+}
+
+.editIcon{
+    color: #075085;
+    padding: 40px;
+}
+
+.editIcon:hover{
+    cursor: pointer;
+    color: #0e78c4;
+}
+
+.deleteIcon{
+    color: red;
+}
+
+.deleteIcon:hover{
+    color: rgb(171, 5, 5);
+    cursor: pointer;
+}
+
+/* phone */
+@media(max-width: 600px){
+    .indiBus{
+        height: auto;
+    }
+    .returnArrow{
+        left: 7%;
+        top: 18%;
+    }
+
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
+    #search{
+        margin-left: 50%;
+        width: 43%;
+        font-size: 14px;
+    }
+    .indiBus{
+        width: 80%;
+    }
+
+    #picture{
+        width: 45px;
+        height: 45px;
+    }
+
+    #text{
+        font-size: 75%;
+        margin: auto 5px;
+    }
+
+    #user{
+        font-size: 95%;
+    }
+
+    #busIcons{
+        margin-left: 10px;
+        width: 40%;
+    }
+
+    .editIcon, .deleteIcon{
+        padding: 10px;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    .returnArrow{
+        left: 20%;
+        top: 12%;
+    }
+    
+    #search{
+        width: 20%;
+        height: 41px;
+        margin-left: 60%;
+        margin-top: 20px;
+    }
+
+    .indiBus{
+        width: 70%;
+        margin: 40px auto;
+        height: auto;
+    }
+
+    #busIcons{
+        width: 30%;
+        margin-left: 10%;
+    }
+
+    #text{
+        font-size: 100%;
+    }
+}

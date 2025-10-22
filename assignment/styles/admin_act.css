@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    padding-top: 70px;
+    font-family: "Inter", sans-serif;
+}
+
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
+#content{
+    display: flex;
+    align-items: flex-start;
+}
+
+#side {
+    width: 11%;
+    height: auto;
+    position: fixed;
+    margin-left: 20px;
+}
+
+#main{
+    flex: 1;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+#features{
+    display: flex;
+}
+
+#search{
+    background-color: #187DC6;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    margin-left: 75%;
+    padding: 10px;
+    height: auto;
+    width: 160px;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#searchBar{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 80%;
+}
+
+#searchBar:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+::placeholder{
+    color: white;
+}
+
+#searchButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#add{
+    background-color: #187DC6;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    margin-left: 10px;
+    height: auto;
+    width: 100px;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#add p{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#add ul li +li{
+    border-top: 2px solid white;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#add ul{
+    list-style: none;
+    position: absolute;
+    top: 21%;
+    left: 87%;
+    width: 100px;
+    background-color: #41A3E9;
+    border-radius: 10px;
+
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#add ul li{
+    text-align: center;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+#add:hover>ul{
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#add ul li:hover{
+    background-color: #69b8f0;
+    cursor: pointer;
+}
+
+.prog, .proj{
+    width: 60%;
+    height: auto;
+    margin-left: 23%;
+    margin-top: 35px;
+    display: flex;
+    padding: 10px;
+}
+
+#desc{
+    margin-right: 60%;
+}
+
+.proj #desc{
+    margin-right: 20%;
+}
+
+.prog h2{
+    width: 40vh;
+    font-family: "Inter", sans-serif;
+    color: #054675;
+}
+
+.proj h2{
+    font-family: "Inter",sans-serif;
+    color: #1169A9;
+}
+
+.actIcon{
+    display: flex;
+}
+
+.actIcon img{
+    width: 25px;
+    height: 25px;
+}
+
+.actIcon p{
+    color: #0066AF;
+    font-family: "Inter", sans-serif;
+    font-size: small;
+    font-weight: 300;
+}
+
+.collabIcon{
+    color: #054675;
+    display: block;
+    margin: 10px;
+    margin-left: 20px;
+    width: 40px;
+    height: 5px;
+}
+
+#collab{
+    margin-right: 15px;
+}
+
+.proj #collab{
+    margin-left: 57%;
+}
+
+#edit{
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.editIcon{
+    color: #054675;
+    display: block;
+    margin: 10px;
+    margin-left: -5px;
+    width: 40px;
+    height: 5px;
+}
+
+.collabIcon:hover, .editIcon:hover{
+    color: #088ded;
+    cursor: pointer;
+}
+
+/* phone */
+@media(max-width: 600px){
+    .returnArrow{
+        left: 7%;
+        top: 16%;
+    }
+
+    #features{
+        height: 30px;
+        justify-content: flex-end;
+        padding-right: 20px;
+    }
+    .icon{
+        width: 15px;
+        height: 15px;
+    }
+    #search{
+        flex: 0 0 35%;
+        padding: 5px;
+    }
+    #add p{
+        margin-bottom: 10px;
+    }
+    #add ul{
+        left: 75%;
+        width: 20%;
+        height: auto;
+    }
+    #add ul li{
+        font-size: small;
+        display: flex;
+    }
+    #add{
+        padding-top: 8px;
+    }
+    #search p{
+        font-size: x-small;
+        padding: 5px;
+    }
+    #search img{
+        margin-top: 3px;
+    }
+    .prog, .proj{
+        margin-left: 10%;
+        width: 80%;
+        padding: 0;
+    }
+    .prog h2, .proj h2{
+        font-size: large;
+        width: 20vh;
+    }
+    .prog p, .proj p{
+        font-size: small;
+    }
+    #desc{
+        margin-right: 0;
+        width: auto;
+        flex: 1;
+    }
+    .actIcon img{
+        width: 20px;
+        height: 20px;
+    }
+    .proj #desc{
+        margin-right: 0;
+    }
+    .proj #collab{
+        margin-left: 0;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    .returnArrow{
+        left: 20%;
+        top: 12%;
+    }
+
+  #features{
+    justify-content: flex-end;
+    height: 40px;
+    padding-right: 10px;
+  }
+  #search{
+    flex: 0 0 24%;
+  }
+  #search p{
+    margin-right: 13px;
+  }
+  #add ul{
+    top: 130px;
+    left: 86%;
+  }
+  .prog, .proj{
+    margin-left: 12.5%;
+    width: 80%;
+    padding: 20px;
+  }
+  #desc{
+    width: auto;
+    margin-right: 0;
+    flex: 1;
+  }
+  .proj{
+    width: 55vh;
+  }
+  .proj #desc{
+    margin-right: 0;
+  }
+  .proj #collab{
+    margin-left: 15%;
+  }
+}
