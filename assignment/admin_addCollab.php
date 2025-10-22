@@ -117,7 +117,7 @@
                     $result = mysqli_query($conn, $sql);
 
                     while($row = mysqli_fetch_assoc($result)){
-                        $name = $row['name'];?>
+                        $name = $row['progName'];?>
 
                         <option value="<?php echo $name?>"><?php echo $name?></option>
                     <?php

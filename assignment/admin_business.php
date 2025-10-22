@@ -1,14 +1,14 @@
 <?php
-    include 'dbConnect.php';
+    include 'dbConn.php';
     session_start();
 
     //get frm client side
     if(isset($_GET['btnSearch'])){
         $search = $_GET['txtSearch'];
-        $sql = "SELECT * FROM tblBusiness WHERE name LIKE '%$search%'";
+        $sql = "SELECT * FROM tblbusiness WHERE name LIKE '%$search%'";
 
     }else{
-        $sql = "SELECT * FROM tblBusiness";
+        $sql = "SELECT * FROM tblbusiness";
     }
 ?>
 
@@ -51,7 +51,7 @@
                 $userID = $row['user'];
                 $img = $row['image'];
 
-                $userSQL= "SELECT * FROM user WHERE userID = '$userID'";
+                $userSQL= "SELECT * FROM tbluser WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);
                 while($userRow = mysqli_fetch_assoc($userResult)){
                     $userName = $userRow['name'];

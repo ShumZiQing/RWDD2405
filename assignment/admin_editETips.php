@@ -28,7 +28,7 @@
             }
         }
         
-        $sql = "UPDATE energytips
+        $sql = "UPDATE tblenergytips
         SET eTipName = '$name', eTipContent = '$content', eTipType = '$type', eTipImage = '$imgName'
         WHERE eTipID = $eTipID";
 
@@ -71,7 +71,7 @@
         <h1>Edit Energy Tips</h1>
 
         <?php
-            $sql = "SELECT * FROM energytips WHERE eTipID = '".$_GET['eTipID']."'";
+            $sql = "SELECT * FROM tblenergytips WHERE eTipID = '".$_GET['eTipID']."'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 

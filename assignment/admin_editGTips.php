@@ -28,7 +28,7 @@
             }
         }
         
-        $sql = "UPDATE gardentips
+        $sql = "UPDATE tblgardentips
         SET gTipName = '$name', gTipDate = '$datePublished', gTipContent = '$content', gTipImage = '$imgName'
         WHERE gTipID = $gTipID";
 
@@ -67,7 +67,7 @@
         <h1>Edit Gardening Tips</h1>
 
         <?php
-            $sql = "SELECT * FROM gardentips WHERE gTipID = '".$_GET['gTipID']."'";
+            $sql = "SELECT * FROM tblgardentips WHERE gTipID = '".$_GET['gTipID']."'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 

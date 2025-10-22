@@ -5,10 +5,10 @@
     //get frm client side
     if(isset($_GET['btnSearch'])){
         $search = $_GET['txtSearch'];
-        $sql = "SELECT * FROM gardentips WHERE gTipName LIKE '%$search%'";
+        $sql = "SELECT * FROM tblgardentips WHERE gTipName LIKE '%$search%'";
 
     }else{
-        $sql = "SELECT * FROM gardentips";
+        $sql = "SELECT * FROM tblgardentips";
     }
 ?>
 
@@ -70,7 +70,7 @@
                 $userID = $row['userID'];
                 $img = $row['gTipImage'];
 
-                $userSQL= "SELECT * FROM user WHERE userID = '$userID'";
+                $userSQL= "SELECT * FROM tbluser WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);
                 while($userRow = mysqli_fetch_assoc($userResult)){
                     $userName = $userRow['name'];
