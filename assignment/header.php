@@ -57,7 +57,7 @@ if (!isset($pageTitle)) {
         <li><a href="aboutUs.php">About Us</a></li>
         <li><a href="recycling.php">Recycling Programs</a></li>
         <li><a href="energyTips.php">Energy Conservation Tips</a></li>
-        <li><a href="communityGardening.php">Community Gardening</a></li>
+        <li><a href="gardenProject.php">Community Gardening</a></li>
         <li><a href="productSwap.php">Eco-friendly Product Swap</a></li>
         <li><a href="businessGuide.php">Local Business Guide</a></li>
     </ul>

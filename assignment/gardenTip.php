@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $sql);
         </section>
 
         <div class="tabs">
-        <button class="tab-btn" onclick="window.location.href='communityGardening.php'">Community Gardening</button>
+        <button class="tab-btn" onclick="window.location.href='gardenProject.php'">Community Gardening</button>
         <button class="tab-btn active">Community Gardening Tips</button>
 
        <?php if (isset($_SESSION['userid'])): ?>

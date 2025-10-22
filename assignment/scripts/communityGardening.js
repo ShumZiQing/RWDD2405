@@ -2,36 +2,70 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".cards-container");
   if (!container) return;
 
-  // Like handler
   container.addEventListener("click", (e) => {
+    // --- LIKE handler (uses closest so clicks on span/emoji still count)
     const likeBtn = e.target.closest(".like-btn");
     if (likeBtn) {
       const tipID = likeBtn.getAttribute("data-id");
       const likeSpan = likeBtn.querySelector("span");
-      let count = parseInt(likeSpan.textContent);
+      if (!tipID || !likeSpan) return;
 
-      likeSpan.textContent = count + 1;
+      let current = parseInt(likeSpan.textContent) || 0;
+      const isLiked = likeBtn.classList.contains("liked");
+
+      // optimistic UI
       likeBtn.disabled = true;
+      if (isLiked) {
+        likeBtn.classList.remove("liked");
+        likeSpan.textContent = Math.max(current - 1, 0);
+      } else {
+        likeBtn.classList.add("liked");
+        likeSpan.textContent = current + 1;
+      }
 
       fetch("likeTip.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `tipID=${tipID}`,
+        body: `tipID=${encodeURIComponent(tipID)}`
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) likeSpan.textContent = data.likes;
-          else {
-            alert(data.message);
-            likeSpan.textContent = count;
+      .then(res => res.json())
+      .then(data => {
+        console.log('likeTip response', data);
+        if (data && data.success) {
+          likeSpan.textContent = data.likes;
+          if (data.liked) likeBtn.classList.add("liked");
+          else likeBtn.classList.remove("liked");
+        } else {
+          // revert optimistic change on error
+          alert(data && data.message ? data.message : 'Could not update like');
+          if (isLiked) {
+            // originally liked, revert to liked
+            likeBtn.classList.add("liked");
+            likeSpan.textContent = current;
+          } else {
+            likeBtn.classList.remove("liked");
+            likeSpan.textContent = current;
           }
-        })
-        .catch((err) => {
-          console.error("Error:", err);
-          likeSpan.textContent = count;
-        })
-        .finally(() => (likeBtn.disabled = false));
+        }
+      })
+      .catch(err => {
+        console.error('Network or parse error:', err);
+        // revert optimistic update
+        if (isLiked) {
+          likeBtn.classList.add("liked");
+          likeSpan.textContent = current;
+        } else {
+          likeBtn.classList.remove("liked");
+          likeSpan.textContent = current;
+        }
+      })
+      .finally(() => {
+        likeBtn.disabled = false;
+      });
+
+      return; // stop — prevent delete handler below from running for same click
     }
+
 
     // Delete handler
     const deleteBtn = e.target.closest(".delete-btn");
