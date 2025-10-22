@@ -1,5 +1,5 @@
 <?php
-    include 'dbConnect.php';
+    include 'dbConn.php';
     session_start();
 
     if(isset($_GET['btnSearch'])){

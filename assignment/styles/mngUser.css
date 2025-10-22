@@ -1,0 +1,160 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FBF6EF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#title{
+    font-size: 30px;
+    width: fit-content;
+    margin: 0 auto;
+    padding-top: 100px;
+
+}
+
+#side{
+    width: 11%;
+    height: auto;
+    position: fixed;
+    margin-left: 20px;
+    margin-top: 130px;
+}
+
+#search{
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    background-color: #187DC6;
+    width: fit-content;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+input[type="text"]{
+    margin-right: 30px;
+    font-size: 15px;
+    background-color: #187DC6;
+    border: none;
+    width: 100px;
+}
+
+::placeholder{
+    color: white;
+}
+
+#search i{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    width: 800px;
+    height: 130px;
+    margin: 40px auto;
+    background-color: #D9D9D9;
+    border: none;
+    min-width: 300px;
+
+}
+
+.text{
+    margin-left: 30px;
+    width: fit-content;
+    font-size: 20px;
+
+}
+
+#userid{
+    color: #075085;
+}
+
+#username{
+    color: #8F8F8F;
+}
+
+#user .profile{
+    font-size: 80px;
+    margin-left: 50px;
+    color: black;
+}
+
+
+#icon{
+    display: flex;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.view{
+    color: #075085;
+    font-size: 25px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+.view:hover{
+    color:  #288fd8;;
+}
+
+.delete{
+    color: #ef2525;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.delete:hover{
+    color: #dd1600;
+}
+
+/* phone */
+@media(max-width: 600px){
+    .container{
+        width: 300px;
+        height: 100px;
+        margin: 20px auto;
+    }
+
+    #user .profile{
+        font-size: 50px;
+        margin-left: 20px;
+    }
+
+    .text{
+        margin-left: 10px;
+        font-size: 15px;
+    }
+
+    #icon{
+        margin-right: 20px;
+    }
+    .delete, .view{
+        font-size: 20px;
+    }
+
+    .view{
+        margin-right: 10px;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    .container{
+        width: 650px;
+    }
+
+    #user .profile{
+        font-size: 70px;
+    }
+
+    .text{
+        font-size: 18px;
+    }
+}
