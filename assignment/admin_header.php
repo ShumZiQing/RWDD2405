@@ -14,7 +14,7 @@
             <div id="dropdown">
             ☰
                 <ul>
-                    <a href="#"><li>Manage Users</li></a>
+                    <a href="admin_mngUser.php"><li>Manage Users</li></a>
                     <li>Collaborators
                         <ul>
                             <a href="admin_addCollab.php"><li>Add Collaborators</li></a>
@@ -26,7 +26,7 @@
                         <ul>
                             <li>Add Activities
                                 <ul>
-                                    <a href="#"><li>Add Project</li></a>
+                                    <a href="admin_addPrj.php"><li>Add Project</li></a>
                                     <a href="admin_addProg.php"><li>Add Program</li></a>
                                 </ul>
                             </li>
@@ -34,7 +34,7 @@
                         </ul>
                     </li>
 
-                    <a href="#"><li>Edit About Us</li></a>
+                    <a href="admin_editAbtus.php"><li>Edit About Us</li></a>
                     <a href="admin_business.php"><li>All Businesses</li></a>
 
                     <li>All Tips

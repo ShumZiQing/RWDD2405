@@ -56,7 +56,7 @@
     </div>
     
     <div id="nav">
-        <a href="admin_avtivities.php">
+        <a href="admin_activities.php">
             <i class="fa-solid fa-arrow-left navIcon"></i>
         </a>
         <p>Add Project</p>

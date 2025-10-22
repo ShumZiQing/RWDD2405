@@ -28,10 +28,12 @@
         </section>
 
         <section class="selection">
+            <a href="admin_mngUser.php">
             <div class="selection-box">
                 <img src="images/user-icon.png" alt="icon" class="icons">
-                <a href="#">Manage Users</a>
+                Manage Users
             </div>
+            </a>
             
             <div id="nav-collab" class="selection-dropdown">
                 <img src="images/collab.png" alt="icon" class="icons">
@@ -51,7 +53,7 @@
                         <li>Add activities 
                             <img src="images/down-arrow.png" alt="icon" class="arrow">
                             <ul>
-                                <a href="#"><li>Add Project</li></a>
+                                <a href="admin_addPrj.php"><li>Add Project</li></a>
                                 <a href="admin_addProg.php"><li>Add Program</li></a>
                             </ul>
                         </li>
@@ -59,7 +61,7 @@
                     </ul>
                 </div>
             
-            <a href="#">
+            <a href="admin_editAbtus.php">
                 <div class="selection-box">
                     <img src="images/edit.png" alt="icon" class="icons">
                     Edit About Us

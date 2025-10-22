@@ -48,7 +48,7 @@
                     <img src="images/down-arrow.png" alt="dropdown" class="icon">
                     <ul>
                         <a href="admin_addProg.php"><li>New Program</li></a>
-                        <a href="#"><li>New Project</li></a>
+                        <a href="admin_addPrj.php"><li>New Project</li></a>
                     </ul>
                 </div>
             </div>
@@ -109,8 +109,7 @@
                             <p>Collaborator</p>
                         </div>
                         
-                        <a href="#">
-                            <!-- link php-->
+                        <a href="admin_editPrj.php">
                             <div id="edit">
                                 <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                                 <p>Edit</p>
