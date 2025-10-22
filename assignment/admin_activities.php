@@ -5,11 +5,11 @@
     if(isset($_GET['btnSearch'])){
         $search = $_GET['txtSearch'];
         $progSql = "SELECT * FROM tblprogram WHERE progName LIKE '%$search%'";
-        $projSql = "SELECT * FROM tblproject WHERE prjName LIKE '%$search%'";
+        $projSql = "SELECT * FROM tblprojects WHERE prjName LIKE '%$search%'";
 
     }else{
         $progSql = "SELECT * FROM tblprogram";
-        $projSql = "SELECT * FROM tblproject";
+        $projSql = "SELECT * FROM tblprojects";
     }
 ?>
 
