@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +27,12 @@
     
     <main>
         <section class="home">
-            <h2>Hello Admin!</h2>   
+            <?php
+                if(isset($_SESSION["userid"]) != ""){
+            ?>
+                <h2>Hello, <?php echo $_SESSION['fullname']; ?></h2>
+
+            <?php }?>
             <p id="sub">What would you like to do?</p> 
         </section>
 
