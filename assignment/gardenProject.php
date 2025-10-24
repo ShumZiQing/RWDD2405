@@ -4,7 +4,11 @@ session_start();
 
 $pageTitle = "EcoConnect - Community Gardening Projects";
 include 'header.php';
+
+$sql = "SELECT * FROM tblprojects";
+$result = mysqli_query($conn, $sql);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +34,32 @@ include 'header.php';
     </div>
 
     <div class="cards-container">
-      <p class="no-projects-msg">No community projects yet.</p>
+      <?php if (mysqli_num_rows($result) > 0): ?>
+        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+          <div class="project-card">
+            <h3><?= htmlspecialchars($row['prjName']) ?></h3>
+            <p><strong>📅 Start:</strong> <?= htmlspecialchars($row['startDate']) ?></p>
+            <p><strong>📅 End:</strong> <?= htmlspecialchars($row['endDate']) ?></p>
+            <p><strong>📍 Location:</strong> <?= htmlspecialchars($row['location']) ?></p>
+            <p><strong>🤝 Collaborator:</strong> <?= htmlspecialchars($row['collaborator']) ?></p>
+
+            <div class="btn-group">
+              <button 
+                class="btn explore-btn" 
+                onclick="window.location.href='gardenProjectDetails.php?prjID=<?= $row['prjID'] ?>'">
+                Explore
+              </button>
+
+              <form action="joinProject.php" method="POST" style="margin:0;">
+                <input type="hidden" name="prjID" value="<?= $row['prjID'] ?>">
+                <button type="submit" class="btn join-btn">Join</button>
+              </form>
+            </div>
+          </div>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <p class="no-projects-msg">No community projects yet.</p>
+      <?php endif; ?>
     </div>
   </main>
 

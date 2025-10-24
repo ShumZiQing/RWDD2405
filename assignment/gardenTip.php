@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
       <?php endif; ?>
     </div>
 
-        <div class="cards-container">
+        <div class="card-container">
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
             <div class="card" data-id="<?= $row['gTipID'] ?>">
