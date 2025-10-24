@@ -25,6 +25,8 @@ $result = mysqli_query($conn, $sql);
       <h2>Local Business Guide</h2>
     </section>
 
+    <section class="filter">
+      <label for="filter">Filter by:</label>
     <div class="filter-bar">
       <select id="cityFilter">
         <option value="">City</option>
@@ -56,6 +58,7 @@ $result = mysqli_query($conn, $sql);
         <option value="Food & Beverage">Food & Beverage</option>
       </select>
     </div>
+    </section>
 
     <?php if (isset($_SESSION['userid'])): ?>
         <div class="add-btn-container">
@@ -63,40 +66,61 @@ $result = mysqli_query($conn, $sql);
         </div>
     <?php endif; ?>
 
-
     <div class="cards-container">
       <?php if (mysqli_num_rows($result) > 0): ?>
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
-          <div class="card" data-id="<?= $row['busID'] ?>">
-            <?php if (!empty($row['busImg'])): ?>
-              <img src="busImages/<?= htmlspecialchars($row['busImg']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="business-img">
-            <?php else: ?>
-              <img src="images/default-business.jpg" alt="No image available" class="business-img">
-            <?php endif; ?>
+          <div class="card"
+          data-id="<?= $row['busID'] ?>"
+          data-city="<?= htmlspecialchars($row['location']) ?>"
+          data-category="<?= htmlspecialchars($row['busType']) ?>">
 
-            <div class="card-content">
-              <div class="card-header">
-                <h3><?= htmlspecialchars($row['name']) ?></h3>
-                <p class="type">📝 <?= htmlspecialchars($row['busType']) ?></p>
-              </div>
-              <div class="card-body">
-                <p class="location">📍 <?= htmlspecialchars($row['location']) ?></p>
-                <p class="phone">☎️ <?= htmlspecialchars($row['phoneNum']) ?></p>
-                <p><?= htmlspecialchars($row['description']) ?></p>
-              </div>
-              <div class="card-footer">
-                <?php
-                $liked = false;
-                if (isset($_SESSION['userid'])) {
-                  $uid = $_SESSION['userid'];
-                  $checkFav = mysqli_query($conn, "SELECT * FROM tblfavourites WHERE userID=$uid AND busID={$row['busID']}");
-                  $liked = mysqli_num_rows($checkFav) > 0;
-                }
-                ?>
-                <button class="fav-btn <?= $liked ? 'liked' : '' ?>" data-id="<?= $row['busID'] ?>">
-                  <?= $liked ? '❤️' : '🤍' ?>
-                </button>
-              </div>
+           <?php if (!empty($row['busImg'])): ?>
+            <img src="busImages/<?= htmlspecialchars($row['busImg']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="business-img">
+          <?php else: ?>
+            <img src="images/default-business.jpg" alt="No image available" class="business-img">
+          <?php endif; ?>
+
+          <?php
+          $busID = $row['busID'];
+          $revQuery = mysqli_query($conn, "SELECT COUNT(*) AS total, AVG(revStars) AS avgStars FROM tblreviews WHERE busID = $busID");
+          $revData = mysqli_fetch_assoc($revQuery);
+          $reviewCount = (int)$revData['total'];
+          $averageStars = round($revData['avgStars'], 1);
+          ?>
+          <div class="review-summary">
+            <?php if ($reviewCount > 0): ?>
+              <p>⭐ <?= $averageStars ?> (<?= $reviewCount ?> reviews)</p>
+            <?php else: ?>
+              <p>No reviews yet</p>
+            <?php endif; ?>
+          </div>
+
+          <div class="card-content">
+            <div class="card-header">
+              <h3><?= htmlspecialchars($row['name']) ?></h3>
+              <p class="type">📝 <?= htmlspecialchars($row['busType']) ?></p>
+            </div>
+            <div class="card-body">
+              <p class="location">📍 <?= htmlspecialchars($row['location']) ?></p>
+              <p class="phone">☎️ <?= htmlspecialchars($row['phoneNum']) ?></p>
+              <p><?= htmlspecialchars($row['description']) ?></p>
+            </div>
+            <div class="card-footer">
+              <?php
+              $liked = false;
+              if (isset($_SESSION['userid'])) {
+                $uid = $_SESSION['userid'];
+                $checkFav = mysqli_query($conn, "SELECT * FROM tblfavourites WHERE userID=$uid AND busID={$row['busID']}");
+                $liked = mysqli_num_rows($checkFav) > 0;
+              }
+              ?>
+              <button class="fav-btn <?= $liked ? 'liked' : '' ?>" data-id="<?= $row['busID'] ?>">
+                <?= $liked ? '❤️' : '🤍' ?>
+              </button>
+
+              <a href="businessDetails.php?busID=<?= $busID ?>" class="view-reviews-btn">View Details & Reviews</a>
+            </div>
+          </div>
             </div>
           </div>
 
@@ -110,5 +134,6 @@ $result = mysqli_query($conn, $sql);
   <?php include 'footer.php'; ?>
   <script src="scripts/hamburger.js"></script>
   <script src="scripts/busiFav.js"></script>
+  <script src="scripts/businessGuide.js"></script>
 </body>
 </html>

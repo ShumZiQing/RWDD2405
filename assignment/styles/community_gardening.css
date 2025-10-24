@@ -238,21 +238,20 @@
   color: #fff;
 }
 
-
-
 /* Community garden project card */
-.cards-container{
+.card-container{
   padding: 8px 12px 80px;
   margin: 0 12px;
 }
 .card{
-  display:flex;
-  gap:12px;
-  background:white;
-  border-radius:14px;
-  padding:12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-  margin-bottom:16px;
+  display: flex;
+  gap: 12px;
+  background: white;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
 }
 .card img{
   width:110px;
@@ -264,6 +263,10 @@
   flex:1;
   display:flex;
   flex-direction:column;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 .card h3{
   margin:0;
@@ -279,21 +282,6 @@
   gap:8px;
   align-self:flex-end;
 }
-.btn-explore{
-  background:#fff;
-  border:1px solid #ddd;
-  padding:8px 12px;
-  border-radius:8px;
-  font-weight:600;
-}
-.btn-join{
-  background:#7bd67b;
-  border:none;
-  color:#fff;
-  padding:8px 12px;
-  border-radius:8px;
-  font-weight:700;
-}
 
 @media(min-width:768px){
   .card{ padding:16px; }
@@ -305,4 +293,113 @@
 @media (min-width: 1024px) {
   .community-gardening .banner img {height: 380px;}
   .community-gardening .banner h2 {font-size: 2.4rem;}
+}
+
+.cards-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 30px 80px;
+  margin: 0 auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 1px solid #dcdcdc;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  color: #0B6623;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.project-card p {
+  margin: 6px 0;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+/* General button style */
+.btn {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+/* Explore button */
+.explore-btn {
+  background-color: #075085;
+  color: #fff;
+  border: none;
+}
+
+.explore-btn:hover {
+  background-color: #094773;
+}
+
+/* Join button */
+.join-btn {
+  background-color: #fff;
+  color: #0B6623;
+  border: 1px solid #0B6623;
+}
+
+.join-btn:hover {
+  background-color: #0B6623;
+  color: white;
+}
+
+/* Message if no projects */
+.no-projects-msg {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 15px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }

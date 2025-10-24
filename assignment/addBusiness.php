@@ -5,13 +5,6 @@ session_start();
 $pageTitle = "EcoConnect - Add New Business";
 include 'header.php';
 
-// Restrict access to logged-in users only
-if (!isset($_SESSION['userid'])) {
-  header("Location: login.php");
-  exit();
-}
-
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = mysqli_real_escape_string($conn, $_POST['name']);
   $busType = mysqli_real_escape_string($conn, $_POST['busType']);
@@ -22,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $revID = NULL;
   $imagePath = "";
 
-  // Handle image upload
   if (!empty($_FILES['businessImage']['name'])) {
     $uploadDir = "busImages/";
     if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
@@ -43,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  // Insert business data
   if (!isset($errorMsg)) {
     $sql = "INSERT INTO tblbusiness (name, busType, description, location, phoneNum, userID, revID, busImg)
             VALUES ('$name', '$busType', '$description', '$city', '$phoneNum', '$userID', " . 

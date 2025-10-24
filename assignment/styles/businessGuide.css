@@ -1,9 +1,3 @@
-/* .business-guide {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1rem;
-  font-family: "Poppins", sans-serif;
-} */
 .business-guide .banner {
   position: relative;
   width: 100%;
@@ -29,7 +23,6 @@
   text-align: center;
 }
 
-
 /* card content */
 .cards-container {
   display: flex;
@@ -39,13 +32,17 @@
 }
 .card {
   display: flex;
-  align-items: flex-start;
-  background: #fff;
-  border-radius: 12px;
-  padding: 1rem;
-  border: 1px solid #e0e0e0;
-  box-shadow: none;
-  gap: 1rem;
+  gap: 12px;
+  background: white;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 /* Image on the left */
 .card img.business-img {
@@ -78,21 +75,21 @@
   display: block;
 }
 
-/* Location above description */
+/* location */
 .card-body .location {
   font-size: 0.95rem;
   color: #075085;
   margin-bottom: 0.4rem;
 }
 
-/* Description text */
+/* Description */
 .card-body p {
   margin-bottom: 0.4rem;
   color: #333;
   line-height: 1.5;
 }
 
-/* Phone number */
+/* Phone */
 .card-body .phone {
   font-size: 0.95rem;
   color: #555;
@@ -104,6 +101,49 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 0.5rem;
+}
+
+.review-summary {
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.review-summary p{
+  margin: 0;
+}
+
+.view-reviews-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.view-reviews-btn:hover {
+  background-color: #2980b9;
+}
+
+/* FILTER */
+.filter {
+  padding: 20px;
+}
+
+.filter label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #075085;
+}
+
+.filter select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 /* like business */
@@ -156,8 +196,7 @@
   }
 }
 
-
-/* add business */
+/* add business btn*/
 .add-btn-container {
   position: fixed;
   bottom: 24px;
