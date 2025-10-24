@@ -107,12 +107,12 @@ $pageTitle = "EcoConnect - Homepage";
             <h2><a href="gardenProject.php" class="section-link">Upcoming Projects →</a></h2>
             <div class="scroll-container">
                 <?php
-                $sqlProjects = "SELECT * FROM tblprojects WHERE status='Upcoming' ORDER BY startDate ASC LIMIT 6";
+                $sqlProjects = "SELECT * FROM tblprojects WHERE status='Pending' ORDER BY startDate ASC LIMIT 6";
                 $resultProjects = mysqli_query($conn, $sqlProjects);
 
                 if (mysqli_num_rows($resultProjects) > 0) {
                     while ($prj = mysqli_fetch_assoc($resultProjects)) {
-                        echo '<div class="project-card" style="background-image: url(\'images/' . $prj['prjImage'] . '\');">';
+                        echo '<div class="project-card" style="background-image: url(\'images/' . $prj['prjImg'] . '\');">';
                         echo '<div class="overlay">';
                         echo '<h3>' . $prj['prjName'] . '</h3>';
                         echo '<p>' . substr($prj['prjDetails'], 0, 80) . '...</p>';
