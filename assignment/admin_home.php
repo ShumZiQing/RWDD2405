@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,23 +19,30 @@
         </div>
 
         <nav class="header-nav">
-            <button id="profile">
+            <a href="admin_profile.php">
                 <img src="images/user.png" alt="user icon">
-            </button>
+            </a>
         </nav>
     </header>
     
     <main>
         <section class="home">
-            <h2>Hello Admin!</h2>   
+            <?php
+                if(isset($_SESSION["userid"]) != ""){
+            ?>
+                <h2>Hello, <?php echo $_SESSION['fullname']; ?></h2>
+
+            <?php }?>
             <p id="sub">What would you like to do?</p> 
         </section>
 
         <section class="selection">
+            <a href="admin_mngUser.php">
             <div class="selection-box">
                 <img src="images/user-icon.png" alt="icon" class="icons">
-                <a href="admin_mngUser.php">Manage Users</a>
+                Manage Users
             </div>
+            </a>
             
             <div id="nav-collab" class="selection-dropdown">
                 <img src="images/collab.png" alt="icon" class="icons">
@@ -59,7 +70,7 @@
                     </ul>
                 </div>
             
-            <a href="#">
+            <a href="admin_editAbtus.php">
                 <div class="selection-box">
                     <img src="images/edit.png" alt="icon" class="icons">
                     Edit About Us

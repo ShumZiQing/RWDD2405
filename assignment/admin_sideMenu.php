@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="styles/admin_sideMenu.css">
 <div class="vmenu">
-    <a href="#">
+    <a href="admin_mngUser.php">
     <div class="selection-box">
         <img src="images/user-icon.png" alt="icon" class="icons">
         Manage Users
@@ -25,7 +25,7 @@
                 <li>Add activities 
                     <img src="images/down-arrow.png" alt="icon" class="arrow">
                     <ul>
-                        <a href="#"><li>Add Project</li></a>
+                        <a href="admin_addPrj.php"><li>Add Project</li></a>
                         <a href="admin_addProg.php"><li>Add Program</li></a>
                     </ul>
                 </li>
@@ -33,7 +33,7 @@
             </ul>
     </div>
     
-    <a href="#">
+    <a href="admin_editAbtus.php">
     <div class="selection-box">
         <img src="images/edit.png" alt="icon" class="icons">
         Edit About Us
@@ -46,4 +46,14 @@
         All Businesses
     </div>
     </a>
+
+    <div id="nav-tips" class="selection-dropdown">
+        <img src="images/idea.png" alt="icon" class="icons" >
+            All Tips
+            <img src="images/down-arrow.png" alt="icon" class="arrow" id="collabArrow">
+            <ul>
+                <a href="admin_energyTips.php"><li>Energy Tips</li></a>
+                <a href="admin_gardenTips.php"><li>Gardening Tips</li></a>
+            </ul>
+    </div>
 </div>

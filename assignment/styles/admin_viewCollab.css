@@ -1,0 +1,160 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
+#cName{
+    color: #8F8F8F;
+    margin: 3px;
+}
+
+.collabIcons{
+    margin-top: 1.5%;
+    margin-left: 20%
+}
+
+#feature{
+    display: flex;
+    margin-left: 10%;
+}
+
+#search{
+    width: 20vh;
+}
+
+.indiBus:hover{
+    background-color: #676666;
+}
+
+#add{
+    background-color: #187DC6;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    margin-left: 10px;
+    height: auto;
+    width: 100px;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#add p{
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+#add:hover{
+    background-color: #136097;
+}
+/* phone */
+@media(max-width: 600px){
+    .returnArrow{
+        left: 5%;
+        top: 17%;
+    }
+     
+    #content h1{
+        font-size: 25px;
+    }
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
+
+    #search{
+        margin-left: 15%;
+        height: 40px;
+        width: 150px;
+        font-size: 14px;
+    }
+
+    #add{
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .indiBus{
+        width: 80%;
+    }
+
+    #picture{
+        width: 45px;
+        height: 45px;
+    }
+
+    .collabIcons{
+        width: 50%;
+        height: 10vh;
+        padding-top: 7%;
+        margin-left: 7%;
+    }
+
+    #edit,#delete{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    .returnArrow{
+        left: 2%;
+        top: 11%;
+    }
+
+    #content{
+        max-width: 1020px;
+    }
+    
+    #content h1{
+        font-size: 27px;
+    }
+
+    #search{
+        width: 150px;
+        margin-left: 55%;
+        margin-top: 20px;
+    }
+
+    #add{
+        width: 10vh;
+        height: 40px;
+        margin-top: 20px;
+    }
+    .indiBus{
+        width: 85%;
+        margin: 40px auto;
+    }
+
+    .collabIcons{
+        width: 80%;
+        height: 10vh;
+        padding-top: 10%;
+        margin-left: 40%;
+        padding: 0;
+    }
+
+    #text{
+        font-size: 80%;
+    }
+}
