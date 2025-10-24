@@ -19,12 +19,14 @@
     }
 
     if (isset($_POST['btnSave'])) {
-        $address = $_POST['txtAddress'] ?? $address;
-        $phone = $_POST['txtPhone'] ?? $phone;
-        $email = $_POST['txtEmail'] ?? $email;
-        $missionDtl = $_POST['txtMission'] ?? $missionDtl;
-        $wwdDtl = $_POST['txtWWD'] ?? $wwdDtl;
-        $goalDtl = $_POST['txtGoal'] ?? $goalDtl;
+        $address = $_POST['txtAddress'];
+        $phone = $_POST['txtPhone'];
+        $email = $_POST['txtEmail'];
+        $missionDtl = $_POST['txtMission'];
+        $wwdDtl = $_POST['txtWWD'];
+        $goalDtl = $_POST['txtGoal'];
+        $defaultImg = "images/abtUs.png";
+        $companyImg = $defaultImg;
 
         // Upload image
         if (!empty($_FILES['companyImg']['name'])) {
@@ -41,13 +43,7 @@
 
     // Update tbl
     $sql = "UPDATE tblcompany SET
-                address = '" . mysqli_real_escape_string($conn, $address) . "',
-                phone = '" . mysqli_real_escape_string($conn, $phone) . "',
-                email = '" . mysqli_real_escape_string($conn, $email) . "',
-                missionDtl = '" . mysqli_real_escape_string($conn, $missionDtl) . "',
-                wwdDtl = '" . mysqli_real_escape_string($conn, $wwdDtl) . "',
-                goalDtl = '" . mysqli_real_escape_string($conn, $goalDtl) . "',
-                companyImg = '" . mysqli_real_escape_string($conn, $companyImg) . "'
+            address = '$address', phone = '$phone', email = '$email', missionDtl = '$missionDtl', wwdDtl = '$wwdDtl', goalDtl = '$doalDtl', companyImg = '$companyImg'
             WHERE companyID = 1"; 
 
     $result = mysqli_query($conn, $sql);

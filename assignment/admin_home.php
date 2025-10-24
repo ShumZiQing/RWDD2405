@@ -40,7 +40,7 @@
             <a href="admin_mngUser.php">
             <div class="selection-box">
                 <img src="images/user-icon.png" alt="icon" class="icons">
-                Manage Users
+                <a href="admin_mngUser.php">Manage Users</a>
             </div>
             </a>
             

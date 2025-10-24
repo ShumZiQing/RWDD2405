@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libertinus+Serif+Display&family=Macondo&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Permanent+Marker&display=swap');
+
+
 body{
     margin: 0;
     padding: 0;
@@ -27,6 +30,8 @@ body{
 }
 
 #nav a{
+    cursor: pointer;
+    padding-right: 10px;
     color: black;
     margin-left: 20%;
 }
@@ -38,6 +43,8 @@ body{
 #nav p{
     margin-left: 300px;
     font-size: 30px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
 }
 
 .container{

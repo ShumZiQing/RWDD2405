@@ -33,6 +33,7 @@
         $collaborator = $row['collaborator'];
         $collabEmail = $row['collabEmail'];
         $status = $row['status'];
+        $prjImg = $row['prjImg'];
     } else {
         echo "<script>
         alert('Project not found!');
@@ -56,7 +57,7 @@
 
         $update = "UPDATE tblprojects SET
                 prjName = '$prjName', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', prjDetails = '$prjDetails', location = '$location', collaborator = '$collaborator',collabEmail = '$collabEmail',  status = '$status'
-                WHERE prjID = '$prjID'";
+                    WHERE prjID = '$prjID'";
 
         $result = mysqli_query($conn, $update);
 

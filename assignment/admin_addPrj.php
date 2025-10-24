@@ -4,8 +4,6 @@ include 'dbConn.php';
 session_start();
 
 if (isset($_POST['btnSave'])) {
-    echo "User clicked the save button";
-
     $prjName = $_POST['txtTitle'];
     $startDate = $_POST['txtSdate'];
     $endDate = $_POST['txtEdate'];
@@ -16,17 +14,35 @@ if (isset($_POST['btnSave'])) {
     $collaborator = $_POST['txtOrganizer'];
     $collabEmail = $_POST['txtEmail'];
     $status = $_POST['txtStatus'];
+    $prjImg = $_POST['prjImg'];
 
-    $sql = "INSERT INTO tblprojects (prjName, startDate, endDate, startTime, endTime, prjDetails, location, collaborator, collabEmail, status)
-                VALUES ('$prjName', '$startDate', '$endDate', '$startTime', '$endTime', '$prjDetails', '$location', '$collaborator', '$collabEmail', '$status')";
+    // Upload image
+    $target_dir = "images/";
+    $defaultImg = "images/prj1.png";
+    $imgName = $defaultImg;
+
+    if (!empty($_FILES['prjImg']['name'])) {
+            $filename = basename($_FILES['prjImg']['name']);
+            $target_file = &$target_dir . $filename;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize(($_FILES["prjImg"]["tmp_name"]));
+            if($check !== false){
+                if(move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)){
+                    $imgName = $target_file;
+                }
+            }
+        }
+
+
+    $sql = "INSERT INTO tblprojects(prjName, startDate, endDate, startTime, endTime, prjDetails, location, collaborator, collabEmail, status, prjImg) VALUES
+            ('$prjName', '$startDate', '$endDate', '$startTime', '$endTime', '$prjDetails', '$location', '$collaborator', '$collabEmail', '$status', '$prjImg')";
 
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        echo "<script>
-        alert('Project added successfully!');
-        window.location.href = 'admin_activities.php';
-        </script>";
+        echo '<script> alert("Project added successfully!");
+        window.location.href="admin_activities.php"; </script>';
     } else {
         echo "<script>
         alert('Error: " . mysqli_error($conn) . "');
@@ -51,6 +67,7 @@ if (isset($_POST['btnSave'])) {
     <link rel="stylesheet" href="styles/global.css">
 
     <script src="https://kit.fontawesome.com/b70fe5a297.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
@@ -74,9 +91,6 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-image icon"></i></td>
                     <td>
-                        <?php if (!empty($prjImg)): ?>
-                            <img src="images/<?php echo $prjImg; ?>" style="max-width: 300px; max-height: 300px">
-                        <?php endif; ?>
                         <input type="file" name="prjImg" accept="image/*" class="upload">
                     </td>
                 <tr>
@@ -107,20 +121,20 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-location-dot icon"></i></td>
                     <td><select name="txtLocation" class="info" required>
-                            <option value="location1">Taman Merah</option>
-                            <option value="location2">Taman Siakap</option>
-                            <option value="location3">Taman Cempaka</option>
-                            <option value="location4">Taman Anggerik</option>
-                            <option value="location5">Taman Seri Mutiara</option>
+                            <option value="Taman Merah">Taman Merah</option>
+                            <option value="Taman Siakap">Taman Siakap</option>
+                            <option value="Taman Cempaka">Taman Cempaka</option>
+                            <option value="Taman Anggerik">Taman Anggerik</option>
+                            <option value="Taman Seri Mutiara">Taman Seri Mutiara</option>
                         </select></td>
                 </tr>
 
                 <tr>
                     <td><i class="fa-solid fa-user icon"></i></td>
                     <td><select name="txtOrganizer" class="info" required>
-                            <option value="ORG1">Urban Bloom Association</option>
-                            <option value="ORG2">NatureNurture Club</option>
-                            <option value="ORG3">Greenpeace</option>
+                            <option value="Urban Bloom Association">Urban Bloom Association</option>
+                            <option value="NatureNurture Club">NatureNurture Club</option>
+                            <option value="Greenpeace">Greenpeace</option>
                         </select></td>
                 </tr>
 
@@ -132,9 +146,9 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-circle-check icon"></i></td>
                     <td><select name="txtStatus" class="info" required>
-                            <option value="pending">Pending</option>
-                            <option value="inProgress">In Progress</option>
-                            <option value="finished">Finished</option>
+                            <option value="Pending">Pending</option>
+                            <option value="InProgress">In Progress</option>
+                            <option value="Finished">Finished</option>
                             <option value="onHold">On Hold</option>
                         </select>
                     </td>
