@@ -132,9 +132,17 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-user icon"></i></td>
                     <td><select name="txtOrganizer" class="info" required>
-                            <option value="Urban Bloom Association">Urban Bloom Association</option>
-                            <option value="NatureNurture Club">NatureNurture Club</option>
-                            <option value="Greenpeace">Greenpeace</option>
+                            <?php
+                                $sql = "SELECT * FROM tblcollaborator";
+                                $result = mysqli_query($conn, $sql);
+ 
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $name = $row['name'];?>
+        
+                                    <option value="<?php echo $name?>"><?php echo $name?></option>
+                            <?php
+                        }
+                    ?>
                         </select></td>
                 </tr>
 
