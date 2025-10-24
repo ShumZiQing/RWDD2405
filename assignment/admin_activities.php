@@ -1,3 +1,18 @@
+<?php
+    include 'dbConn.php';
+    session_start();
+
+    if(isset($_GET['btnSearch'])){
+        $search = $_GET['txtSearch'];
+        $progSql = "SELECT * FROM tblprograms WHERE progName LIKE '%$search%'";
+        $projSql = "SELECT * FROM tblprojects WHERE prjName LIKE '%$search%'";
+
+    }else{
+        $progSql = "SELECT * FROM tblprograms";
+        $projSql = "SELECT * FROM tblprojects";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +21,11 @@
     <title>All Activites | Admin</title>
     <link rel="stylesheet" href="styles/admin_act.css">
     <link rel="stylesheet" href="styles/global.css">
+    <script src="https://kit.fontawesome.com/8d434a5b7f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <?php include "header.php" ?>
+    <?php include "admin_header.php" ?>
     
     <div id="content">
         <div id="side">
@@ -17,132 +33,99 @@
         </div>
 
         <div id="main">
+            <a href="admin_home.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
             <h1>All Activities</h1>
             <div id="features">
                 <div id="search">
-                    <p>Search Program</p>
-                    <img src="images/magnifying-glass.png" alt="search" class="icon">
+                    <form action="" method = "get">
+                        <input type="text" name="txtSearch" placeholder="Search program" id="searchBar" autocomplete = "off">
+                        <button type="submit" name="btnSearch" id="searchButton"><img src="images/magnifying-glass.png" alt="search" class="icon"></button>
+                    </form>
                 </div>
                 <div id="add">
                     <img src="images/add.png" alt="add" class="icon">
                     <p>Add</p>
                     <img src="images/down-arrow.png" alt="dropdown" class="icon">
                     <ul>
-                        <li>New Program</li>
-                        <li>New Project</li>
+                        <a href="admin_addProg.php"><li>New Program</li></a>
+                        <a href="admin_addPrj.php"><li>New Project</li></a>
                     </ul>
                 </div>
             </div>
 
-            <div class="prog">
-                <div id="desc">
-                    <h2>Recycling Program</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit" class="actIcon">
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div>
+            <?php
+                $progResult = mysqli_query($conn, $progSql);
 
-            <div class="proj">
-                <div id="desc">
-                    <h2>Gardening Project</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit">
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div>
+                while($progRow = mysqli_fetch_assoc($progResult)){
+                    $progID = $progRow['progID'];
+                    $progName = $progRow['progName'];
+                    $progDesc = $progRow['progDetails'];
+                    $progImg = $progRow['progImage'];
+                    ?>
 
-            <div class="proj">
+                    <div class="prog">
+                        <img src="<?php echo $progImg?>" alt="picture" id="picture">
                     <div id="desc">
-                        <h2>Gardening Project</h2>
-                        <p>Summary of program
-                            <br>...
-                            <br>...
-                        </p>
+                        <h2><?php echo $progName?></h2>
+                        <p><?php echo $progDesc?></p>
                     </div>
                     
                     <div class="actIcon">
                         <div id="collab">
-                            <img src="images/collab_blue.png" alt="collab">
+                            <a href="admin_collabDetail.php?collabName=<?php echo $progRow['collabName'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
                             <p>Collaborator</p>
                         </div>
                         
-                        <div id="edit">
-                            <img src="images/edit_blue.png" alt="edit">
-                            <p>Edit</p>
-                        </div>
+                        <a href="admin_editProg.php?progID=<?php echo $progRow['progID'];?>">
+                            <div id="edit">
+                                <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                                <p>Edit</p>
+                            </div>
+                        </a>
                     </div>
-            </div>
+                </div>
 
-            <div class="prog">
-                <div id="desc">
-                    <h2>Recycling Program</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
-                        <p>Collaborator</p>
+            <?php
+                }
+
+            ?>
+
+            <?php
+                $projResult = mysqli_query($conn, $projSql);
+
+                while($projRow = mysqli_fetch_assoc($projResult)){
+                    $projID = $projRow['prjID'];
+                    $projName = $projRow['prjName'];
+                    $projDesc = $projRow['prjDetails'];
+                    $projImg = $projRow['prjImg'];
+                    ?>
+
+                    <div class="proj">
+                        <img src="<?php echo $projImg?>" alt="picture" id="picture">
+                    <div id="desc">
+                        <h2><?php echo $projName?></h2>
+                        <p><?php echo $projDesc?></p>
                     </div>
                     
-                    <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit">
-                        <p>Edit</p>
+                    <div class="actIcon">
+                        <div id="collab">
+                            <a href="admin_viewPcp.php?prjID=<?php echo $projRow['prjID'];?>"><i class="fa-solid fa-users-line fa-2xl pcpIcon"></i></a>
+                            <p>Participants</p>
+                        </div>
+                        
+                        <a href="admin_editPrj.php?prjID=<?php echo $projRow['prjID'];?>">
+                            <div id="edit">
+                                <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
+                                <p>Edit</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="prog">
-                <div id="desc">
-                    <h2>Recycling Program</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <img src="images/collab_blue.png" alt="collab">
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <img src="images/edit_blue.png" alt="edit">
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div>
+
+            <?php
+                }
+
+            ?>
         </div>
     </div>
 </body>

@@ -1,14 +1,14 @@
-<?php
+<?php 
 include 'dbConn.php';
 session_start();
 $pageTitle = "EcoConnect - Login";
- 
+
 if(isset($_POST['btnLogin'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
- 
+
     $sql = "SELECT * FROM tbluser WHERE email='$email' AND password='$password'";
- 
+
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
         $_SESSION['email'] = $email;
@@ -16,7 +16,7 @@ if(isset($_POST['btnLogin'])){
         $_SESSION['userid'] = $row['userID'];
         $_SESSION['fullname'] = $row['name'];
         $role = $row['role'];
-       
+        
         if($role == "user"){
             header("Location: homepage.php");
         }else if ($role == "admin"){
@@ -26,7 +26,6 @@ if(isset($_POST['btnLogin'])){
         $errorMsg = "Invalid email or password.";
     }
 }
- 
 ?>
  
 <!DOCTYPE html>
@@ -54,7 +53,6 @@ if(isset($_POST['btnLogin'])){
  
         <h2>Login</h2>
         <?php if(!empty($errorMsg)) echo "<p class='error-msg'>$errorMsg</p>"; ?>
- 
         <form action="" method="POST" class="form-box">
             <input type="text" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
@@ -67,7 +65,3 @@ if(isset($_POST['btnLogin'])){
     </div>
 </body>
 </html>
-
-
-
-

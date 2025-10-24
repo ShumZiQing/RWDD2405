@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libertinus+Serif+Display&family=Macondo&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Permanent+Marker&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FBF6EF;
+    
+}
+
+#side{
+    width: 11%;
+    height: auto;
+    position: fixed;
+    margin-left: 20px;
+    margin-top: 120px;
+}
+
+#nav{
+    display: flex;
+    align-items: center;
+    margin: 10px 40px;
+    font-size: 23px;
+    padding-top: 80px;
+}
+
+#nav a{
+    padding-right: 10px;
+    cursor: pointer;
+    color: black;
+    margin-left: 20%;
+}
+
+#nav a:hover{
+    color: #0066AF;
+}
+
+#nav p{
+    margin-left: 340px;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+}
+
+.icon{
+    align-items: center;
+    font-size: 23px;
+}
+
+table{
+    margin: 10px auto;
+    width: fit-content;
+}
+
+td{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+input{
+    height: 40px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.title{
+    width: 500px;
+}
+
+.mail{
+    width: 500px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 5px;
+}
+
+#content .upload{
+    width: 220px;
+    height: 30px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    text-align: center;
+    line-height: 30px;
+    justify-content: center;
+}
+
+.info{
+    width: 500px;
+    height: 40px;
+    min-width: 200px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.date, .time{
+    width: 240px;
+}
+
+.prjDtl{
+    height: 300px;
+    width: 500px;
+    box-sizing: border-box;
+    min-width: 200px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#button{
+    display: flex;
+    /* border: 1px; */
+}
+
+.save{
+    background-color: #075085;
+    color: white;
+    border-radius: 8px;
+    width: 100px;
+    border: #075085;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: 20%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 0;
+    cursor: pointer;
+}
+
+.save:hover{
+    background-color: #288fd8;
+}
+
+/* phone */
+@media(max-width: 600px){
+    .icon{
+        font-size: 20px;
+    }
+    
+    .prjDtl{
+        width: 270px;
+        height: 200px;
+    }
+    
+    .title{
+        width: 270px;
+        height: 25px;
+    } 
+
+    .date, .time{
+        width: 125px;
+        height: 25px;
+    }
+
+    .info{
+        width: 270px;
+        height: 25px;
+    }
+    .mail{
+        width: 270px;
+        height: 25px;
+    }
+
+    td{
+        padding-top: 10px;
+    }
+
+    #nav a{
+        margin-left: 0;
+        font-size: 20px;
+    }
+
+    #nav p{
+        font-size: 20px;
+        margin-left: 50px;
+        font-weight: 500;
+    }
+
+    .save{
+    width: 60px;
+    height: 30px;
+    font-weight: 300;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: 10%;
+}
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    textarea{
+        width: 500px;
+        height: 200px;
+    }
+
+    .title{
+        height: 40px;
+    }
+    .mail{
+        width: 500px;
+        height: 40px;
+    }
+
+    .info{
+        width: 500px;
+        height: 40px;
+    }
+
+    td{
+        padding-top: 15px;
+    }
+
+    #nav a{
+        margin-left: 80px;
+    }
+
+    #nav p{
+        font-size: 25px;
+        margin-left: 280px;
+    }
+
+    .save{
+    margin-left: auto; 
+    margin-right: 20%;
+}
+}

@@ -10,6 +10,25 @@ body{
     font-family: "Inter", sans-serif;
 }
 
+#picture{
+    width: 60px;
+    height: 60px;
+    margin: auto 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
 #content{
     display: flex;
     align-items: flex-start;
@@ -56,9 +75,27 @@ h1{
     cursor: pointer;
 }
 
-#search p{
-    padding-top: 1.5px;
-    padding-right: 10px;
+#searchBar{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 80%;
+}
+
+#searchBar:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+::placeholder{
+    color: white;
+}
+
+#searchButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 #add{
@@ -125,22 +162,26 @@ h1{
     margin-left: 23%;
     margin-top: 35px;
     display: flex;
+    padding: 10px;
 }
 
 #desc{
-    margin-right: 60%;
+    margin-right: 50%;
 }
 
-.proj #desc{
-    margin-right: 61%;
-}
+/* .proj #desc{
+    background-color: aqua;
+    padding-right: 14%;
+} */
 
 .prog h2{
+    width: 40vh;
     font-family: "Inter", sans-serif;
     color: #054675;
 }
 
 .proj h2{
+    width: 40vh;
     font-family: "Inter",sans-serif;
     color: #1169A9;
 }
@@ -161,16 +202,21 @@ h1{
     font-weight: 300;
 }
 
-#collab{
+.collabIcon, .pcpIcon{
+    color: #054675;
     display: block;
-    width: 70px;
-    height: 70px;
-    margin-right: 10px;
-    cursor: pointer;
+    margin: 10px;
+    margin-left: 20px;
+    width: 40px;
+    height: 5px;
 }
 
-#collab img{
-    margin-left: 30%;
+.pcpIcon{
+    margin-left: 15px;
+}
+
+#collab{
+    margin-right: 15px;
 }
 
 #edit{
@@ -178,18 +224,32 @@ h1{
     cursor: pointer;
 }
 
-#edit img{
-    width: 25px;
-    height: 25px;
+.editIcon{
+    color: #054675;
+    display: block;
+    margin: 10px;
+    margin-left: -5px;
+    width: 40px;
+    height: 5px;
+}
+
+.collabIcon:hover, .editIcon:hover, .pcpIcon:hover{
+    color: #088ded;
+    cursor: pointer;
 }
 
 /* phone */
 @media(max-width: 600px){
-    #side{
-        visibility: hidden;
-        opacity: 0;
-        display: none;
+    .returnArrow{
+        left: 7%;
+        top: 16%;
     }
+
+    #picture{
+        width: 45px;
+        height: 45px;
+    }
+
     #features{
         height: 30px;
         justify-content: flex-end;
@@ -226,14 +286,20 @@ h1{
         margin-top: 3px;
     }
     .prog, .proj{
-        margin-left: 10%;
+        margin-left: 0;
         width: 80%;
+        padding: 0;
     }
     .prog h2, .proj h2{
         font-size: large;
+        width: 20vh;
     }
     .prog p, .proj p{
         font-size: small;
+    }
+
+    .proj p{
+        margin-left: 8px;
     }
     #desc{
         margin-right: 0;
@@ -241,21 +307,33 @@ h1{
         flex: 1;
     }
     .actIcon img{
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
+    }
+    .actIcon p{
+        font-size: 10px;
+    }
+    .collabIcon, .pcpIcon{
+        margin-left: 15px;
+    }
+    #edit{
+        padding-left: 0;
     }
     .proj #desc{
         margin-right: 0;
+    }
+    .proj #collab{
+        margin-left: 0;
     }
 }
 
 /* tablet */
 @media(min-width: 601px) and (max-width: 1024px){
-    #side{
-        visibility: hidden;
-        opacity: 0;
-        display: none;
+    .returnArrow{
+        left: 20%;
+        top: 12%;
     }
+
   #features{
     justify-content: flex-end;
     height: 40px;
@@ -272,7 +350,7 @@ h1{
     left: 86%;
   }
   .prog, .proj{
-    margin-left: 12.5%;
+    margin-left: 3%;
     width: 80%;
     padding: 20px;
   }
@@ -281,7 +359,10 @@ h1{
     margin-right: 0;
     flex: 1;
   }
-  .proj #desc{
-    margin-right: 0;
+  .proj{
+    width: 55vh;
+  }
+  .prog #collab{
+    margin-left: 10px;
   }
 }

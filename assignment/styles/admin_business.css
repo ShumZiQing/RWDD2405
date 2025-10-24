@@ -10,6 +10,17 @@
     margin-left: 20px;
 }
 
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
 .icon{
     width: 20px;
     height: 20px;
@@ -34,17 +45,33 @@
     margin-left: 60%;
     padding: 10px;
     height: auto;
-    width: 170px;
+    width: 25vh;
     display: flex;
     border-radius: 10px;
     cursor: pointer;
 }
 
-#search p{
-    padding-top: 1.5px;
-    padding-right: 17px;
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
+#searchBar{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 80%;
+}
+
+#searchBar:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+::placeholder{
+    color: white;
+}
+
+#searchButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .indiBus{
@@ -60,9 +87,12 @@
     width: 60px;
     height: 60px;
     margin: auto 30px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 #text{
+    width: 50%;
     margin: auto 10px;
 }
 
@@ -85,29 +115,41 @@
     font-size: small;
 }
 
-#icons{
+#busIcons{
+    position: relative;
     margin: auto;
-    margin-left: 55%;
+    margin-left: 20%;
 }
 
-#edit, #delete{
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    display: inline;
+.editIcon{
+    color: #075085;
+    padding: 40px;
 }
 
-#edit:hover, #delete:hover{
+.editIcon:hover{
+    cursor: pointer;
+    color: #0e78c4;
+}
+
+.deleteIcon{
+    color: red;
+}
+
+.deleteIcon:hover{
+    color: rgb(171, 5, 5);
     cursor: pointer;
 }
 
 /* phone */
 @media(max-width: 600px){
-    #side{
-        visibility: hidden;
-        opacity: 0;
-        display: none;
+    .indiBus{
+        height: auto;
     }
+    .returnArrow{
+        left: 7%;
+        top: 18%;
+    }
+
     .icon{
         width: 20px;
         height: 20px;
@@ -135,24 +177,26 @@
         font-size: 95%;
     }
 
-    #icons{
-        margin-left: 7%;
+    #busIcons{
+        margin-left: 10px;
+        width: 40%;
     }
 
-    #edit,#delete{
-        width: 20px;
-        height: 20px;
+    .editIcon, .deleteIcon{
+        padding: 10px;
     }
 }
 
 /* tablet */
 @media(min-width: 601px) and (max-width: 1024px){
-    #side{
-        visibility: hidden;
-        opacity: 0;
-        display: none;
+    .returnArrow{
+        left: 20%;
+        top: 12%;
     }
+    
     #search{
+        width: 20%;
+        height: 41px;
         margin-left: 60%;
         margin-top: 20px;
     }
@@ -160,10 +204,12 @@
     .indiBus{
         width: 70%;
         margin: 40px auto;
+        height: auto;
     }
 
-    #icons{
-        margin-left: 30%;
+    #busIcons{
+        width: 30%;
+        margin-left: 10%;
     }
 
     #text{

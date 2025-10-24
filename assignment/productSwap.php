@@ -78,9 +78,13 @@ $result = mysqli_query($conn, $query);
             <option value="Utensils">Utensils</option>
         </select>
         </div>
-
-        <a href="addProductSwap.php" class="add-btn">+ Add Product</a>
     </div>
+
+    <?php if (isset($_SESSION['userid'])): ?>
+        <div class="add-btn-container">
+            <a href="addProductSwap.php" class="add-btn">+</a>
+        </div>
+    <?php endif; ?>
 
     <div class="cards-container">
   <?php if (mysqli_num_rows($result) > 0): ?>
