@@ -94,7 +94,10 @@
         <?php include 'admin_sideMenu.php'?>
     </div>
 
-    <div id="title">
+    <div id="nav">
+        <a href="admin_home.php">
+            <i class="fa-solid fa-arrow-left navIcon"></i>
+        </a>
         <p>Admin Profile</p>
     </div>
 

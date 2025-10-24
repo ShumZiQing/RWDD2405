@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libertinus+Serif+Display&family=Macondo&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Permanent+Marker&display=swap');
+
+
 body{
     margin: 0;
     padding: 0;
@@ -17,13 +20,35 @@ body{
     visibility: hidden;
 }
 
-#title{
-    font-size: 30px;
-    width: fit-content;
-    margin: 0 auto;
-    padding-top: 100px;
-
+#nav{
+    display: flex;
+    align-items: center;
+    margin: 10px 40px;
+    font-size: 23px;
+    padding-top: 80px;
 }
+
+.navIcon{
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+#nav a{
+    color: black;
+    margin-left: 20%;
+}
+
+#nav a:hover{
+    color: #0066AF;
+}
+
+#nav p{
+    margin-left: 340px;
+    font-size: 30px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+}
+
 .container{
     display: flex;
     text-align: center;
@@ -43,17 +68,8 @@ body{
     font-size: 20px;
 }
 
-/* #name table{
-    border: 1px black; 
-    justify-content: center;
-    margin: 10px auto;
-    width: fit-content;
-    padding: 10px; 
-} */
-
 #name td{
     padding: 5px;
-    /* border: 1px black; */
     height: 30px;
 }
 
@@ -104,8 +120,11 @@ body{
     background-color: #075085;
     color: white;
     border-radius: 8px;
-    width: 70px;
-    height: 30px;
+    width: 100px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
     border: #075085;
     margin-left: auto;
     margin-right: 10px;
@@ -121,10 +140,12 @@ body{
     background-color: #FF0808;
     color: white;
     border-radius: 8px;
-    width: 70px;
-    height: 30px;
+    width: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
     border: #FF0808;
-    margin-right: 5%;
+    margin-right: 15%;
     margin-bottom: 20px; 
     cursor: pointer;
 }
@@ -152,10 +173,33 @@ body{
         font-size: 18px;
     }
 
+    #nav{
+        margin-left: 10px;
+    }
+
+    #nav p{
+        margin-left: 20px;
+        font-size: 20px;
+    }
+
     #name input[type='text']{
     height: 25px;
     width: 180px;
     font-size: 10px;
+    }
+
+    .btnSave {
+    width: 50px;
+    height: 30px;
+    font-weight: 300;
+    font-size: 13px;
+}
+    .btnLogout{
+    width: 50px;
+    height: 30px;
+    font-weight: 300;
+    font-size: 13px;
+    margin-right: 20px;
     }
 }
     

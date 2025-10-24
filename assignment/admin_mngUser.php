@@ -36,7 +36,7 @@
         <?php include 'admin_sideMenu.php' ?> 
     </div>
     <div id="nav"> 
-        <a href="admin_activities.php"> 
+        <a href="admin_home.php"> 
             <i class="fa-solid fa-arrow-left navIcon"></i> 
         </a>
         <p>Manage User</p>

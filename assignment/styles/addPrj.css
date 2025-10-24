@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libertinus+Serif+Display&family=Macondo&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Permanent+Marker&display=swap');
+
+
 body{
     margin: 0;
     padding: 0;
     background-color: #FBF6EF;
-    font-family: Arial, Helvetica, sans-serif
+    
 }
 
 #side{
@@ -35,6 +38,8 @@ body{
 #nav p{
     margin-left: 340px;
     font-size: 30px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
 }
 
 .icon{
@@ -116,11 +121,12 @@ input{
     background-color: #075085;
     color: white;
     border-radius: 8px;
-    width: 70px;
-    height: 30px;
+    width: 100px;
     border: #075085;
+    font-weight: 600;
+    font-size: 16px;
     margin-left: auto;
-    margin-right: 5%;
+    margin-right: 20%;
     margin-top: 10px;
     margin-bottom: 20px;
     padding-left: 0;
@@ -167,12 +173,23 @@ input{
 
     #nav a{
         margin-left: 0;
+        font-size: 20px;
     }
 
     #nav p{
         font-size: 20px;
-        margin-left: 10px;
+        margin-left: 50px;
+        font-weight: 500;
     }
+
+    .save{
+    width: 60px;
+    height: 30px;
+    font-weight: 300;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: 10%;
+}
 }
 
 /* tablet */
@@ -204,7 +221,12 @@ input{
     }
 
     #nav p{
-        font-size: 20px;
-        margin-left: 10px;
+        font-size: 25px;
+        margin-left: 280px;
     }
+
+    .save{
+    margin-left: auto; 
+    margin-right: 20%;
+}
 }
