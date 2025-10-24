@@ -1,7 +1,16 @@
 <?php
     include 'dbConn.php';
 
-    $progID = $_GET['progID'];
+    if (isset($_GET['progID'])) {
+        $progID = $_GET['progID'];
+    } else {
+        echo "<script>
+        alert('No program selected.');
+        window.location.href='admin_activities.php';
+        </script>";
+        exit;
+    }
+
     $sql = "SELECT * FROM tblprograms WHERE progID = '".$_GET['progID']."'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -36,7 +45,7 @@
         //handle img upload
         $target_dir = "images/";
         $defaultImg = "images/image(6).png";
-        $imgName = $defaultImg;
+        $imgName = $progImage;
 
         if(!empty($_FILES["fileToUpload"]["name"])){
             $fileName = basename($_FILES["fileToUpload"]["name"]);

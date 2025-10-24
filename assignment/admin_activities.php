@@ -109,8 +109,8 @@
                     
                     <div class="actIcon">
                         <div id="collab">
-                            <a href="admin_collabDetail.php?collabName=<?php echo $projRow['collaborator'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
-                            <p>Collaborator</p>
+                            <a href="admin_viewPcp.php?prjID=<?php echo $projRow['prjID'];?>"><i class="fa-solid fa-users-line fa-2xl pcpIcon"></i></a>
+                            <p>Participants</p>
                         </div>
                         
                         <a href="admin_editPrj.php?prjID=<?php echo $projRow['prjID'];?>">
@@ -126,116 +126,6 @@
                 }
 
             ?>
-
-            <!-- <div class="prog">
-                <div id="desc">
-                    <h2>Recycling Program</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="proj">
-                <div id="desc">
-                    <h2>Gardening Project</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="proj">
-                    <div id="desc">
-                        <h2>Gardening Project</h2>
-                        <p>Summary of program
-                            <br>...
-                            <br>...
-                        </p>
-                    </div>
-                    
-                    <div class="actIcon">
-                        <div id="collab">
-                            <i class="fa-solid fa-users fa-xl collabIcon"></i>
-                            <p>Collaborator</p>
-                        </div>
-                        
-                        <div id="edit">
-                            <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                            <p>Edit</p>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="prog">
-                <div id="desc">
-                    <h2>Recycling Program</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="prog">
-                <div id="desc">
-                    <h2>Recycling Program</h2>
-                    <p>Summary of program
-                        <br>...
-                        <br>...
-                    </p>
-                </div>
-                
-                <div class="actIcon">
-                    <div id="collab">
-                        <i class="fa-solid fa-users fa-xl collabIcon"></i>
-                        <p>Collaborator</p>
-                    </div>
-                    
-                    <div id="edit">
-                        <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                        <p>Edit</p>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </body>

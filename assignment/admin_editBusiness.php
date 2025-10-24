@@ -2,10 +2,28 @@
     include 'dbConn.php';
     session_start();
 
-    $busID = $_GET['busID'];
+    if (isset($_GET['busID'])) {
+        $busID = $_GET['busID'];
+    } else {
+        echo "<script>
+        alert('No business selected.');
+        window.location.href='admin_business.php';
+        </script>";
+        exit;
+    }
+
+     $sql = "SELECT * FROM tblbusiness WHERE busID = '".$_GET['busID']."'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $name = $row['name'];
+            $busType = $row['busType'];
+            $desc = $row['description'];
+            $location = $row['location'];
+            $phoneNum = $row['phoneNum'];
+            $img = $row['busImg'];
 
     $target_dir = "images/business/";
-    $defaultImg = "images/image(6).png";
 
     //get frm client side
     if(isset($_POST['btnSave'])){
@@ -16,7 +34,7 @@
         $phoneNum = $_POST['txtBusPhone'];
         
         //handle img upload
-        $imgName = $defaultImg;
+        $imgName = $img;
 
         if(!empty($_FILES["fileToUpload"]["name"])){
             $fileName = basename($_FILES["fileToUpload"]["name"]);
@@ -68,19 +86,6 @@
     <div id="content">
         <a href="admin_business.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Edit Business</h1>
-
-        <?php
-            $sql = "SELECT * FROM tblbusiness WHERE busID = '".$_GET['busID']."'";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-
-            $name = $row['name'];
-            $busType = $row['busType'];
-            $desc = $row['description'];
-            $location = $row['location'];
-            $phoneNum = $row['phoneNum'];
-            $img = $row['busImg'];
-        ?>
 
         <div id="uploadPic">
             <form action="" method="post" enctype="multipart/form-data">

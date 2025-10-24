@@ -32,7 +32,13 @@
             ?>
                 <h2>Hello, <?php echo $_SESSION['fullname']; ?></h2>
 
-            <?php }?>
+            <?php }else{
+                echo "<script>
+                alert('Invalid admin.');
+                window.location.href='login.php';
+                </script>";
+                exit;
+            }?>
             <p id="sub">What would you like to do?</p> 
         </section>
 

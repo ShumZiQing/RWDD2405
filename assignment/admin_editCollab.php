@@ -2,7 +2,26 @@
     include 'dbConn.php';
     session_start();
 
-    $collabID = $_GET['collabID'];
+    if (isset($_GET['collabID'])) {
+        $collabID = $_GET['collabID'];
+    } else {
+        echo "<script>
+        alert('No collaborator selected.');
+        window.location.href='admin_home.php';
+        </script>";
+        exit;
+    }
+
+    $sql = "SELECT * FROM tblcollaborator WHERE collabID = '".$_GET['collabID']."'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $name = $row['name'];
+            $email = $row['email'];
+            $phoneNo = $row['phoneNum'];
+            $orgType = $row['orgType'];
+            $progInvolved = $row['progInvolved'];
+            $img = $row['image'];
 
     if(isset($_POST['btnSave'])){
         $name = $_POST['txtName'];
@@ -14,7 +33,7 @@
         //handle img upload
         $target_dir = "images/collaborator/";
         $defaultImg = "images/upload-user.png";
-        $imgName = $defaultImg;
+        $imgName = $img;
 
         if(!empty($_FILES["fileToUpload"]["name"])){
             $fileName = basename($_FILES["fileToUpload"]["name"]);
@@ -65,19 +84,6 @@
         </div> 
         <a href="admin_collab.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Edit Collaborator</h1>
-
-        <?php
-            $sql = "SELECT * FROM tblcollaborator WHERE collabID = '".$_GET['collabID']."'";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-
-            $name = $row['name'];
-            $email = $row['email'];
-            $phoneNo = $row['phoneNum'];
-            $orgType = $row['orgType'];
-            $progInvolved = $row['progInvolved'];
-            $img = $row['image'];
-        ?>
 
         <div id="uploadProfile">
             <form action="" method="post" enctype="multipart/form-data">

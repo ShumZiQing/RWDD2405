@@ -2,7 +2,26 @@
     include 'dbConn.php';
     session_start();
 
-    $gTipID = $_GET['gTipID'];
+    if (isset($_GET['gTipID'])) {
+        $gTipID = $_GET['gTipID'];
+    } else {
+        echo "<script>
+        alert('No Garden Tip selected.');
+        window.location.href='admin_gardenTips.php';
+        </script>";
+        exit;
+    }
+    
+     $sql = "SELECT * FROM tblgardentips WHERE gTipID = '".$_GET['gTipID']."'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $name = $row['gTipName'];
+            $datePublished = $row['gTipDate'];
+            $content = $row['gTipContent'];
+            $likes = $row['gTipLikes'];
+            $user = $row['userID'];
+            $img = $row['gTipImage'];
 
     //get frm client side
     if(isset($_POST['btnSave'])){
@@ -13,7 +32,7 @@
         //handle img upload
         $target_dir = "images/gardenTips/";
         $defaultImg = "images/image(6).png";
-        $imgName = $defaultImg;
+        $imgName = $img;
 
         if(!empty($_FILES["fileToUpload"]["name"])){
             $fileName = basename($_FILES["fileToUpload"]["name"]);
@@ -65,19 +84,6 @@
     <div id="content">
         <a href="admin_gardenTips.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Edit Gardening Tips</h1>
-
-        <?php
-            $sql = "SELECT * FROM tblgardentips WHERE gTipID = '".$_GET['gTipID']."'";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-
-            $name = $row['gTipName'];
-            $datePublished = $row['gTipDate'];
-            $content = $row['gTipContent'];
-            $likes = $row['gTipLikes'];
-            $user = $row['userID'];
-            $img = $row['gTipImage'];
-        ?>
 
         <div id="uploadPic">
             <form action="" method="post" enctype="multipart/form-data">

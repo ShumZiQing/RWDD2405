@@ -177,6 +177,18 @@
     #box{
         margin-left: 15%;
     }
+
+    #uploadProfile{
+        width: 245px;
+    }
+
+    #uploadIcon{
+        margin-left: 89%;
+    }
+
+    #user{
+        margin-left: 23%;
+    }
     
     .forms{
         width: 40vh;
@@ -235,6 +247,13 @@
         top: 12%;
     }
     
+    #uploadProfile{
+        margin-left: 13%;
+    }
+
+    #user{
+        margin-left: 27%;
+    }
     #box{
         margin-left: 10%;
     }

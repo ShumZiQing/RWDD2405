@@ -137,7 +137,7 @@
 
             <tr>
                 <td>Email: </td>
-                <td>admin@gmail.com</td>
+                <td><?php echo $email; ?></td>
             </tr>
 
             <tr>

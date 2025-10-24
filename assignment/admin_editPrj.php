@@ -55,8 +55,26 @@
         $collabEmail = $_POST['txtEmail'];
         $status = $_POST['txtStatus'];
 
+        //handle img upload
+        $target_dir = "images/";
+        $defaultImg = "images/image(6).png";
+        $imgName = $prjImg;
+
+        if(!empty($_FILES["prjImg"]["name"])){
+            $fileName = basename($_FILES["prjImg"]["name"]);
+            $target_file = $target_dir . $fileName;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["prjImg"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)) {
+                    $imgName = $target_file; 
+                }
+            }
+        }
+
         $update = "UPDATE tblprojects SET
-                prjName = '$prjName', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', prjDetails = '$prjDetails', location = '$location', collaborator = '$collaborator',collabEmail = '$collabEmail',  status = '$status'
+                prjName = '$prjName', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', prjDetails = '$prjDetails', location = '$location', collaborator = '$collaborator',collabEmail = '$collabEmail',  status = '$status', prjImg = '$imgName'
                     WHERE prjID = '$prjID'";
 
         $result = mysqli_query($conn, $update);
@@ -102,14 +120,11 @@
     </div>
 
     <div id="content">
-        <form action="admin_editPrj.php?prjID=<?php echo $prjID; ?>" method="POST">
+        <form action="admin_editPrj.php?prjID=<?php echo $prjID; ?>" method="POST" enctype="multipart/form-data">
         <table>
                 <tr>
                     <td><i class="fa-solid fa-image icon"></i></td>
                     <td>
-                        <?php if (!empty($prjImg)): ?>
-                            <img src="images/<?php echo $prjImg; ?>" style="max-width: 300px; max-height: 300px">
-                        <?php endif; ?>
                         <input type="file" name="prjImg" accept="image/*" class="upload">
                     </td>
                 </tr>    
@@ -146,10 +161,10 @@
                 <td><i class="fa-solid fa-location-dot icon"></i></td>
                 <td><select name="txtLocation"  class="info" required>
                     <option value="Taman Merah" <?php if($location=='Taman Merah') echo 'selected'; ?>>Taman Merah</option>
-                    <option value="Taman Siakap" <?php if($locaiton=='Taman Siakap') echo 'selected'; ?>>Taman Siakap</option>
-                    <option value="Taman Cempaka>" <?php if($locaiton=='Taman Cempaka') echo 'selected'; ?>>Taman Cempaka</option>
-                    <option value="Taman Anggerik" <?php if($locaiton=='Taman Anggerik') echo 'selected'; ?>>Taman Anggerik</option>
-                    <option value="Taman Seri Mutiara" <?php if($locaiton=='Taman Seri Mutiara') echo 'selected'; ?>>Taman Seri Mutiara</option>
+                    <option value="Taman Siakap" <?php if($location=='Taman Siakap') echo 'selected'; ?>>Taman Siakap</option>
+                    <option value="Taman Cempaka>" <?php if($location=='Taman Cempaka') echo 'selected'; ?>>Taman Cempaka</option>
+                    <option value="Taman Anggerik" <?php if($location=='Taman Anggerik') echo 'selected'; ?>>Taman Anggerik</option>
+                    <option value="Taman Seri Mutiara" <?php if($location=='Taman Seri Mutiara') echo 'selected'; ?>>Taman Seri Mutiara</option>
                 </select></td>
             </tr>
 
@@ -189,7 +204,7 @@
     </div>
     
     <div class="button">
-        <a href="deletePrj.php?prjID=<?php echo $prjID; ?>" onclick="return confirm('Are you sure you want to delete this project?')">
+        <a href="admin_deletePrj.php?prjID=<?php echo $prjID; ?>" onclick="return confirm('Are you sure you want to delete this project?')">
             <input type="button" value="Delete" class="delete">
         </a>
         <input type="submit" value="Save" name="btnSave" class="save">

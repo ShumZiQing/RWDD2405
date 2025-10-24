@@ -14,7 +14,6 @@ if (isset($_POST['btnSave'])) {
     $collaborator = $_POST['txtOrganizer'];
     $collabEmail = $_POST['txtEmail'];
     $status = $_POST['txtStatus'];
-    $prjImg = $_POST['prjImg'];
 
     // Upload image
     $target_dir = "images/";
@@ -23,7 +22,7 @@ if (isset($_POST['btnSave'])) {
 
     if (!empty($_FILES['prjImg']['name'])) {
             $filename = basename($_FILES['prjImg']['name']);
-            $target_file = &$target_dir . $filename;
+            $target_file = $target_dir . $filename;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             $check = getimagesize(($_FILES["prjImg"]["tmp_name"]));
@@ -36,7 +35,7 @@ if (isset($_POST['btnSave'])) {
 
 
     $sql = "INSERT INTO tblprojects(prjName, startDate, endDate, startTime, endTime, prjDetails, location, collaborator, collabEmail, status, prjImg) VALUES
-            ('$prjName', '$startDate', '$endDate', '$startTime', '$endTime', '$prjDetails', '$location', '$collaborator', '$collabEmail', '$status', '$prjImg')";
+            ('$prjName', '$startDate', '$endDate', '$startTime', '$endTime', '$prjDetails', '$location', '$collaborator', '$collabEmail', '$status', '$imgName')";
 
     $result = mysqli_query($conn, $sql);
 
@@ -86,7 +85,7 @@ if (isset($_POST['btnSave'])) {
     </div>
 
     <div id="content">
-        <form action="admin_addPrj.php" method="POST">
+        <form action="admin_addPrj.php" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td><i class="fa-solid fa-image icon"></i></td>

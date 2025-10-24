@@ -2,7 +2,25 @@
     include 'dbConn.php';
     session_start();
 
-    $eTipID = $_GET['eTipID'];
+    if (isset($_GET['eTipID'])) {
+        $eTipID = $_GET['eTipID'];
+    } else {
+        echo "<script>
+        alert('No Energy Tip selected.');
+        window.location.href='admin_energyTips.php';
+        </script>";
+        exit;
+    }
+
+    $sql = "SELECT * FROM tblenergytips WHERE eTipID = '".$_GET['eTipID']."'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $name = $row['eTipName'];
+            $content = $row['eTipContent'];
+            $type = $row['eTipType'];
+            $user = $row['userID'];
+            $img = $row['eTipImage'];
 
     //get frm client side
     if(isset($_POST['btnSave'])){
@@ -13,7 +31,7 @@
         //handle img upload
         $target_dir = "images/energyTips/";
         $defaultImg = "images/image(6).png";
-        $imgName = $defaultImg;
+        $imgName = $img;
 
         if(!empty($_FILES["fileToUpload"]["name"])){
             $fileName = basename($_FILES["fileToUpload"]["name"]);
@@ -69,18 +87,6 @@
     <div id="content">
         <a href="admin_energyTips.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Edit Energy Tips</h1>
-
-        <?php
-            $sql = "SELECT * FROM tblenergytips WHERE eTipID = '".$_GET['eTipID']."'";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-
-            $name = $row['eTipName'];
-            $content = $row['eTipContent'];
-            $type = $row['eTipType'];
-            $user = $row['userID'];
-            $img = $row['eTipImage'];
-        ?>
 
         <div id="uploadPic">
             <form action="" method="post" enctype="multipart/form-data">
