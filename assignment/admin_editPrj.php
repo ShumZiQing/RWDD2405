@@ -145,20 +145,28 @@
             <tr>
                 <td><i class="fa-solid fa-location-dot icon"></i></td>
                 <td><select name="txtLocation"  class="info" required>
-                    <option value="location1" <?php if($location=='Taman Merah') echo 'selected'; ?>>Taman Merah</option>
-                    <option value="location2" <?php if($locaiton=='Taman Siakap') echo 'selected'; ?>>Taman Siakap</option>
-                    <option value="location3" <?php if($locaiton=='Taman Cempaka') echo 'selected'; ?>>Taman Cempaka></option>
-                    <option value="location4" <?php if($locaiton=='Taman Anggerik') echo 'selected'; ?>>Taman Anggerik</option>
-                    <option value="location5" <?php if($locaiton=='Taman Seri Mutiara') echo 'selected'; ?>>Taman Seri Mutiara</option>
+                    <option value="Taman Merah" <?php if($location=='Taman Merah') echo 'selected'; ?>>Taman Merah</option>
+                    <option value="Taman Siakap" <?php if($locaiton=='Taman Siakap') echo 'selected'; ?>>Taman Siakap</option>
+                    <option value="Taman Cempaka>" <?php if($locaiton=='Taman Cempaka') echo 'selected'; ?>>Taman Cempaka</option>
+                    <option value="Taman Anggerik" <?php if($locaiton=='Taman Anggerik') echo 'selected'; ?>>Taman Anggerik</option>
+                    <option value="Taman Seri Mutiara" <?php if($locaiton=='Taman Seri Mutiara') echo 'selected'; ?>>Taman Seri Mutiara</option>
                 </select></td>
             </tr>
 
             <tr>
                 <td><i class="fa-solid fa-user icon"></i></td>
                 <td><select name="txtOrganizer"  class="info" required>
-                    <option value="ORG1" <?php if($collaborator=='Urban Bloom Association') echo 'selected'; ?>>Urban Bloom Association</option>
-                    <option value="ORG2" <?php if($collaborator=='NatureNurture Club') echo 'selected'; ?>>NatureNurture Club</option>
-                    <option value="ORG3" <?php if($collaborator=='Greenpeace') echo 'selected'; ?>>Greenpeace</option>
+                    <?php
+                        $sql = "SELECT * FROM tblcollaborator";
+                        $result = mysqli_query($conn, $sql);
+ 
+                        while($row = mysqli_fetch_assoc($result)){
+                            $name = $row['name'];?>
+ 
+                            <option value="<?php echo $name?>"><?php echo $name?></option>
+                        <?php
+                        }
+                    ?>
                 </select></td>
             </tr>
 
