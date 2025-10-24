@@ -21,9 +21,8 @@
             $desc = $row['description'];
             $location = $row['location'];
             $phoneNum = $row['phoneNum'];
-            $img = $row['busImg'];
 
-    $target_dir = "images/business/";
+    $target_dir = "busImages/";
 
     //get frm client side
     if(isset($_POST['btnSave'])){
@@ -34,17 +33,22 @@
         $phoneNum = $_POST['txtBusPhone'];
         
         //handle img upload
-        $imgName = $img;
+        $defaultImg = "image(6).png"; 
+        $imgName = $row['busImg']; 
 
         if(!empty($_FILES["fileToUpload"]["name"])){
-            $fileName = basename($_FILES["fileToUpload"]["name"]);
-            $target_file = $target_dir . $fileName;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $imgName = $target_file; 
+            $fileExt = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+            $allowedTypes = ['png', 'jpg', 'jpeg'];
+            
+            if (in_array($fileExt, $allowedTypes)) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    $uniqueName = uniqid('business_', true) . '.' . $fileExt;
+                    $target_file = $target_dir . $uniqueName;
+                    
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $imgName = $uniqueName; 
+                    }
                 }
             }
         }
@@ -89,7 +93,9 @@
 
         <div id="uploadPic">
             <form action="" method="post" enctype="multipart/form-data">
-                <img src= <?php echo $img ?> alt="upload-image" id="user">
+                <?php if (!empty($row['busImg'])): ?>
+                <img src="busImages/<?= htmlspecialchars($row['busImg']) ?>" alt="upload-image" id="user">
+                <?php endif; ?>
                 <i class="fa-solid fa-arrow-up-from-bracket upld" id="uploadIcon"></i>
                 <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
         </div>

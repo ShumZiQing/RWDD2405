@@ -37,7 +37,7 @@
             <div id="feature">
                 <div id="search">
                     <form action="" method = "get">
-                        <input type="text" name="txtSearch" placeholder="Search program" id="searchBar" autocomplete = "off">
+                        <input type="text" name="txtSearch" placeholder="Search collab" id="searchBar" autocomplete = "off">
                         <button type="submit" name="btnSearch" id="searchButton"><img src="images/magnifying-glass.png" alt="search" class="icon"></button>
                     </form>
                 </div>
@@ -51,17 +51,17 @@
         </div>
         
         <?php
-            //add proj table too
             $result = mysqli_query($conn, $sql);
 
             while($row = mysqli_fetch_assoc($result)){
                 $collabID = $row['collabID'];
                 $name = $row['name'];
-                $img = $row['image'];
             ?>
 
             <div class="indiBus" onclick='window.location="admin_collabDetail.php?collabID=<?php echo $collabID;?>"'>
-                    <img src="<?php echo $img?>" alt="user" id="picture">
+                <?php if (!empty($row['image'])): ?>
+                <img src="collabImages/<?= htmlspecialchars($row['image']) ?>" alt="user" id="picture">
+                <?php endif; ?>
 
                     <div id="text">
                         <h2>Collab #<?php echo $collabID?></h2>
@@ -83,70 +83,7 @@
 
         ?>
 
-        </div> 
-        <!-- <div id="businesses">
-            <div class="indiBus">
-                <img src="images/upload-user.png" alt="user" id="picture">
-
-                <div id="text">
-                    <h2>Collab ID</h2>
-                    <p id="cName">Collab Name</p>
-                </div>
-
-                <div id="icons">
-                    <a href="admin_editCollab.php"><i class="fa-solid fa-pen-to-square fa-xl editIcon"></i></a>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
         </div>
-
-        <div id="businesses">
-            <div class="indiBus">
-                <img src="images/upload-user.png" alt="user" id="picture">
-
-                <div id="text">
-                    <h2>Collab ID</h2>
-                    <p id="cName">Collab Name</p>
-                </div>
-
-                <div id="icons">
-                    <a href="admin_editCollab.php"><i class="fa-solid fa-pen-to-square fa-xl editIcon"></i></a>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-
-        <div id="businesses">
-            <div class="indiBus">
-                <img src="images/upload-user.png" alt="user" id="picture">
-
-                <div id="text">
-                    <h2>Collab ID</h2>
-                    <p id="cName">Collab Name</p>
-                </div>
-
-                <div id="icons">
-                    <a href="admin_editCollab.php"><i class="fa-solid fa-pen-to-square fa-xl editIcon"></i></a>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-
-         <div id="businesses">
-            <div class="indiBus">
-                <img src="images/upload-user.png" alt="user" id="picture">
-
-                <div id="text">
-                    <h2>Collab ID</h2>
-                    <p id="cName">Collab Name</p>
-                </div>
-
-                <div id="icons">
-                    <a href="admin_editCollab.php"><i class="fa-solid fa-pen-to-square fa-xl editIcon"></i></a>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>-->
     
 </body>
 </html>

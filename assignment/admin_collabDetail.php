@@ -52,11 +52,12 @@
             $phoneNo = $row['phoneNum'];
             $orgType = $row['orgType'];
             $progInvolved = $row['progInvolved'];
-            $image = $row['image'];
         ?>
 
         <div id="mainInfo">
-            <img src="<?php echo $image?>" alt="" id="collabImg">
+            <?php if (!empty($row['image'])): ?>
+                <img src="collabImages/<?= htmlspecialchars($row['image']) ?>" alt="" id="collabImg">
+                <?php endif; ?>
 
             <div id="desc">
                 <h1>Collaborator <?php echo $collabID?></h1>

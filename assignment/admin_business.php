@@ -35,7 +35,7 @@
             <h1>All Businesses</h1>
             <div id="search">
                 <form action="" method = "get">
-                        <input type="text" name="txtSearch" placeholder="Search program" id="searchBar" autocomplete = "off">
+                        <input type="text" name="txtSearch" placeholder="Search business" id="searchBar" autocomplete = "off">
                         <button type="submit" name="btnSearch" id="searchButton"><img src="images/magnifying-glass.png" alt="search" class="icon"></button>
                 </form>
             </div>
@@ -49,7 +49,6 @@
                 $name = $row['name'];
                 $desc = $row['description'];
                 $userID = $row['userID'];
-                $img = $row['busImg'];
 
                 $userSQL= "SELECT * FROM tbluser WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);
@@ -59,7 +58,9 @@
                 ?>
 
                 <div class="indiBus">
-                    <img src="<?php echo $img?>" alt="picture" id="picture">
+                    <?php if (!empty($row['busImg'])): ?>
+                    <img src="busImages/<?= htmlspecialchars($row['busImg']) ?>" alt="picture" id="picture">
+                    <?php endif; ?>
 
                     <div id="text">
                         <!--get picture-->
@@ -82,90 +83,5 @@
             }
 
         ?>
-        <!-- <div id="businesses">
-            <div class="indiBus">
-                <img src="images/image (6).png" alt="picture" id="picture">
-
-                <div id="text">
-                    <h2>Business A</h2>
-                    <p id="summary">Summary</p>
-                    <p id="user">Added by: user</p>
-                </div>
-
-                <div id="icons">
-                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-
-        <div id="businesses">
-            <div class="indiBus">
-                <img src="images/image (6).png" alt="picture" id="picture">
-
-                <div id="text">
-                    <h2>Business B</h2>
-                    <p id="summary">Summary</p>
-                    <p id="user">Added by: user</p>
-                </div>
-
-                <div id="icons">
-                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-
-        <div id="businesses">
-            <div class="indiBus">
-                <img src="images/image (6).png" alt="picture" id="picture">
-
-                <div id="text">
-                    <h2>Business C</h2>
-                    <p id="summary">Summary</p>
-                    <p id="user">Added by: user</p>
-                </div>
-
-                <div id="icons">
-                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-
-        <div id="businesses">
-            <div class="indiBus">
-                <img src="images/image (6).png" alt="picture" id="picture">
-
-                <div id="text">
-                    <h2>Business D</h2>
-                    <p id="summary">Summary</p>
-                    <p id="user">Added by: user</p>
-                </div>
-
-                <div id="icons">
-                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-
-         <div id="businesses">
-            <div class="indiBus">
-                <img src="images/image (6).png" alt="picture" id="picture">
-
-                <div id="text">
-                    <h2>Business E</h2>
-                    <p id="summary">Summary</p>
-                    <p id="user">Added by: user</p>
-                </div>
-
-                <div id="icons">
-                    <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
-                    <i class="fa-solid fa-trash-can fa-xl deleteIcon"></i>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </body>
 </html>

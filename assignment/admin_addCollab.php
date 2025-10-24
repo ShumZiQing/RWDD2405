@@ -11,20 +11,23 @@
         $progInvolved = isset($_POST['selProgram']) ? implode(',', $_POST['selProgram']) : '';
 
         //handle img upload
-        $target_dir = "images/collaborator/";
-        $defaultImg = "images/upload-user.png";
+        $target_dir = "collabImages/";
+        $defaultImg = "upload-user.png"; 
         $imgName = $defaultImg;
 
-        if(!empty($_FILES["fileToUpload"]["name"])){
-            $fileName = basename($_FILES["fileToUpload"]["name"]);
-            $target_file = $target_dir . $fileName;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if (!empty($_FILES['fileToUpload']['name'])) {
+            $uploadDir = "collabImages/";
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $imgName = $target_file; 
-                }
+            $fileExt = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
+            $allowedTypes = ['png', 'jpg', 'jpeg'];
+
+            if (in_array($fileExt, $allowedTypes)) {
+            $uniqueName = uniqid('garden_', true) . '.' . $fileExt;
+            $targetFile = $uploadDir . $uniqueName;
+            if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile)) {
+                $imgName = $uniqueName;
+            }
             }
         }
 
@@ -77,13 +80,12 @@
         <h1>Add Collaborator</h1>
 
         <div id="uploadProfile">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="#" method="post" enctype="multipart/form-data">
                 <img src="images/upload-user.png" alt="upload-user" id="user">
                 <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
                 <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
         </div>
 
-        <form action="#" method="post">
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>
                 <input type="text" name="txtName" placeholder="Name" id="indiForm" required>
