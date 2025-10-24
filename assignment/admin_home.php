@@ -30,7 +30,7 @@
         <section class="selection">
             <div class="selection-box">
                 <img src="images/user-icon.png" alt="icon" class="icons">
-                <a href="#">Manage Users</a>
+                <a href="admin_mngUser.php">Manage Users</a>
             </div>
             
             <div id="nav-collab" class="selection-dropdown">
@@ -51,7 +51,7 @@
                         <li>Add activities 
                             <img src="images/down-arrow.png" alt="icon" class="arrow">
                             <ul>
-                                <a href="#"><li>Add Project</li></a>
+                                <a href="admin_addPrj.php"><li>Add Project</li></a>
                                 <a href="admin_addProg.php"><li>Add Program</li></a>
                             </ul>
                         </li>
