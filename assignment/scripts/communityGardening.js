@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = deleteBtn.closest(".card");
 
       if (confirm("Are you sure you want to delete this gardening tip?")) {
-        fetch("deleteTip.php", {
+        fetch("deleteGTip.php", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `tipID=${tipID}`,
