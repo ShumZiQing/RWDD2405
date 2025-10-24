@@ -1,0 +1,151 @@
+/* BANNER */
+.recycling .banner {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.recycling .banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.recycling .banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: #075085;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* FILTER */
+.filter {
+  padding: 20px;
+}
+
+.filter label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #075085;
+}
+
+.filter select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* PROGRAM LIST */
+.program-list {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.program-card {
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit;
+}
+
+.program-card * {
+  text-decoration: none;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.program-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.program-info {
+  padding: 15px;
+}
+
+.program-info h3 {
+  margin: 5px 0;
+  color: #075085;
+  text-align: center;
+}
+
+.program-info p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .recycling .banner img {
+    height: 300px;
+  }
+
+  .recycling .banner h2 {
+    font-size: 2.2rem;
+  }
+
+  .filter {
+    padding: 30px;
+  }
+
+  .program-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+  }
+
+  .program-card {
+    flex: 0 0 calc(50% - 20px);
+  }
+
+  .program-info p {
+    font-size: 1rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .recycling .banner img {
+    height: 380px;
+  }
+
+  .recycling .banner h2 {
+    font-size: 2.4rem;
+  }
+
+  .filter {
+    padding: 40px;
+  }
+
+  .program-list {
+    padding: 40px;
+  }
+
+  .program-card {
+    flex: 0 0 calc(33.333% - 20px); 
+  }
+
+  .program-info p {
+    font-size: 1.05rem;
+  }
+}
