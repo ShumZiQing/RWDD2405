@@ -58,7 +58,7 @@
 .business-details-container {
   max-width: 800px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1rem ;
   font-family: "Poppins", sans-serif;
 }
 
@@ -88,6 +88,13 @@
   margin: 0.4rem 0;
   color: #555;
 }
+
+@media (max-width: 600px) {
+  .business-details-container {
+    padding: 1rem;
+  }
+}
+
 
 .separator {
   border: none;
