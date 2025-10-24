@@ -32,7 +32,7 @@
         }
 
         $sql = "UPDATE tblbusiness
-        SET name = '$name', busType = '$busType', description = '$desc', location = '$location', phoneNum = '$phoneNum', image = '$imgName'
+        SET name = '$name', busType = '$busType', description = '$desc', location = '$location', phoneNum = '$phoneNum', busImg = '$imgName'
         WHERE busID = $busID";
 
         if(mysqli_query($conn, $sql)){
@@ -79,7 +79,7 @@
             $desc = $row['description'];
             $location = $row['location'];
             $phoneNum = $row['phoneNum'];
-            $img = $row['image'];
+            $img = $row['busImg'];
         ?>
 
         <div id="uploadPic">
@@ -88,16 +88,6 @@
                 <i class="fa-solid fa-arrow-up-from-bracket upld" id="uploadIcon"></i>
                 <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
         </div>
-
-        <!-- <div id="uploadPic">
-            <i class="fa-solid fa-angle-left fa-xl LArrow"></i>
-            <img src="images/image (6).png" alt="image" id="pic">
-            <i class="fa-solid fa-angle-right fa-xl RArrow"></i>
-            <i class="fa-solid fa-trash fa-lg dlt"></i>
-            <i class="fa-solid fa-arrow-up-from-bracket fa-lg upld"></i>
-
-            add pic number when link to db 
-        </div> -->
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>

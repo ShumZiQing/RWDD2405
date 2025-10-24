@@ -115,7 +115,7 @@
             <div id="circle"><i class="fa-solid fa-tree fa-lg progIcon"></i></div>
             <select name="selProgram[]" id="multiSel" required multiple>
                 <?php
-                    $progSQL = "SELECT * FROM tblprogram";
+                    $progSQL = "SELECT * FROM tblprograms";
                     $progResult = mysqli_query($conn, $progSQL);
 
                     $currentProgs = explode(',', $progInvolved);

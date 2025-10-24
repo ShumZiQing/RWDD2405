@@ -4,6 +4,41 @@
     padding: 0;
 }
 
+#fileToUpload{
+    display: none;
+}
+
+#uploadProfile{
+    display: block;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    width: 500px;
+    height: 150px;
+    margin: 30px auto;
+    margin-bottom: 0;
+}
+
+.upload{
+    position: relative;
+    margin-left: 94%;
+    margin-top: 5px;
+    color: #075085;
+    width: 30px;
+    height: 20px;
+}
+
+.upload:hover{
+    color: #147ec9;
+    cursor: pointer;
+}
+
+#user{
+    position: absolute;
+    margin: 30px 14%;
+    width: 80px;
+}
+
 #side {
     width: 11%;
     position: fixed;

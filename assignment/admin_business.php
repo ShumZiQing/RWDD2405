@@ -48,8 +48,8 @@
                 $busID = $row['busID'];
                 $name = $row['name'];
                 $desc = $row['description'];
-                $userID = $row['user'];
-                $img = $row['image'];
+                $userID = $row['userID'];
+                $img = $row['busImg'];
 
                 $userSQL= "SELECT * FROM tbluser WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);

@@ -15,8 +15,26 @@
        $freq = $_POST['selFrequency'];
        $collab = $_POST['selCollab'];
 
-       $sql = "INSERT INTO tblprogram(progName, startDate, endDate, startTime, endTime, progDetails, recyclablesType, location, frequency, collaborators)
-        VALUES ('$name', '$startDate', '$endDate', '$startTime', '$endTime', '$desc', '$recyclables', '$location', '$freq', '$collab')";
+       //handle img upload
+        $target_dir = "images/";
+        $defaultImg = "images/image(6).png";
+        $imgName = $defaultImg;
+
+        if(!empty($_FILES["fileToUpload"]["name"])){
+            $fileName = basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $target_dir . $fileName;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $imgName = $target_file; 
+                }
+            }
+        }
+
+       $sql = "INSERT INTO tblprograms(progName, startDate, endDate, startTime, endTime, progDetails, recyclablesType, location, frequency, collabName, progImage)
+        VALUES ('$name', '$startDate', '$endDate', '$startTime', '$endTime', '$desc', '$recyclables', '$location', '$freq', '$collab', '$imgName')";
 
         if(mysqli_query($conn, $sql)){
             //redirect with html instead
@@ -71,7 +89,13 @@
         <h1>Add Program</h1>
 
     <div id="box">
-        <form action="#" method="post">
+        <div id="uploadProfile">
+            <form action="" method="post" enctype="multipart/form-data">
+                <img src="images/image(6).png" alt="upload-user" id="user">
+                <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+        </div>
+
         <div class="forms">
             <div id="circle"><i class="fa-solid fa-heading fa-lg nameIcon"></i></div>
             <input type="text" name = "txtName" id="indiForm" required placeholder = "Program Title">
@@ -99,10 +123,10 @@
         <div class="forms">
             <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
                 <select name="selRecyclable[]" id="multiSel" required multiple>
-                    <option value="PLT">Plastic</option>
-                    <option value="MTL">Metal</option>
-                    <option value="PPR">Paper</option>
-                    <option value="GLS">Glass</option>
+                    <option value="plastic">Plastic</option>
+                    <option value="metal">Metal</option>
+                    <option value="paper">Paper</option>
+                    <option value="glass">Glass</option>
                 </select>
         </div>
 
@@ -149,5 +173,25 @@
         </form>
     </div>
     </div>
+
+    <script>
+        //upload img
+        document.getElementById('uploadIcon').addEventListener('click', () => {
+            document.getElementById('fileToUpload').click();
+        });
+
+
+        //preview img
+        document.getElementById('fileToUpload').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('user').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>   
 </body>
 </html>

@@ -2,7 +2,7 @@
     include 'dbConn.php';
 
     $progID = $_GET['progID'];
-    $sql = "SELECT * FROM tblprogram WHERE progID = '".$_GET['progID']."'";
+    $sql = "SELECT * FROM tblprograms WHERE progID = '".$_GET['progID']."'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
@@ -15,7 +15,8 @@
     $recyclables = $row['recyclablesType'];
     $location = $row['location'];
     $freq = $row['frequency'];
-    $collabName = $row['collaborators'];
+    $collabName = $row['collabName'];
+    $progImage = $row['progImage'];
 
     $recyclablesArr = explode(',', $recyclables);
     $locationArr = explode(',', $location);
@@ -32,9 +33,27 @@
         $freq = $_POST['selFrequency'];
         $collabName = $_POST['selCollab'];
 
-        $sql="UPDATE tblprogram 
+        //handle img upload
+        $target_dir = "images/";
+        $defaultImg = "images/image(6).png";
+        $imgName = $defaultImg;
+
+        if(!empty($_FILES["fileToUpload"]["name"])){
+            $fileName = basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $target_dir . $fileName;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $imgName = $target_file; 
+                }
+            }
+        }
+
+        $sql="UPDATE tblprograms 
         SET progName = '$name', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', progDetails = '$desc', 
-        recyclablesType = '$recyclables', location = '$location', frequency = '$freq', collaborators = '$collabName'
+        recyclablesType = '$recyclables', location = '$location', frequency = '$freq', collabName = '$collabName', progImage = '$imgName'
         WHERE progID = '".$_GET['progID']."'";
 
         if(mysqli_query($conn, $sql)){
@@ -78,7 +97,13 @@
         <a href="admin_activities.php"><i class="fa-solid fa-arrow-left fa-lg returnArrow"></i></a>
         <h1>Edit Program</h1>
 
-    <form action="#" method="post">
+    <div id="uploadProfile">
+            <form action="" method="post" enctype="multipart/form-data">
+                <img src= <?php echo $progImage?> alt="upload-user" id="user">
+                <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+        </div>
+
     <div id="box">
         <div class="forms">
             <div id="circle"><i class="fa-solid fa-heading fa-lg nameIcon"></i></div>
@@ -107,10 +132,10 @@
         <div class="forms">
             <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
                 <select name="selRecyclable[]" id="indiSel" multiple required>
-                    <option value="PLT" <?php if(in_array('PLT', $recyclablesArr)) echo 'selected';?>>Plastic</option>
-                    <option value="MTL" <?php if(in_array('MTL', $recyclablesArr)) echo 'selected';?>>Metal</option>
-                    <option value="PPR" <?php if(in_array('PPR', $recyclablesArr)) echo 'selected';?>>Paper</option>
-                    <option value="GLS" <?php if(in_array('GLS', $recyclablesArr)) echo 'selected';?>>Glass</option>
+                    <option value="plastic" <?php if(in_array('plastic', $recyclablesArr)) echo 'selected';?>>Plastic</option>
+                    <option value="metal" <?php if(in_array('metal', $recyclablesArr)) echo 'selected';?>>Metal</option>
+                    <option value="paper" <?php if(in_array('paper', $recyclablesArr)) echo 'selected';?>>Paper</option>
+                    <option value="glass" <?php if(in_array('glass', $recyclablesArr)) echo 'selected';?>>Glass</option>
                 </select>
         </div>
 
@@ -162,5 +187,25 @@
         </div>
     </div>
     </div>
+
+    <script>
+        //upload img
+        document.getElementById('uploadIcon').addEventListener('click', () => {
+            document.getElementById('fileToUpload').click();
+        });
+
+
+        //preview img
+        document.getElementById('fileToUpload').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('user').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

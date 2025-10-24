@@ -66,7 +66,6 @@
                 $datePublished = $row['gTipDate'];
                 $content = $row['gTipContent'];
                 $likes = $row['gTipLikes'];
-                $dislikes = $row['gTipDislikes'];
                 $userID = $row['userID'];
                 $img = $row['gTipImage'];
 

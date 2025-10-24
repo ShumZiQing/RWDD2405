@@ -10,7 +10,7 @@
         $orgType = $_POST['selCollab'];
         $progInvolved = isset($_POST['selProgram']) ? implode(',', $_POST['selProgram']) : '';
 
-        #handle img upload
+        //handle img upload
         $target_dir = "images/collaborator/";
         $defaultImg = "images/upload-user.png";
         $imgName = $defaultImg;

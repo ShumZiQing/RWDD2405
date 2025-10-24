@@ -4,11 +4,11 @@
 
     if(isset($_GET['btnSearch'])){
         $search = $_GET['txtSearch'];
-        $progSql = "SELECT * FROM tblprogram WHERE progName LIKE '%$search%'";
+        $progSql = "SELECT * FROM tblprograms WHERE progName LIKE '%$search%'";
         $projSql = "SELECT * FROM tblprojects WHERE prjName LIKE '%$search%'";
 
     }else{
-        $progSql = "SELECT * FROM tblprogram";
+        $progSql = "SELECT * FROM tblprograms";
         $projSql = "SELECT * FROM tblprojects";
     }
 ?>
@@ -60,9 +60,11 @@
                     $progID = $progRow['progID'];
                     $progName = $progRow['progName'];
                     $progDesc = $progRow['progDetails'];
+                    $progImg = $progRow['progImage'];
                     ?>
 
                     <div class="prog">
+                        <img src="<?php echo $progImg?>" alt="picture" id="picture">
                     <div id="desc">
                         <h2><?php echo $progName?></h2>
                         <p><?php echo $progDesc?></p>
@@ -70,7 +72,7 @@
                     
                     <div class="actIcon">
                         <div id="collab">
-                            <a href="admin_collabDetail.php?collabName=<?php echo $progRow['collaborators'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
+                            <a href="admin_collabDetail.php?collabName=<?php echo $progRow['collabName'];?>"><i class="fa-solid fa-users fa-xl collabIcon"></i></a>
                             <p>Collaborator</p>
                         </div>
                         
@@ -95,9 +97,11 @@
                     $projID = $projRow['prjID'];
                     $projName = $projRow['prjName'];
                     $projDesc = $projRow['prjDetails'];
+                    $projImg = $projRow['prjImg'];
                     ?>
 
                     <div class="proj">
+                        <img src="<?php echo $projImg?>" alt="picture" id="picture">
                     <div id="desc">
                         <h2><?php echo $projName?></h2>
                         <p><?php echo $projDesc?></p>
