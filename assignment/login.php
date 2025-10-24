@@ -26,9 +26,8 @@ if(isset($_POST['btnLogin'])){
         $errorMsg = "Invalid email or password.";
     }
 }
-
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +37,7 @@ if(isset($_POST['btnLogin'])){
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login-register.css">
 </head>
-
+ 
 <body>
     <header class="header">
         <div class="logo-container">
@@ -48,19 +47,18 @@ if(isset($_POST['btnLogin'])){
             </a>
         </div>
     </header>
-
+ 
     <div class="container">
         <img src="images/loginRegisterImg.jpg" alt="EcoConnect Login Image" class="login_register-IMG">
-
+ 
         <h2>Login</h2>
         <?php if(!empty($errorMsg)) echo "<p class='error-msg'>$errorMsg</p>"; ?>
-
         <form action="" method="POST" class="form-box">
             <input type="text" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit" class="btn" name="btnLogin">Login</button>
         </form>
-
+ 
         <p class="text-small">
             Don’t have an account? <a href="register.php">Register</a>
         </p>
