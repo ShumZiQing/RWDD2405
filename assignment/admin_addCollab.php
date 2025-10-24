@@ -113,7 +113,7 @@
             <div id="circle"><i class="fa-solid fa-tree fa-lg progIcon"></i></div>
             <select name="selProgram[]" id="multiSel" required multiple>
                 <?php
-                    $sql = "SELECT * FROM tblprogram";
+                    $sql = "SELECT * FROM tblprograms";
                     $result = mysqli_query($conn, $sql);
 
                     while($row = mysqli_fetch_assoc($result)){
