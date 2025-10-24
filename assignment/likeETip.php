@@ -1,6 +1,7 @@
 <?php
 include 'dbConn.php';
 session_start();
+header('Content-Type: application/json');
 
 if (!isset($_SESSION['userid'])) {
     echo json_encode(['success' => false, 'message' => 'Not logged in']);
@@ -12,36 +13,46 @@ if (!isset($_POST['eTipID'])) {
     exit;
 }
 
-$etipID = intval($_POST['eTipID']);
+$eTipID = intval($_POST['eTipID']);
+$userID = intval($_SESSION['userid']);
 
-if (!isset($_SESSION['liked_tips'])) {
-    $_SESSION['liked_tips'] = [];
+// Check tip exists
+$chk = mysqli_query($conn, "SELECT eTipID FROM tblenergytips WHERE eTipID = $eTipID");
+if (!$chk || mysqli_num_rows($chk) === 0) {
+    echo json_encode(['success' => false, 'message' => 'Tip not found']);
+    exit;
 }
 
-if (in_array($etipID, $_SESSION['liked_tips'])) {
-    $updateQuery = "UPDATE tblenergytips 
-                    SET eTipLikes = GREATEST(eTipLikes - 1, 0)
-                    WHERE eTipID = $etipID";
+// Check if user already liked this eTip
+$existsQ = mysqli_query($conn, "SELECT * FROM tblfavourites 
+                               WHERE userID = $userID AND eTipID = $eTipID");
 
-    if (mysqli_query($conn, $updateQuery)) {
-        $_SESSION['liked_tips'] = array_diff($_SESSION['liked_tips'], [$etipID]);
-        $result = mysqli_query($conn, "SELECT eTipLikes FROM tblenergytips WHERE eTipID = $etipID");
-        $row = mysqli_fetch_assoc($result);
-        echo json_encode(['success' => true, 'likes' => $row['eTipLikes'], 'action' => 'unliked']);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Database error while unliking']);
-    }
+if ($existsQ && mysqli_num_rows($existsQ) > 0) {
+    // UNLIKE
+    mysqli_query($conn, "DELETE FROM tblfavourites 
+                         WHERE userID = $userID AND eTipID = $eTipID");
+    mysqli_query($conn, "UPDATE tblenergytips 
+                         SET eTipLikes = GREATEST(eTipLikes - 1, 0) 
+                         WHERE eTipID = $eTipID");
+
+    $res = mysqli_query($conn, "SELECT eTipLikes FROM tblenergytips WHERE eTipID = $eTipID");
+    $row = mysqli_fetch_assoc($res);
+
+    echo json_encode(['success' => true, 'likes' => (int)$row['eTipLikes'], 'liked' => false]);
+    exit;
 
 } else {
-    $updateQuery = "UPDATE tblenergytips SET eTipLikes = eTipLikes + 1 WHERE eTipID = $etipID";
+    // LIKE
+    mysqli_query($conn, "INSERT INTO tblfavourites (userID, eTipID) 
+                         VALUES ($userID, $eTipID)");
+    mysqli_query($conn, "UPDATE tblenergytips 
+                         SET eTipLikes = eTipLikes + 1 
+                         WHERE eTipID = $eTipID");
 
-    if (mysqli_query($conn, $updateQuery)) {
-        $_SESSION['liked_tips'][] = $etipID;
-        $result = mysqli_query($conn, "SELECT eTipLikes FROM tblenergytips WHERE eTipID = $etipID");
-        $row = mysqli_fetch_assoc($result);
-        echo json_encode(['success' => true, 'likes' => $row['eTipLikes'], 'action' => 'liked']);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Database error while liking']);
-    }
+    $res = mysqli_query($conn, "SELECT eTipLikes FROM tblenergytips WHERE eTipID = $eTipID");
+    $row = mysqli_fetch_assoc($res);
+
+    echo json_encode(['success' => true, 'likes' => (int)$row['eTipLikes'], 'liked' => true]);
+    exit;
 }
 ?>

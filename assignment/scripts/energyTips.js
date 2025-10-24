@@ -23,6 +23,7 @@ document.addEventListener("click", (e) => {
 
     fetch("likeETip.php", {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: "eTipID=" + encodeURIComponent(id)
     })
@@ -30,16 +31,11 @@ document.addEventListener("click", (e) => {
       .then(data => {
         if (data.success) {
           countSpan.textContent = data.likes;
-
-          if (data.liked) {
-            likeBtn.classList.add("liked");
-          } else {
-            likeBtn.classList.remove("liked");
-          }
+          likeBtn.classList.toggle("liked", data.liked);
         } else {
-          alert(data.message || "Unable to like this tip.");
-        }
-      })
+            alert(data.message || "Unable to like this tip.");
+          }
+        })
       .catch(() => alert("Error: Could not connect to server."));
   }
 

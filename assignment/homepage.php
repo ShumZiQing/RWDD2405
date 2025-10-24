@@ -112,7 +112,7 @@ $pageTitle = "EcoConnect - Homepage";
 
                 if (mysqli_num_rows($resultProjects) > 0) {
                     while ($prj = mysqli_fetch_assoc($resultProjects)) {
-                        echo '<div class="project-card" style="background-image: url(\'images/' . $prj['prjImg'] . '\');">';
+                        echo '<div class="project-card" style="background-image: url(\'' . $prj['prjImg'] . '\');">';
                         echo '<div class="overlay">';
                         echo '<h3>' . $prj['prjName'] . '</h3>';
                         echo '<p>' . substr($prj['prjDetails'], 0, 80) . '...</p>';
