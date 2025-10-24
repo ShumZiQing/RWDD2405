@@ -60,8 +60,8 @@
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #e6ffe6; /* soft green background */
-  color: #2e7d32; /* slightly darker green text */
+  background-color: #e6ffe6;
+  color: #2e7d32;
   font-size: 16px;
   text-align: center;
 }
