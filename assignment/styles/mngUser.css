@@ -5,12 +5,28 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#title{
-    font-size: 30px;
-    width: fit-content;
-    margin: 0 auto;
-    padding-top: 100px;
+#nav{
+    display: flex;
+    align-items: center;
+    margin: 10px 40px;
+    font-size: 23px;
+    padding-top: 80px;
+}
 
+#nav a{
+    padding-right: 10px;
+    cursor: pointer;
+    color: black;
+    margin-left: 20%;
+}
+
+#nav a:hover{
+    color: #0066AF;
+}
+
+#nav p{
+    margin-left: 340px;
+    font-size: 30px;
 }
 
 #side{
@@ -21,27 +37,42 @@ body{
     margin-top: 130px;
 }
 
-#search{
-    display: flex;
-    align-items: center;
-    color: #FFFFFF;
-    background-color: #187DC6;
-    width: fit-content;
-    height: 35px;
-    padding: 0 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: 50px;
+#search {
+    position: absolute;
+    top: 85px; 
+    right: 25px;
 }
 
-input[type="text"]{
-    margin-right: 30px;
-    font-size: 15px;
+#search form {
+    display: flex;
+    align-items: center;
     background-color: #187DC6;
-    border: none;
-    width: 100px;
+    border-radius: 8px;
+    padding: 3px 8px;
+    height: 32px;
 }
+
+#search input[type="text"] {
+    font-size: 13px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 110px; 
+}
+
+#search button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+}
+
+#search button i {
+    color: white;
+    font-size: 14px;
+}
+
 
 ::placeholder{
     color: white;
@@ -122,6 +153,8 @@ input[type="text"]{
         margin: 20px auto;
     }
 
+
+
     #user .profile{
         font-size: 50px;
         margin-left: 20px;
@@ -142,6 +175,15 @@ input[type="text"]{
     .view{
         margin-right: 10px;
     }
+
+    #nav a{
+        margin-left: 0;
+    }
+
+    #nav p{
+        font-size: 20px;
+        margin-left: 10px;
+    }
 }
 
 /* tablet */
@@ -157,4 +199,14 @@ input[type="text"]{
     .text{
         font-size: 18px;
     }
+
+    #nav a{
+        margin-left: 80px;
+    }
+
+    #nav p{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
 }
