@@ -96,20 +96,41 @@ body{
     padding-left: 10px;
 }
 
+#button{
+    display: flex;
+}
+
 .btnSave{
     background-color: #075085;
     color: white;
     border-radius: 8px;
     width: 70px;
     height: 30px;
-    border: none;
-    margin-left: 80%;
-    margin-top: 10px;
+    border: #075085;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
 }
 
 .btnSave:hover{
     background-color: #288fd8;
+}
+
+.btnLogout{
+    background-color: #FF0808;
+    color: white;
+    border-radius: 8px;
+    width: 70px;
+    height: 30px;
+    border: #FF0808;
+    margin-right: 5%;
+    margin-bottom: 20px; 
+    cursor: pointer;
+}
+
+.btnLogout:hover{
+    background-color: #dd1600;
 }
 
 /* phone */

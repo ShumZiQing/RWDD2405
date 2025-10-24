@@ -72,6 +72,16 @@ input{
     border-radius: 5px;
 }
 
+#content .upload{
+    width: 220px;
+    height: 30px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    text-align: center;
+    line-height: 30px;
+    justify-content: center;
+}
+
 .info{
     width: 500px;
     height: 40px;
