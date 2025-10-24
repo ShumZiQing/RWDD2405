@@ -44,6 +44,16 @@
 }
 }
 
+.section-link {
+    text-decoration: none;
+    color: #075085;
+    transition: color 0.3s ease;
+}
+
+.section-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .business-details-container {
   max-width: 800px;

@@ -116,7 +116,7 @@ $pageTitle = "EcoConnect - Homepage";
                         echo '<div class="overlay">';
                         echo '<h3>' . $prj['prjName'] . '</h3>';
                         echo '<p>' . substr($prj['prjDetails'], 0, 80) . '...</p>';
-                        echo '<form action="projectDetails.php" method="get">';
+                        echo '<form action="gardenProjectDetails.php" method="get">';
                         echo '<input type="hidden" name="prjID" value="' . $prj['prjID'] . '">';
                         echo '<button type="submit">More</button>';
                         echo '</form>';
