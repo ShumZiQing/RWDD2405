@@ -1,0 +1,91 @@
+/* BANNER */
+.about .banner {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+}
+
+
+.about .banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+
+.about .banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: #075085;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+
+/* SECTIONS */
+.about section {
+  padding: 20px;
+}
+
+
+.about h2 {
+  color: #075085;
+  margin-bottom: 10px;
+}
+
+
+.about p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: justify;
+}
+
+
+/* IMAGES */
+.about .communityIMG {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 15px auto;
+  border-radius: 12px;
+}
+
+
+/* TABLET */
+@media (min-width: 768px) {
+  .about .banner img {
+    height: 300px;
+  }
+  .about .banner h2 {
+    font-size: 2.2rem;
+  }
+  .about section {
+    padding: 30px;
+  }
+  .about p {
+    font-size: 1rem;
+  }
+}
+
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .about .banner img {
+    height: 380px;
+  }
+  .about .banner h2 {
+    font-size: 2.4rem;
+  }
+  .about section {
+    padding: 40px;
+  }
+  .about p {
+    font-size: 1.05rem;
+  }
+}
