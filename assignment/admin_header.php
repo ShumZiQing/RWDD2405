@@ -7,9 +7,9 @@
     </div>
 
     <div class="header-nav">
-        <button id="profile">
+        <a href="admin_profile.php">
             <img src="images/user.png" alt="user icon">
-        </button>
+        </a>
         <button class="menu-toggle" id="hamburger">
             <div id="dropdown">
             ☰

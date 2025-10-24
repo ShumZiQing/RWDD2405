@@ -19,9 +19,9 @@
         </div>
 
         <nav class="header-nav">
-            <button id="profile">
+            <a href="admin_profile.php">
                 <img src="images/user.png" alt="user icon">
-            </button>
+            </a>
         </nav>
     </header>
     

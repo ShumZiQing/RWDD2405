@@ -47,6 +47,16 @@
         #indiForm, #indiTxtArea, #indiSmallForm, #indiSel, #multiSel{
             font-style: normal;
         }
+
+        #save{
+            margin-left: 80%;
+        }
+
+        @media(min-width: 601px) and (max-width: 1024px){
+            #save{
+                margin-left: 50vh;
+            }
+        }
     </style>
 </head>
 <body>

@@ -72,8 +72,11 @@
 
                 $userSQL= "SELECT * FROM tbluser WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);
-                while($userRow = mysqli_fetch_assoc($userResult)){
+                if (mysqli_num_rows($userResult) > 0) {
+                    $userRow = mysqli_fetch_assoc($userResult);
                     $userName = $userRow['name'];
+                }else{
+                    $userName = "Unknown User";
                 }
                 ?>
 

@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#side {
+    width: 11%;
+    position: fixed;
+    margin-left: 20px;
+}
+
+.returnArrow{
+    position: absolute;
+    left: 35%;
+    top: 16%;
+    color: black;
+}
+
+.returnArrow:hover{
+    color: #147ec9;
+}
+
+#box{
+    margin: 0 30%;
+}
+#content h1{
+    margin-top: 100px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+#circle{
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+.nameIcon, .dateIcon, .timeIcon, .descIcon, .freqIcon, .selection, .locationIcon, .collabIcon{
+    position: relative;
+    text-align: center;
+    margin-left: 18%;
+}
+
+.forms{
+    width: 90vh;
+    display: flex;
+    margin: 25px auto; 
+}
+
+#indiForm, #indiSel, #indiTxtArea, #indiSmallForm, #multiSel{
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+    padding: 5px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    width: 65vh;
+    height: 45px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+#multiSel{
+    height: 100%;
+}
+
+#multiSel[multiple] option:checked{
+    background-color: #797979;
+    color: white;
+}
+
+#indiSmallForm{
+    width: 31vh;
+}
+
+#indiTxtArea{
+    height: 15vh;
+}
+
+.forms p{
+    margin: 5px;
+    margin-top: 20px;
+}
+
+#delete p{
+    margin-left: 25%;
+}
+
+#delete:hover{
+    background-color: rgb(185, 3, 3);
+}
+
+#bottomFeature{
+    display: flex;
+    width: 100vh;
+}
+
+#save, #delete{
+    padding: 10px;
+    margin-left: 3%;
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #075085;
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+    cursor: pointer;
+}
+
+#delete{
+    margin-left: 400px;
+    background-color: red;
+}
+
+#delete p{
+    margin-left: 15px;
+}
+
+#save:hover{
+    background-color: #147ec9;
+}
+
+/* phone */
+@media(max-width: 600px){
+    .returnArrow{
+        left: 7%;
+        top: 18%;
+    }
+
+    #content h1{
+        font-size: 30px;
+    }
+
+    #box{
+        margin-left: 15%;
+    }
+    
+    .forms{
+        width: 40vh;
+    }
+
+    #circle{
+        width: 30px;
+        height: 30px;
+    }
+
+    #indiForm, #indiSel, #indiTxtArea, #indiSmallForm, #multiSel{
+        width: 29vh;
+        height: 40px;
+        font-size: small;
+    }
+
+    #multiSel{
+        height: auto;
+    }
+    
+    #indiTxtArea{
+        height: 13vh;
+    }
+    #indiSmallForm{
+        width: 13vh;
+    }
+
+    #delete{
+        margin-left: 130px;
+    }
+
+    #delete p{
+        margin-left: 8px;
+    }
+    #save, #delete{
+        width: 10vh;
+        height: 25px;
+        padding: 5px;
+        font-size: small;
+        margin-top: -10px;
+    }
+}
+
+/* tablet */
+@media(min-width: 601px) and (max-width: 1024px){
+    #header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .returnArrow{
+        left: 20%;
+        top: 12%;
+    }
+    
+    #box{
+        margin-left: 10%;
+    }
+
+    .forms{
+        width: 70vh;
+    }
+
+    #circle{
+        width: 35px;
+        height: 35px;
+    }
+
+    #indiForm, #indiSel, #indiTxtArea, #multiSel{
+        width: 50vh;
+    }
+
+    #indiSmallForm{
+        width: 24vh;
+    }
+    
+    #save, #delete{
+        font-size: medium;
+        padding: 10px;
+        width: 10vh;
+    }
+
+    #delete{
+        margin-left: 380px;
+    }
+}

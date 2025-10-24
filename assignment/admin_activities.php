@@ -109,7 +109,7 @@
                             <p>Collaborator</p>
                         </div>
                         
-                        <a href="admin_editPrj.php">
+                        <a href="admin_editPrj.php?prjID=<?php echo $projRow['prjID'];?>">
                             <div id="edit">
                                 <i class="fa-solid fa-pen-to-square fa-xl editIcon"></i>
                                 <p>Edit</p>

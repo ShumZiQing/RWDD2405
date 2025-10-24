@@ -4,16 +4,16 @@
     session_start();
 
     //uncomment when not testing
-    // $userID = $_SESSION['userID'];
+    $userID = $_SESSION['userid'];
 
     // for testing purposes
-    $userID = 3;
+    // $userID = 3;
 
     // uncomment when not testing
-    // $sql = "SELECT * FROM tbluser WHERE userID = '$userID' AND role = 'admin'";
+    $sql = "SELECT * FROM tbluser WHERE userID = '$userID' AND role = 'admin'";
 
     // for testing purposes
-    $sql = "SELECT * FROM tbluser WHERE userID = '$userID'";
+    // $sql = "SELECT * FROM tbluser WHERE userID = '$userID'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -30,7 +30,7 @@
     }else{
         echo "<script>
         alert ('Admin not found');
-        window.location.href='admin_login.php';
+        window.location.href='login.php';
         </script>";
         exit;
         
@@ -65,7 +65,7 @@
 
         echo "<script>
             alert('You have been logged out successfully!');
-            window.location.href='admin_login.php';
+            window.location.href='login.php';
         </script>";
         exit;
     }
