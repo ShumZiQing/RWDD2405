@@ -20,18 +20,35 @@ if (isset($_POST['btnSave'])) {
     $defaultImg = "images/prj1.png";
     $imgName = $defaultImg;
 
-    if (!empty($_FILES['prjImg']['name'])) {
-            $filename = basename($_FILES['prjImg']['name']);
-            $target_file = $target_dir . $filename;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // if (!empty($_FILES['prjImg']['name'])) {
+    //         $filename = basename($_FILES['prjImg']['name']);
+    //         $target_file = $target_dir . $filename;
+    //         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-            $check = getimagesize(($_FILES["prjImg"]["tmp_name"]));
-            if($check !== false){
-                if(move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)){
-                    $imgName = $target_file;
-                }
+    //         $check = getimagesize(($_FILES["prjImg"]["tmp_name"]));
+    //         if($check !== false){
+    //             if(move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)){
+    //                 $imgName = $target_file;
+    //             }
+    //         }
+    //     }
+
+    if (!empty($_FILES['prjImg']['name'])) {
+        $uploadDir = "images/";
+        if (!is_dir($uploadDir))
+            mkdir($uploadDir, 0777, true);
+
+        $fileExt = strtolower(pathinfo($_FILES['prjImg']['name'], PATHINFO_EXTENSION));
+        $allowedTypes = ['png', 'jpg', 'jpeg'];
+
+        if (in_array($fileExt, $allowedTypes)) {
+            $uniqueName = uniqid('prj', true) . '.' . $fileExt;
+            $targetFile = $uploadDir . $uniqueName;
+            if (move_uploaded_file($_FILES['prjImg']['tmp_name'], $targetFile)) {
+                $imgName = $uniqueName;
             }
         }
+    }
 
 
     $sql = "INSERT INTO tblprojects(prjName, startDate, endDate, startTime, endTime, prjDetails, location, collaborator, collabEmail, status, prjImg) VALUES
@@ -66,7 +83,7 @@ if (isset($_POST['btnSave'])) {
     <link rel="stylesheet" href="styles/global.css">
 
     <script src="https://kit.fontawesome.com/b70fe5a297.js" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <body>
@@ -90,7 +107,9 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-image icon"></i></td>
                     <td>
-                        <input type="file" name="prjImg" accept="image/*" class="upload">
+                        <?php if (!empty($row['prjImage'])): ?>
+                            <img src="images/<?= htmlspecialchars($row['prjImage']) ?>" alt="upload-user" id="user">
+                        <?php endif; ?>
                     </td>
                 <tr>
 
@@ -132,16 +151,16 @@ if (isset($_POST['btnSave'])) {
                     <td><i class="fa-solid fa-user icon"></i></td>
                     <td><select name="txtOrganizer" class="info" required>
                             <?php
-                                $sql = "SELECT * FROM tblcollaborator";
-                                $result = mysqli_query($conn, $sql);
- 
-                                while($row = mysqli_fetch_assoc($result)){
-                                    $name = $row['name'];?>
-        
-                                    <option value="<?php echo $name?>"><?php echo $name?></option>
-                            <?php
-                        }
-                    ?>
+                            $sql = "SELECT * FROM tblcollaborator";
+                            $result = mysqli_query($conn, $sql);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $name = $row['name']; ?>
+
+                                <option value="<?php echo $name ?>"><?php echo $name ?></option>
+                                <?php
+                            }
+                            ?>
                         </select></td>
                 </tr>
 
