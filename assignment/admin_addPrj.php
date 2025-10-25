@@ -16,25 +16,11 @@ if (isset($_POST['btnSave'])) {
     $status = $_POST['txtStatus'];
 
     // Upload image
-    $target_dir = "images/";
-    $defaultImg = "images/prj1.png";
+    $uploadDir = "images/";
+    $defaultImg = "prj1.png";
     $imgName = $defaultImg;
 
-    // if (!empty($_FILES['prjImg']['name'])) {
-    //         $filename = basename($_FILES['prjImg']['name']);
-    //         $target_file = $target_dir . $filename;
-    //         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    //         $check = getimagesize(($_FILES["prjImg"]["tmp_name"]));
-    //         if($check !== false){
-    //             if(move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)){
-    //                 $imgName = $target_file;
-    //             }
-    //         }
-    //     }
-
     if (!empty($_FILES['prjImg']['name'])) {
-        $uploadDir = "images/";
         if (!is_dir($uploadDir))
             mkdir($uploadDir, 0777, true);
 
@@ -50,8 +36,9 @@ if (isset($_POST['btnSave'])) {
         }
     }
 
-
-    $sql = "INSERT INTO tblprojects(prjName, startDate, endDate, startTime, endTime, prjDetails, location, collaborator, collabEmail, status, prjImg) VALUES
+    $sql = "INSERT INTO tblprojects
+            (prjName, startDate, endDate, startTime, endTime, prjDetails, location, collaborator, collabEmail, status, prjImg)
+            VALUES
             ('$prjName', '$startDate', '$endDate', '$startTime', '$endTime', '$prjDetails', '$location', '$collaborator', '$collabEmail', '$status', '$imgName')";
 
     $result = mysqli_query($conn, $sql);
@@ -107,11 +94,10 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-image icon"></i></td>
                     <td>
-                        <?php if (!empty($row['prjImage'])): ?>
-                            <img src="images/<?= htmlspecialchars($row['prjImage']) ?>">
-                        <?php endif; ?>
+                        <input type="file" name="prjImg" accept=".png,.jpg,.jpeg" required>
                     </td>
-                <tr>
+                </tr>
+
 
                 <tr>
                     <td><i class="fa-solid fa-heading icon"></i></td>
