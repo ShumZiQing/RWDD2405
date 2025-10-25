@@ -43,7 +43,7 @@
 
     // Update tbl
     $sql = "UPDATE tblcompany SET
-            address = '$address', phone = '$phone', email = '$email', missionDtl = '$missionDtl', wwdDtl = '$wwdDtl', goalDtl = '$doalDtl', companyImg = '$companyImg'
+            address = '$address', phone = '$phone', email = '$email', missionDtl = '$missionDtl', wwdDtl = '$wwdDtl', goalDtl = '$goalDtl', companyImg = '$companyImg'
             WHERE companyID = 1"; 
 
     $result = mysqli_query($conn, $sql);

@@ -98,11 +98,12 @@
                     $projID = $projRow['prjID'];
                     $projName = $projRow['prjName'];
                     $projDesc = $projRow['prjDetails'];
-                    $projImg = $projRow['prjImg'];
                     ?>
 
                     <div class="proj">
-                        <img src="<?php echo $projImg?>" alt="picture" id="picture">
+                        <?php if (!empty($projRow['prjImg'])): ?>
+                        <img src="images/<?= htmlspecialchars($projRow['prjImg']) ?>"  alt="picture" id="picture">
+                        <?php endif; ?>
                     <div id="desc">
                         <h2><?php echo $projName?></h2>
                         <p><?php echo $projDesc?></p>

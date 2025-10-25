@@ -1,10 +1,10 @@
 <?php
 include 'dbConn.php';
 session_start();
-
+ 
 $pageTitle = "EcoConnect - Add New Business";
 include 'header.php';
-
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = mysqli_real_escape_string($conn, $_POST['name']);
   $busType = mysqli_real_escape_string($conn, $_POST['busType']);
@@ -14,14 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $userID = $_SESSION['userid'];
   $revID = NULL;
   $imagePath = "";
-
+ 
   if (!empty($_FILES['businessImage']['name'])) {
     $uploadDir = "busImages/";
     if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
-
+ 
     $fileExt = strtolower(pathinfo($_FILES['businessImage']['name'], PATHINFO_EXTENSION));
     $allowedTypes = ['png', 'jpg', 'jpeg'];
-
+ 
     if (in_array($fileExt, $allowedTypes)) {
       $uniqueName = uniqid('business_', true) . '.' . $fileExt;
       $targetFile = $uploadDir . $uniqueName;
@@ -34,12 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $errorMsg = "Only JPG, JPEG, and PNG files are allowed.";
     }
   }
-
+ 
   if (!isset($errorMsg)) {
     $sql = "INSERT INTO tblbusiness (name, busType, description, location, phoneNum, userID, revID, busImg)
-            VALUES ('$name', '$busType', '$description', '$city', '$phoneNum', '$userID', " . 
+            VALUES ('$name', '$busType', '$description', '$city', '$phoneNum', '$userID', " .
             ($revID ? "'$revID'" : "NULL") . ", '$imagePath')";
-
+ 
     if (mysqli_query($conn, $sql)) {
       $successMsg = "Business added successfully!";
     } else {
@@ -47,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
-
+ 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,11 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <img src="images/banner1.jpg" alt="Banner">
     <h2>Promote Your Business</h2>
   </section>
-
+ 
   <section class="add-business-section">
     <form class="form-box" action="" method="POST" enctype="multipart/form-data">
       <input type="text" name="name" placeholder="Business Name" required>
-
+ 
       <select name="busType" required>
         <option value="">-- Select Category --</option>
         <option value="Household Items">Household Items</option>
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <option value="General Items">General Items</option>
         <option value="Food & Beverage">Food & Beverage</option>
       </select>
-
+ 
       <textarea name="description" placeholder="Describe your business..." rows="4" required></textarea>
        <select name="city" required>
         <option value="Alor Setar">Alor Setar</option>
@@ -102,25 +102,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </select>
       <input type="text" name="phoneNum" placeholder="Phone Number (e.g. 0123456789)"required>
       <input type="file" name="businessImage" accept="image/*" required>
-
+ 
       <div class="form-actions">
         <button type="submit" class="btn add-btn">Add Business</button>
         <button type="button" class="btn cancel-btn" onclick="window.location.href='businessGuide.php'">Cancel</button>
       </div>
-
+ 
       <?php if (isset($successMsg)): ?>
         <p class="success-msg"><?= $successMsg ?></p>
         <meta http-equiv="refresh" content="1.5;url=businessGuide.php">
       <?php endif; ?>
-
+ 
       <?php if (isset($errorMsg)): ?>
         <p class="error-msg"><?= $errorMsg ?></p>
       <?php endif; ?>
     </form>
   </section>
 </main>
-
-
+ 
+ 
   <?php include 'footer.php'; ?>
   <script src="scripts/hamburger.js"></script>
 </body>

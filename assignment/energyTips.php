@@ -53,7 +53,7 @@ $pageTitle = "EcoConnect - Energy Conservation Tips";
           while ($row = mysqli_fetch_assoc($result)) {
             echo '
             <div class="tip-card" data-id="' . $row['eTipID'] . '">
-              <img src="images/' . $row['eTipImage'] . '" alt="' . $row['eTipName'] . '">
+              <img src="eTipsImages/' . $row['eTipImage'] . '" alt="' . $row['eTipName'] . '">
               <h3>' . $row['eTipName'] . '</h3>
               <ul>';
               
@@ -94,7 +94,7 @@ $pageTitle = "EcoConnect - Energy Conservation Tips";
           while ($row = mysqli_fetch_assoc($result)) {
             echo '
             <div class="tip-card" data-id="' . $row['eTipID'] . '">
-              <img src="images/' . $row['eTipImage'] . '" alt="' . $row['eTipName'] . '">
+              <img src="eTipsImages/' . $row['eTipImage'] . '" alt="' . $row['eTipName'] . '">
               <h3>' . $row['eTipName'] . '</h3>
               <ul>';
               
