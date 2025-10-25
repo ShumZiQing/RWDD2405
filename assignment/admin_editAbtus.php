@@ -1,4 +1,7 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     include 'dbConn.php';
     session_start();
 
@@ -43,7 +46,7 @@
 
     // Update tbl
     $sql = "UPDATE tblcompany SET
-            address = '$address', phone = '$phone', email = '$email', missionDtl = '$missionDtl', wwdDtl = '$wwdDtl', goalDtl = '$doalDtl', companyImg = '$companyImg'
+            address = '$address', phone = '$phone', email = '$email', missionDtl = '$missionDtl', wwdDtl = '$wwdDtl', goalDtl = '$goalDtl', companyImg = '$companyImg'
             WHERE companyID = 1"; 
 
     $result = mysqli_query($conn, $sql);
@@ -54,7 +57,7 @@
     } else {
         echo "<script>alert('Error updating: " . mysqli_error($conn) . "');</script>";
     }
-}
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
