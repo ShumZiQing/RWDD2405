@@ -60,11 +60,12 @@
                     $progID = $progRow['progID'];
                     $progName = $progRow['progName'];
                     $progDesc = $progRow['progDetails'];
-                    $progImg = $progRow['progImage'];
                     ?>
 
                     <div class="prog">
-                        <img src="<?php echo $progImg?>" alt="picture" id="picture">
+                        <?php if (!empty($progRow['progImage'])): ?>
+                        <img src="images/<?= htmlspecialchars($progRow['progImage']) ?>"  alt="picture" id="picture">
+                        <?php endif; ?>
                     <div id="desc">
                         <h2><?php echo $progName?></h2>
                         <p><?php echo $progDesc?></p>

@@ -17,21 +17,25 @@
 
        //handle img upload
         $target_dir = "images/";
-        $defaultImg = "images/image(6).png";
+        $defaultImg = "image(6).png"; 
         $imgName = $defaultImg;
 
-        if(!empty($_FILES["fileToUpload"]["name"])){
-            $fileName = basename($_FILES["fileToUpload"]["name"]);
-            $target_file = $target_dir . $fileName;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if (!empty($_FILES['fileToUpload']['name'])) {
+            $uploadDir = "images/";
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $imgName = $target_file; 
-                }
+            $fileExt = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
+            $allowedTypes = ['png', 'jpg', 'jpeg'];
+
+            if (in_array($fileExt, $allowedTypes)) {
+            $uniqueName = uniqid('program_', true) . '.' . $fileExt;
+            $targetFile = $uploadDir . $uniqueName;
+            if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile)) {
+                $imgName = $uniqueName;
+            }
             }
         }
+
 
        $sql = "INSERT INTO tblprograms(progName, startDate, endDate, startTime, endTime, progDetails, recyclablesType, location, frequency, collabName, progImage)
         VALUES ('$name', '$startDate', '$endDate', '$startTime', '$endTime', '$desc', '$recyclables', '$location', '$freq', '$collab', '$imgName')";
@@ -138,6 +142,8 @@
                     <option value="PUJ">Taman Puncak Jalil</option>
                     <option value="YAR">Taman Yarl</option>
                     <option value="EQP">Taman Equine Park</option>
+                    <option value="LEP">Taman Lestari Putra</option>
+                    <option value="KL">Kuala Lumpur</option>
                 </select>
         </div>
 

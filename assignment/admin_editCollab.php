@@ -21,7 +21,6 @@
             $phoneNo = $row['phoneNum'];
             $orgType = $row['orgType'];
             $progInvolved = $row['progInvolved'];
-            $img = $row['image'];
 
     if(isset($_POST['btnSave'])){
         $name = $_POST['txtName'];
@@ -31,19 +30,23 @@
         $progInvolved = implode(',', $_POST['selProgram']);
         
         //handle img upload
-        $target_dir = "images/collaborator/";
-        $defaultImg = "images/upload-user.png";
-        $imgName = $img;
+        $target_dir = "collabImages/";
+        $defaultImg = "upload-user.png"; 
+        $imgName = $row['image']; 
 
         if(!empty($_FILES["fileToUpload"]["name"])){
-            $fileName = basename($_FILES["fileToUpload"]["name"]);
-            $target_file = $target_dir . $fileName;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $imgName = $target_file; 
+            $fileExt = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+            $allowedTypes = ['png', 'jpg', 'jpeg'];
+            
+            if (in_array($fileExt, $allowedTypes)) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    $uniqueName = uniqid('collab_', true) . '.' . $fileExt;
+                    $target_file = $target_dir . $uniqueName;
+                    
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $imgName = $uniqueName; 
+                    }
                 }
             }
         }
@@ -86,11 +89,13 @@
         <h1>Edit Collaborator</h1>
 
         <div id="uploadProfile">
-            <form action="" method="post" enctype="multipart/form-data">
-                <img src= <?php echo $img ?> alt="upload-user" id="user">
-                <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
-                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
-        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <?php if (!empty($row['image'])): ?>
+            <img src="collabImages/<?= htmlspecialchars($row['image']) ?>" alt="upload-user" id="user">
+            <?php endif; ?>
+            <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
+            <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+    </div>
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-heading fa-lg name"></i></div>

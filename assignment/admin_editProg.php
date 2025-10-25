@@ -25,7 +25,6 @@
     $location = $row['location'];
     $freq = $row['frequency'];
     $collabName = $row['collabName'];
-    $progImage = $row['progImage'];
 
     $recyclablesArr = explode(',', $recyclables);
     $locationArr = explode(',', $location);
@@ -44,18 +43,22 @@
 
         //handle img upload
         $target_dir = "images/";
-        $defaultImg = "images/image(6).png";
-        $imgName = $progImage;
+        $defaultImg = "image(6).png"; 
+        $imgName = $row['progImage']; 
 
         if(!empty($_FILES["fileToUpload"]["name"])){
-            $fileName = basename($_FILES["fileToUpload"]["name"]);
-            $target_file = $target_dir . $fileName;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $imgName = $target_file; 
+            $fileExt = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+            $allowedTypes = ['png', 'jpg', 'jpeg'];
+            
+            if (in_array($fileExt, $allowedTypes)) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    $uniqueName = uniqid('program_', true) . '.' . $fileExt;
+                    $target_file = $target_dir . $uniqueName;
+                    
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $imgName = $uniqueName; 
+                    }
                 }
             }
         }
@@ -108,7 +111,9 @@
 
     <div id="uploadProfile">
             <form action="" method="post" enctype="multipart/form-data">
-                <img src= <?php echo $progImage?> alt="upload-user" id="user">
+                <?php if (!empty($row['progImage'])): ?>
+                <img src="images/<?= htmlspecialchars($row['progImage']) ?>" alt="upload-user" id="user">
+                <?php endif; ?>
                 <i class="fa-solid fa-arrow-up-from-bracket upload" id="uploadIcon"></i>
                 <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
         </div>
@@ -156,6 +161,8 @@
                     <option value="PUJ" <?php if(in_array('PUJ', $locationArr)) echo 'selected';?>>Taman Puncak Jalil</option>
                     <option value="YAR" <?php if(in_array('YAR', $locationArr)) echo 'selected';?>>Taman Yarl</option>
                     <option value="EQP" <?php if(in_array('EQP', $locationArr)) echo 'selected';?>>Taman Equine Park</option>
+                    <option value="LEP" <?php if(in_array('LEP', $locationArr)) echo 'selected';?>>Taman Lestari Putra</option>
+                    <option value="KL" <?php if(in_array('KL', $locationArr)) echo 'selected';?>>Kuala Lumpur</option>
                 </select>
         </div>
 

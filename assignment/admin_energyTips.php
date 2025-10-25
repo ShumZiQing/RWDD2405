@@ -75,7 +75,6 @@
                 $content = $row['eTipContent'];
                 $type = $row['eTipType'];
                 $userID = $row['userID'];
-                $img = $row['eTipImage'];
 
                 $userSQL= "SELECT * FROM tbluser WHERE userID = '$userID'";
                 $userResult = mysqli_query($conn, $userSQL);
@@ -88,7 +87,9 @@
                 ?>
 
                 <div class="indiBus">
-                    <img src="<?php echo $img?>" alt="picture" id="picture">
+                    <?php if (!empty($row['eTipImage'])): ?>
+                    <img src="eTipsImages/<?= htmlspecialchars($row['eTipImage']) ?>" alt="picture" id="picture">
+                    <?php endif; ?>
 
                     <div id="text">
                         <h2><?php echo $name?></h2>
