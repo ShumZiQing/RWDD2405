@@ -192,19 +192,42 @@
 }
 
 
-.success-msg {
-  color: #0B6623;
+.success-msg, .error-msg {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 12px 18px;
+  border-radius: 8px;
   text-align: center;
   font-weight: bold;
-  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-msg {
+  background-color: #e9f7ef;
+  color: #0B6623;
+  border: 1px solid #b5e7b2;
 }
 
 .error-msg {
+  background-color: #fdecea;
   color: #e74c3c;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 10px;
+  border: 1px solid #f5b7b1;
 }
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* like gTip */
 .like-btn {
@@ -357,24 +380,35 @@
 /* Explore button */
 .explore-btn {
   background-color: #075085;
-  color: #fff;
-  border: none;
+  color: white;
 }
 
 .explore-btn:hover {
-  background-color: #094773;
+  background-color: #074572;
+  transform: translateY(-1px);
 }
 
-/* Join button */
+/* Join button (default) */
 .join-btn {
-  background-color: #fff;
-  color: #0B6623;
-  border: 1px solid #0B6623;
+  background-color: white;
+  color: #27ae60;
+  border: 1px solid #27ae60;
 }
 
 .join-btn:hover {
   background-color: #0B6623;
   color: white;
+  transform: translateY(-1px);
+}
+
+/* Joined button (disabled look) */
+.join-btn[disabled],
+.join-btn.joined,
+button.join-btn:disabled {
+  background-color: #aaa;
+  color: #fff;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* Message if no projects */

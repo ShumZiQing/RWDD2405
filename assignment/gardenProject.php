@@ -33,6 +33,17 @@ $result = mysqli_query($conn, $sql);
       </button>
     </div>
 
+    <?php if (isset($_GET['msg'])): ?>
+      <?php 
+        $msgType = $_GET['type'] ?? 'success'; 
+        $msgClass = $msgType === 'error' ? 'error-msg' : 'success-msg';
+      ?>
+      <div class="<?= $msgClass ?>">
+        <?= htmlspecialchars($_GET['msg']) ?>
+      </div>
+    <?php endif; ?>
+
+
     <div class="cards-container">
       <?php if (mysqli_num_rows($result) > 0): ?>
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
@@ -43,18 +54,34 @@ $result = mysqli_query($conn, $sql);
             <p><strong>📍 Location:</strong> <?= htmlspecialchars($row['location']) ?></p>
             <p><strong>🤝 Collaborator:</strong> <?= htmlspecialchars($row['collaborator']) ?></p>
 
-            <div class="btn-group">
-              <button 
-                class="btn explore-btn" 
-                onclick="window.location.href='gardenProjectDetails.php?prjID=<?= $row['prjID'] ?>'">
-                Explore
-              </button>
+            <?php
+              $joined = false;
+              if (isset($_SESSION['userid'])) {
+                $userID = $_SESSION['userid'];
+                $check = mysqli_query($conn, "SELECT * FROM tblparticipants WHERE prjID = {$row['prjID']} AND userID = $userID");
+                $joined = ($check && mysqli_num_rows($check) > 0);
+              }
+              ?>
+              <div class="btn-group">
+                <button 
+                  class="btn explore-btn" 
+                  onclick="window.location.href='gardenProjectDetails.php?prjID=<?= $row['prjID'] ?>'">
+                  Explore
+                </button>
 
-              <form action="joinProject.php" method="POST" style="margin:0;">
-                <input type="hidden" name="prjID" value="<?= $row['prjID'] ?>">
-                <button type="submit" class="btn join-btn">Join</button>
-              </form>
-            </div>
+                <?php if (isset($_SESSION['userid'])): ?>
+                  <?php if ($joined): ?>
+                    <div id="join-message"></div>
+                    <button type="button" class="btn join-btn" onclick="alert('You have already joined this project.')">Joined</button>
+                  <?php else: ?>
+                    <form action="joinProject.php" method="POST" style="margin:0;">
+                      <input type="hidden" name="prjID" value="<?= $row['prjID'] ?>">
+                      <button type="submit" class="btn join-btn">Join</button>
+                    </form>
+                  <?php endif; ?>
+                <?php endif; ?>
+              </div>
+
           </div>
         <?php endwhile; ?>
       <?php else: ?>

@@ -1,34 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".cards-container");
-  if (!container) return;
+  document.addEventListener("click", (e) => {
+  const likeBtn = e.target.closest(".like-btn");
+  if (likeBtn) {
+    const tipID = likeBtn.getAttribute("data-id");
+    const likeSpan = likeBtn.querySelector("span");
+    if (!tipID || !likeSpan) return;
 
-  container.addEventListener("click", (e) => {
-    // --- LIKE handler (uses closest so clicks on span/emoji still count)
-    const likeBtn = e.target.closest(".like-btn");
-    if (likeBtn) {
-      const tipID = likeBtn.getAttribute("data-id");
-      const likeSpan = likeBtn.querySelector("span");
-      if (!tipID || !likeSpan) return;
+    let current = parseInt(likeSpan.textContent) || 0;
+    const isLiked = likeBtn.classList.contains("liked");
 
-      let current = parseInt(likeSpan.textContent) || 0;
-      const isLiked = likeBtn.classList.contains("liked");
+    likeBtn.disabled = true;
 
-      // optimistic UI
-      likeBtn.disabled = true;
-      if (isLiked) {
-        likeBtn.classList.remove("liked");
-        likeSpan.textContent = Math.max(current - 1, 0);
-      } else {
-        likeBtn.classList.add("liked");
-        likeSpan.textContent = current + 1;
-      }
+    // optimistic UI
+    if (isLiked) {
+      likeBtn.classList.remove("liked");
+      likeSpan.textContent = Math.max(current - 1, 0);
+    } else {
+      likeBtn.classList.add("liked");
+      likeSpan.textContent = current + 1;
+    }
 
-      fetch("likeGTip.php", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `tipID=${encodeURIComponent(tipID)}`
-      })
+    fetch("likeGTip.php", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `tipID=${encodeURIComponent(tipID)}`
+    })
       .then(res => res.json())
       .then(data => {
         console.log('likeTip response', data);
@@ -37,35 +34,25 @@ document.addEventListener("DOMContentLoaded", () => {
           if (data.liked) likeBtn.classList.add("liked");
           else likeBtn.classList.remove("liked");
         } else {
-          // revert optimistic change on error
-          alert(data && data.message ? data.message : 'Could not update like');
-          if (isLiked) {
-            // originally liked, revert to liked
-            likeBtn.classList.add("liked");
-            likeSpan.textContent = current;
-          } else {
-            likeBtn.classList.remove("liked");
-            likeSpan.textContent = current;
-          }
+          alert(data?.message || 'Could not update like');
+          // revert optimistic change
+          likeSpan.textContent = current;
+          if (isLiked) likeBtn.classList.add("liked");
+          else likeBtn.classList.remove("liked");
         }
       })
       .catch(err => {
         console.error('Network or parse error:', err);
-        // revert optimistic update
-        if (isLiked) {
-          likeBtn.classList.add("liked");
-          likeSpan.textContent = current;
-        } else {
-          likeBtn.classList.remove("liked");
-          likeSpan.textContent = current;
-        }
+        likeSpan.textContent = current;
+        if (isLiked) likeBtn.classList.add("liked");
+        else likeBtn.classList.remove("liked");
       })
       .finally(() => {
         likeBtn.disabled = false;
       });
 
-      return; // stop — prevent delete handler below from running for same click
-    }
+    return;
+  }
 
 
     // Delete handler
@@ -89,4 +76,34 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // Join project
+  document.addEventListener('DOMContentLoaded', function() {
+  const joinBtns = document.querySelectorAll('.join-btn'); // assuming your button has this class
+
+  joinBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const prjID = this.dataset.id; // button should have data-id attribute
+      const msgBox = document.getElementById('join-message');
+
+      // clear previous message
+      msgBox.innerHTML = '';
+
+      fetch('joinProject.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'prjID=' + encodeURIComponent(prjID)
+      })
+      .then(res => res.text())
+      .then(html => {
+        msgBox.innerHTML = html;
+      })
+      .catch(() => {
+        msgBox.innerHTML = "<div class='error-msg'>Something went wrong. Try again later.</div>";
+      });
+    });
+  });
+});
 });

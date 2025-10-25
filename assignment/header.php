@@ -32,6 +32,7 @@ if (!isset($pageTitle)) {
                 <img src="images/icon-profile.png" alt="Profile" class="profile-icon">
             </button>
                 <div class="dropdown-menu">
+                    <a href="showActivities.php">My Activities</a>
                     <a href="manageProfile.php">Manage Profile</a>
                     <a href="logout.php">Logout</a>
                 </div>

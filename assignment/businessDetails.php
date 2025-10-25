@@ -40,6 +40,7 @@ $reviewQuery = mysqli_query($conn, "SELECT * FROM tblreviews WHERE busID = $busI
     </section>
 
   <h2><a href="businessGuide.php" class="section-link">← Return to Guide</a></h2>
+  <div class="business-details-container">
     <div class="business-card">
       <?php if (!empty($bus['busImg'])): ?>
         <img src="busImages/<?= htmlspecialchars($bus['busImg']) ?>" alt="<?= htmlspecialchars($bus['name']) ?>" class="business-detail-img">
@@ -115,6 +116,7 @@ $reviewQuery = mysqli_query($conn, "SELECT * FROM tblreviews WHERE busID = $busI
         </div>
       <?php endif; ?>
 
+    </div>
     </div>
   </main>
 
