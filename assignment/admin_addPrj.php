@@ -108,7 +108,7 @@ if (isset($_POST['btnSave'])) {
                     <td><i class="fa-solid fa-image icon"></i></td>
                     <td>
                         <?php if (!empty($row['prjImage'])): ?>
-                            <img src="images/<?= htmlspecialchars($row['prjImage']) ?>" alt="upload-user" id="user">
+                            <img src="images/<?= htmlspecialchars($row['prjImage']) ?>">
                         <?php endif; ?>
                     </td>
                 <tr>
