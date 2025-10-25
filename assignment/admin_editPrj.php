@@ -56,39 +56,26 @@ if (isset($_POST['btnSave'])) {
     $status = $_POST['txtStatus'];
 
     //handle img upload
-    $target_dir = "images/";
-    $defaultImg = "images/image(6).png";
-    $imgName = $roe['prjImg'];
+    $uploadDir = "images/";
+    $defaultImg = "prj2.png";
+    $imgName = $row['prjImg'];
 
-    if (!empty($_FILES["prjImg"]["name"])) {
-        $fileExt = strtolower(pathinfo($_FILES["prjImg"]["name"], PATHINFO_EXTENSION));
+    if (!empty($_FILES['prjImg']['name'])) {
+        if (!is_dir($uploadDir))
+            mkdir($uploadDir, 0777, true);
+
+        $fileExt = strtolower(pathinfo($_FILES['prjImg']['name'], PATHINFO_EXTENSION));
         $allowedTypes = ['png', 'jpg', 'jpeg'];
 
         if (in_array($fileExt, $allowedTypes)) {
-            $check = getimagesize($_FILES["prjImg"]["tmp_name"]);
-            if ($check !== false) {
-                $uniqueName = uniqid('prj', true) . '.' . $fileExt;
-                $target_file = $target_dir . $uniqueName;
-
-                if (move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)) {
-                    $imgName = $uniqueName;
-                }
+            $uniqueName = uniqid('prj', true) . '.' . $fileExt;
+            $targetFile = $uploadDir . $uniqueName;
+            if (move_uploaded_file($_FILES['prjImg']['tmp_name'], $targetFile)) {
+                $imgName = $uniqueName;
             }
         }
     }
 
-    // if(!empty($_FILES["prjImg"]["name"])){
-    //     $fileName = basename($_FILES["prjImg"]["name"]);
-    //     $target_file = $target_dir . $fileName;
-    //     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    //     $check = getimagesize($_FILES["prjImg"]["tmp_name"]);
-    //     if ($check !== false) {
-    //         if (move_uploaded_file($_FILES["prjImg"]["tmp_name"], $target_file)) {
-    //             $imgName = $target_file; 
-    //         }
-    //     }
-    // }
 
     $update = "UPDATE tblprojects SET
                 prjName = '$prjName', startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', endTime = '$endTime', prjDetails = '$prjDetails', location = '$location', collaborator = '$collaborator',collabEmail = '$collabEmail',  status = '$status', prjImg = '$imgName'
@@ -144,11 +131,13 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-image icon"></i></td>
                     <td>
-                        <?php if (!empty($row['prjImage'])): ?>
-                            <img src="images/<?= htmlspecialchars($row['prjImage']) ?>">
+                        <?php if (!empty($prjImg)): ?>
+                            <img src="images/<?php echo htmlspecialchars($prjImg); ?>" width="150"><br>
                         <?php endif; ?>
+                        <input type="file" name="prjImg" accept=".png,.jpg,.jpeg">
                     </td>
                 </tr>
+
 
                 <tr>
                     <td><i class="fa-solid fa-heading icon"></i></td>
@@ -206,12 +195,11 @@ if (isset($_POST['btnSave'])) {
                             $sql = "SELECT * FROM tblcollaborator";
                             $result = mysqli_query($conn, $sql);
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $name = $row['name']; ?>
-
-                                <option value="<?php echo $name ?>"><?php echo $name ?></option>
-                                <?php
+                            while ($collabRow = mysqli_fetch_assoc($result)) {
+                                $name = $collabRow['name'];
+                                echo "<option value='$name' " . ($collaborator == $name ? 'selected' : '') . ">$name</option>";
                             }
+
                             ?>
                         </select></td>
                 </tr>
