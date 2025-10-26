@@ -1,5 +1,11 @@
 <?php 
+include 'dbConn.php'; 
 $pageTitle = "EcoConnect - About Us";
+
+// Fetch company info (assuming one main record)
+$sql = "SELECT * FROM tblcompany WHERE companyID = 1";
+$result = mysqli_query($conn, $sql);
+$company = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +31,19 @@ $pageTitle = "EcoConnect - About Us";
 
         <section class="mission">
             <h2>Our Mission</h2>
-            <p>At EcoConnect, our mission is to inspire and empower communities to live more sustainably by providing practical tools, resources, and opportunities to make eco-friendly choices part of everyday life. We believe that small actions, when multiplied across neighborhoods and cities, can create a significant impact in protecting our environment for future generations. Through collaboration with local groups, schools, and organizations, we aim to build a culture of responsibility, awareness, and care for the planet we all share.</p>
+            <p><?php echo nl2br($company['missionDtl']); ?></p>
+        </section>
+
+        <section class="goal">
+            <h2>Our Goal</h2>
+            <p><?php echo nl2br($company['goalDtl']); ?></p>
         </section>
 
         <section class="what-we-do">
             <h2>What We Do</h2>
-            <p>EcoConnect serves as a hub where individuals and organizations come together to share ideas, participate in programs, and support sustainable initiatives. From organizing recycling and donation drives to promoting renewable energy and community gardening, we strive to make sustainable living accessible and engaging for everyone. By connecting NGOs, local businesses, and everyday citizens, we create opportunities to learn, act, and grow together toward a healthier, greener future.</p>
-            <img src="images/aboutUS1.png" alt="Community Image" class="communityIMG">
+            <p><?php echo nl2br($company['wwdDtl']); ?></p>
+            <img src="<?php echo !empty($company['companyImg']) ? 'images/' . $company['companyImg'] : 'images/aboutUS1.png'; ?>" 
+            alt="Community Image" class="communityIMG">
         </section>
     </main>
 

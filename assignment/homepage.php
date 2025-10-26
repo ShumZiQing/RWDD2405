@@ -1,6 +1,6 @@
 <?php 
-// (Optional) start PHP logic here if needed, like checking login ??
 $pageTitle = "EcoConnect - Homepage";
+
 ?>
 
 <!DOCTYPE html>
@@ -27,68 +27,120 @@ $pageTitle = "EcoConnect - Homepage";
             </div>
         </section>
 
+        <section class="welcome-section">
+            <?php
+            if (isset($_SESSION['fullname'])) {
+                echo '<h2 class="welcome-text">Welcome, ' . $_SESSION['fullname'] . '!</h2>';
+            } else {
+                echo '<h2 class="welcome-text">Welcome to EcoConnect!</h2>';
+            }
+            ?>
+        </section>
+
         <section class="programs">
-            <h2>Our Programs</h2>
+            <h2><a href="recycling.php" class="section-link">Recycling Programs →</a></h2>
             <div class="scroll-container">
-                <div class="card">
-                    <h3>Recycling</h3>
-                    <p>Explore EcoConnect's recycling and collection schedules. Click to see schedules and get involved.</p>
-                    <button class="icon-btn">🔍</button>
-                </div>
+                <?php
+                include 'dbConn.php';
 
-                <div class="card">
-                    <h3>Donations</h3>
-                    <p>Join our donation drives to support NGOs and community projects.</p>
-                    <button class="icon-btn">🔍</button>
-                </div>
+                $sql = "SELECT * FROM tblprograms ORDER BY progID DESC LIMIT 6";
+                $result = mysqli_query($conn, $sql);
 
-                <div class="card"><b>Bottle Collector</b></div>
-                <div class="card"><b>Newspaper Collection</b></div>
+                if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="card">';
+                    
+                    if (!empty($row['progImage'])) {
+                    echo '<img src="images/' . $row['progImage'] . '" alt="' . $row['progName'] . '" style="width:100%; border-radius:8px; height:140px; object-fit:cover; margin-bottom:10px;">';
+                    }
+
+                    echo '<h3>' . $row['progName'] . '</h3>';
+                    echo '<p>' . substr($row['progDetails'], 0, 100) . '...</p>';
+
+                    echo '<form action="recyclingDetails.php" method="get">';
+                    echo '<input type="hidden" name="progID" value="' . $row['progID'] . '">';
+                    echo '<button type="submit" class="icon-btn">🔍</button>';
+                    echo '</form>';
+                    
+                    echo '</div>';
+                }
+                } else {
+                echo '<p>No programs available at the moment.</p>';
+                }
+                ?>
             </div>
         </section>
 
+
         <section class="tips">
-            <h2>User's Tips</h2>
+            <h2><a href="gardenTip.php" class="section-link">User's Tips →</a></h2>
             <div class="scroll-container">
-                <div class="card">"If you're new, join recycling programs to get to know more!"</div>
-                <div class="card">"Collection schedules may be confusing, feel free to ask!"</div>
+                <?php
+                include 'dbConn.php';
+
+                $sqlTips = "SELECT * FROM tblgardentips ORDER BY gTipDate DESC LIMIT 6";
+                $resultTips = mysqli_query($conn, $sqlTips);
+
+                if (mysqli_num_rows($resultTips) > 0) {
+                    while ($tip = mysqli_fetch_assoc($resultTips)) {
+                        echo '<div class="card">';
+
+                
+                        if (!empty($tip['gTipImage'])) {
+                            echo '<img src="gTipsImages/' . htmlspecialchars($tip['gTipImage']) . '" 
+                                alt="' . $tip['gTipName'] . '" 
+                                style="width:100%; border-radius:8px; height:140px; object-fit:cover; margin-bottom:10px;">';
+                        }
+                        
+                        echo '<h3>' . $tip['gTipName'] . '</h3>';
+                        echo '<p>"' . substr($tip['gTipContent'], 0, 120) . '..."</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>No tips available at the moment.</p>';
+                }
+                ?>
             </div>
         </section>
 
         <section class="projects">
-            <h2>Upcoming Projects</h2>
+            <h2><a href="gardenProject.php" class="section-link">Upcoming Projects →</a></h2>
             <div class="scroll-container">
-                <div class="project-card" style="background-image: url('images/homepageImg5.jpg');">
-                    <div class="overlay">
-                        <h3>Produce Donations</h3>
-                        <p>Donate fresh produce for a small fee. Funds go to local NGOs!</p>
-                        <button>More</button>
-                    </div>
-                </div>
+                <?php
+                $sqlProjects = "SELECT * FROM tblprojects WHERE status='Pending' ORDER BY startDate ASC LIMIT 6";
+                $resultProjects = mysqli_query($conn, $sqlProjects);
 
-                <div class="project-card" style="background-image: url('images/homepageImg4.jpg');">
-                    <div class="overlay">
-                        <h3>Plastic Collection</h3>
-                        <p>Join an NGO to collect and reuse plastics for eco projects.</p>
-                        <button>More</button>
-                    </div>
-                </div>
+                if (mysqli_num_rows($resultProjects) > 0) {
+                    while ($prj = mysqli_fetch_assoc($resultProjects)) {
+                        echo '<div class="project-card" style="background-image: url(\'images/' . $prj['prjImg'] . '\');">';
+                        echo '<div class="overlay">';
+                        echo '<h3>' . $prj['prjName'] . '</h3>';
+                        echo '<p>' . substr($prj['prjDetails'], 0, 80) . '...</p>';
+                        echo '<form action="gardenProjectDetails.php" method="get">';
+                        echo '<input type="hidden" name="prjID" value="' . $prj['prjID'] . '">';
+                        echo '<button type="submit">More</button>';
+                        echo '</form>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>No upcoming projects at the moment.</p>';
+                }
+                ?>
             </div>
         </section>
+
+        <?php
+        $sqlCompany = "SELECT * FROM tblcompany LIMIT 1";
+        $resultCompany = mysqli_query($conn, $sqlCompany);
+        $company = mysqli_fetch_assoc($resultCompany);
+        ?>
         
         <section class="goals">
-            <h2>Our Goals</h2>
-            <p>
-                EcoConnect aims to provide a shared platform for eco-focused groups, 
-                including NGOs, local communities, and conservation experts, to connect 
-                and collaborate. Through this space, we bring people together by hosting 
-                events, sharing sustainable living tips, and encouraging community-driven 
-                initiatives. Our mission is to raise awareness, reduce carbon footprints, 
-                and promote sustainable lifestyles within the community. By fostering eco-friendly 
-                behaviors, we strive to combat global warming and create a greener, more sustainable 
-                future for everyone.
-            </p>
+            <h2><a href="aboutUs.php" class="section-link">Our Goal →</a></h2>
+            <p><?php echo nl2br($company['goalDtl']); ?></p>
         </section>  
+
     </main>
 
     <!-- FOOTER -->

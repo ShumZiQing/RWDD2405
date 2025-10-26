@@ -1,0 +1,203 @@
+.business-details .banner {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.business-details .banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.business-details .banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: #075085;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Responsive adjustments for banner*/
+@media (max-width: 768px) {
+  .business-details .banner img {
+    height: 300px;
+  }
+
+  .business-details .banner h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .business-details .banner img {
+    height: 380px;
+  }
+
+    .business-details .banner h2 {
+        font-size: 2.4rem;
+}
+}
+
+.section-link {
+    text-decoration: none;
+    color: #075085;
+    transition: color 0.3s ease;
+}
+
+.section-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.business-details-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem ;
+  font-family: "Poppins", sans-serif;
+}
+
+.business-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.business-detail-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.business-info h2 {
+  margin-bottom: 0.5rem;
+  color: #0B6623;
+  margin: 0;
+}
+
+.business-info p {
+  margin: 0.4rem 0;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .business-details-container {
+    padding: 1rem;
+  }
+}
+
+
+.separator {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 1.5rem 0;
+}
+
+/* Delete Review Button */
+.delete-review-form {
+  margin-top: 8px;
+  text-align: right;
+}
+
+/* Wrap for alignment */
+.delete-btn {
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* Actual delete button styling */
+.delete-review-btn {
+  background-color: white;
+  color: #dc3545;
+  border: 1.5px solid #dc3545;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.delete-review-btn:hover {
+  background-color: #dc3545;
+  color: white;
+  transform: scale(1.05);
+}
+
+.delete-review-btn:active {
+  background-color: #dc3545;
+  transform: scale(0.98);
+}
+
+/* Review card styling */
+.reviews-section h3,
+.add-review-section h3 {
+  margin-bottom: 0.8rem;
+  color: #075085;
+}
+
+.review-card {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.review-card h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+.review-card .stars {
+  color: gold;
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+.no-reviews {
+  color: #777;
+  font-style: italic;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.review-form label {
+  font-weight: 500;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.review-form button {
+  margin-top: 0.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.review-form button:hover {
+  background-color: #43a047;
+}

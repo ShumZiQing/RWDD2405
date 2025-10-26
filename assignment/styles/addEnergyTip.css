@@ -1,0 +1,184 @@
+/* PAGE BACKGROUND */
+.add-tip {
+  background: #FBF6EF;
+  padding-bottom: 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BANNER */
+.add-tip .banner {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.add-tip .banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.add-tip .banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: #075085;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* FORM BOX */
+.form-box {
+  width: 90%;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+/* INPUTS */
+.form-box input,
+.form-box select,
+.form-box textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.form-box select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='12' viewBox='0 0 20 20' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M5.516 7.548l4.484 4.487 4.484-4.487L16 8.548l-6 6-6-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+.form-box textarea {
+  resize: vertical;
+}
+
+/* BUTTON */
+.btn-add {
+  width: 100%;
+  padding: 14px;
+  background: #075085;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-cancel {
+  width: 100%;
+  padding: 14px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-add:hover {
+  background: #1f80c5;
+}
+
+.btn-cancel:hover {
+  background: #a11e2b;
+}
+
+/* SUCCESS & ERROR MESSAGES */
+.success-msg,
+.error-msg {
+  padding: 10px 14px;
+  margin-top: 5px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-msg {
+  background-color: #e6ffe6;
+  color: #2e7d32;
+}
+
+.error-msg {
+  background-color: #ffe6e6;
+  color: #d32f2f;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .add-tip .banner img {
+    height: 300px;
+  }
+
+  .add-tip .banner h2 {
+    font-size: 2rem;
+  }
+
+  .form-box {
+    max-width: 500px;
+    padding: 30px;
+    gap: 16px;
+  }
+
+  .form-box input,
+  .form-box select,
+  .form-box textarea {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .btn {
+    font-size: 18px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .add-tip .banner img {
+    height: 380px;
+  }
+
+  .add-tip .banner h2 {
+    font-size: 2.2rem;
+  }
+
+  .form-box {
+    max-width: 600px;
+    padding: 40px;
+  }
+
+  .form-box input,
+  .form-box select,
+  .form-box textarea {
+    font-size: 18px;
+    padding: 16px;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+}

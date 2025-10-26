@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,31 +19,44 @@
         </div>
 
         <nav class="header-nav">
-            <button id="profile">
+            <a href="admin_profile.php">
                 <img src="images/user.png" alt="user icon">
-            </button>
+            </a>
         </nav>
     </header>
     
     <main>
         <section class="home">
-            <h2>Hello Admin!</h2>   
+            <?php
+                if(isset($_SESSION["userid"]) != ""){
+            ?>
+                <h2>Hello, <?php echo $_SESSION['fullname']; ?></h2>
+
+            <?php }else{
+                echo "<script>
+                alert('Invalid admin.');
+                window.location.href='login.php';
+                </script>";
+                exit;
+            }?>
             <p id="sub">What would you like to do?</p> 
         </section>
 
         <section class="selection">
+            <a href="admin_mngUser.php">
             <div class="selection-box">
                 <img src="images/user-icon.png" alt="icon" class="icons">
-                <a href="#">Manage Users</a>
+                Manage Users
             </div>
+            </a>
             
             <div id="nav-collab" class="selection-dropdown">
                 <img src="images/collab.png" alt="icon" class="icons">
                     Collaborators
                     <img src="images/down-arrow.png" alt="icon" class="arrow">
                     <ul>
-                        <li>Add Collaborator</li>
-                        <li>View Collaborator</li>
+                        <a href="admin_addCollab.php"><li>Add Collaborator</li></a>
+                        <a href="admin_collab.php"><li>View Collaborator</li></a>
                     </ul>
                 </div>
 
@@ -51,21 +68,36 @@
                         <li>Add activities 
                             <img src="images/down-arrow.png" alt="icon" class="arrow">
                             <ul>
-                                <li>Add Project</li>
-                                <li>Add Program</li>
+                                <a href="admin_addPrj.php"><li>Add Project</li></a>
+                                <a href="admin_addProg.php"><li>Add Program</li></a>
                             </ul>
                         </li>
-                        <li>View activities</li>
+                            <a href="admin_activities.php"><li>View activities</li></a>
                     </ul>
                 </div>
             
-            <div class="selection-box">
-                <img src="images/edit.png" alt="icon" class="icons">
-                <a href="#">Edit About Us</a>
-            </div>
+            <a href="admin_editAbtus.php">
+                <div class="selection-box">
+                    <img src="images/edit.png" alt="icon" class="icons">
+                    Edit About Us
+                </div>
+            </a>
+
+            <a href="admin_business.php">
             <div class="selection-box">
                 <img src="images/briefcase (1).png" alt="icon" class="icons">
-                <a href="#">All Businesses</a>
+                All Businesses
+            </div>
+            </a>
+
+            <div id="nav-tips" class="selection-dropdown">
+                <img src="images/idea.png" alt="icon" class="icons">
+                    All Tips
+                    <img src="images/down-arrow.png" alt="icon" class="arrow">
+                    <ul>
+                        <a href="admin_energyTips.php"><li>Energy Tips</li></a>
+                        <a href="admin_gardenTips.php"><li>Gardening Tips</li></a>
+                    </ul>
             </div>
         </section>
     </main>

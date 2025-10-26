@@ -1,0 +1,228 @@
+/* BANNER */
+.energy .banner {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.energy .banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.energy .banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: #075085;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* TABS */
+.tabs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #075085;
+  border-radius: 6px;
+  background: #fff;
+  color: #075085;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #075085;
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: #075085;
+  color: #fff;
+}
+
+/* ADD TIP BUTTON */
+.add-btn-container {
+  flex-shrink: 0;
+}
+
+.add-tip-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #F5B841;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-tip-btn:hover {
+  background: #d9a12f;
+}
+
+.card-actions {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  background: #fff;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* LIKE BUTTON */
+.like-btn {
+  background: none;
+  border: none;
+  color: #0B6623;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, color 0.2s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+  color: #075085;
+}
+
+.like-btn.liked {
+  color: #28a745;
+}
+
+
+/* TIPS LIST */
+.tips-list {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.tips-list.active {
+  display: flex;
+}
+
+/* TIP CARD */
+.tip-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.tip-card img {
+  width: 120px;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+.tip-card h3 {
+  color: #075085;
+  margin-bottom: 10px;
+}
+
+.tip-card ul {
+  list-style: disc;
+  text-align: left;
+  padding-left: 20px;
+  color: #333;
+  margin-bottom: 45px;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .energy .banner img {
+    height: 300px;
+  }
+
+  .tabs-row {
+    padding: 0 30px;
+  }
+
+  .energy .banner h2 {
+    font-size: 2.2rem;
+  }
+
+  .tips-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+  }
+
+  .tip-card {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .energy .banner img {
+    height: 380px;
+  }
+
+  .tabs-row {
+    padding: 0 40px;
+  }
+
+  .energy .banner h2 {
+    font-size: 2.4rem;
+  }
+
+  .tips-list {
+    padding: 40px;
+  }
+
+  .tip-card {
+    flex: 0 0 calc(33.333% - 20px);
+  }
+}

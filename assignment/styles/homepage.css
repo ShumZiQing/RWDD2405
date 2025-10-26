@@ -26,6 +26,16 @@ main {
   display: none;
 }
 
+/* WELCOME MSG*/
+.welcome-text {
+  color: #075085;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+
 /* PROGRAMS */
 section {
   padding: 20px;
@@ -57,6 +67,12 @@ section h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .card h3 {
@@ -70,12 +86,16 @@ section h2 {
 
 .icon-btn {
   align-self: flex-end;
-  background: #075085;
-  border: none;
+  background: none;
+  border: 2px solid #075085;
   color: #fff;
   padding: 6px 8px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.icon-btn:hover{
+  background:#075085
 }
 
 .project-card {
@@ -86,10 +106,17 @@ section h2 {
   border-radius: 12px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .project-card .overlay {
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -114,6 +141,17 @@ section h2 {
   cursor: pointer;
 }
 
+.section-link {
+    text-decoration: none;
+    color: #075085;
+    transition: color 0.3s ease;
+}
+
+.section-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /* GOALS */
 .goals p {
   line-height: 1.5;
@@ -135,6 +173,10 @@ section h2 {
   section {
     padding: 30px;
   }
+
+  .welcome-text {
+    font-size: 1.8rem;
+  }
 }
 
 /* DESKTOP */
@@ -147,5 +189,9 @@ section h2 {
   }
   section {
     padding: 40px;
+  }
+
+  .welcome-text {
+    font-size: 2rem;
   }
 }

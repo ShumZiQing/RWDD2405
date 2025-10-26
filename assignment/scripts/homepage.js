@@ -1,4 +1,4 @@
-// auto-slide for carousel (it dont even auto one)
+// auto-slide for carousel
 const track = document.querySelector('.carousel');
 if (track) {
   let index = 0;
