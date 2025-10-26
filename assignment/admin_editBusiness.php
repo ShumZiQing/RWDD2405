@@ -107,9 +107,15 @@
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
-                <input type="text" name="txtBusType" id="indiForm" value="<?php echo $busType?>" required>
+            <select name="txtBusType" id="indiForm" required>
+                <option value="Household Items" <?php if($busType == "Household Items") echo "selected";?>>Household Items</option>
+                <option value="Health & Beauty"  <?php if($busType == "Health & Beauty") echo "selected";?>>Health & Beauty</option>
+                <option value="General Items"  <?php if($busType == "General Items") echo "selected";?>>General Items</option>
+                <option value="Food & Beverage"  <?php if($busType == "Food & Beverage") echo "selected";?>>Food & Beverage</option>
+            </select>
         </div>
 
+        
         <div class="form">
             <div id="circle"><i class="fa-solid fa-pen fa-lg descIcon"></i></div>
                 <textarea name="txtBusDetails" id="indiTxtArea" rows="6" cols="23" required><?php echo $desc?></textarea>
