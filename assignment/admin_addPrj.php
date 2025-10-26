@@ -125,11 +125,13 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-location-dot icon"></i></td>
                     <td><select name="txtLocation" class="info" required>
-                            <option value="Taman Merah">Taman Merah</option>
-                            <option value="Taman Siakap">Taman Siakap</option>
-                            <option value="Taman Cempaka">Taman Cempaka</option>
-                            <option value="Taman Anggerik">Taman Anggerik</option>
-                            <option value="Taman Seri Mutiara">Taman Seri Mutiara</option>
+                            <option value="ESP">Taman Esplanad</option>
+                            <option value="LTAT">Taman LTAT</option>
+                            <option value="PUJ">Taman Puncak Jalil</option>
+                            <option value="YAR">Taman Yarl</option>
+                            <option value="EQP">Taman Equine Park</option>
+                            <option value="LEP">Taman Lestari Putra</option>
+                            <option value="KL">Kuala Lumpur</option>
                         </select></td>
                 </tr>
 
