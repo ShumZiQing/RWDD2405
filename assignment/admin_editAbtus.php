@@ -1,4 +1,7 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     include 'dbConn.php';
     session_start();
 
@@ -54,7 +57,7 @@
     } else {
         echo "<script>alert('Error updating: " . mysqli_error($conn) . "');</script>";
     }
-}
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
