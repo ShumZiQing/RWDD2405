@@ -112,7 +112,10 @@
 
         <div class="form">
             <div id="circle"><i class="fa-solid fa-list fa-lg selection"></i></div>
-                <input type="text" name="txtType" id="indiForm" value="<?php echo $type?>" required>
+            <select name="txtType" id="indiForm" required>
+                <option value="home"  <?php if($type == "home") echo "selected";?>>Home</option>
+                <option value="workplace" <?php if($type == "workplace") echo "selected";?>>Workplace</option>
+            </select>
         </div>
 
         <input type="submit" value="Save" id="save" name = 'btnSave'>
