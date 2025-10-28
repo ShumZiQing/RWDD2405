@@ -2,7 +2,6 @@
 include 'dbConn.php'; 
 $pageTitle = "EcoConnect - About Us";
 
-// Fetch company info (assuming one main record)
 $sql = "SELECT * FROM tblcompany WHERE companyID = 1";
 $result = mysqli_query($conn, $sql);
 $company = mysqli_fetch_assoc($result);
