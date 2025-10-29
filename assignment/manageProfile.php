@@ -135,10 +135,8 @@ if(isset($_POST['btnSave'])){
     </div>
         </main>
 
-    <!-- FOOTER -->
+    
     <?php include 'footer.php'; ?>
-
-    <!-- SCRIPTS -->
     <script src="scripts/hamburger.js"></script>
 </body>
 </html>

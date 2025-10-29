@@ -79,7 +79,7 @@ include 'header.php';
         <?php endif; ?>
       </div>
 
-      <!-- message container -->
+      
       <div id="join-message"></div>
     </section>
   </main>
@@ -105,7 +105,6 @@ include 'header.php';
         .then(res => res.text())
         .then(html => {
           msgBox.innerHTML = html;
-          // Optionally disable button after success
           if (html.includes('success-msg')) {
             joinBtn.disabled = true;
             joinBtn.textContent = "Joined";

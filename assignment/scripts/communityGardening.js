@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     likeBtn.disabled = true;
 
-    // optimistic UI
     if (isLiked) {
       likeBtn.classList.remove("liked");
       likeSpan.textContent = Math.max(current - 1, 0);
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
           else likeBtn.classList.remove("liked");
         } else {
           alert(data?.message || 'Could not update like');
-          // revert optimistic change
           likeSpan.textContent = current;
           if (isLiked) likeBtn.classList.add("liked");
           else likeBtn.classList.remove("liked");
@@ -74,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .catch((err) => console.error("Error:", err));
       }
-    }
+    }  
   });
 
   // Join project

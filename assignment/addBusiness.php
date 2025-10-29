@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = mysqli_real_escape_string($conn, $_POST['name']);
   $busType = mysqli_real_escape_string($conn, $_POST['busType']);
   $description = mysqli_real_escape_string($conn, $_POST['description']);
-  $city = mysqli_real_escape_string($conn, $_POST['city']); // correct field
+  $city = mysqli_real_escape_string($conn, $_POST['city']); 
   $phoneNum = mysqli_real_escape_string($conn, $_POST['phoneNum']);
   $userID = $_SESSION['userid'];
   $revID = NULL;

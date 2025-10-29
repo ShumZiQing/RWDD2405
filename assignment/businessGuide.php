@@ -76,8 +76,6 @@ $result = mysqli_query($conn, $sql);
 
            <?php if (!empty($row['busImg'])): ?>
             <img src="busImages/<?= htmlspecialchars($row['busImg']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="business-img">
-          <?php else: ?>
-            <img src="images/default-business.jpg" alt="No image available" class="business-img">
           <?php endif; ?>
 
           <?php

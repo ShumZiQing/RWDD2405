@@ -25,7 +25,7 @@ include 'header.php';
 <body>
   <main class="activities-container">
     
-    <!-- Joined Projects Card -->
+    <!-- Joined Projects -->
     <section class="activity-card">
       <h2>🌱 Joined Community Projects</h2>
       <?php
