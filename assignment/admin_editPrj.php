@@ -171,20 +171,20 @@ if (isset($_POST['btnSave'])) {
                 <tr>
                     <td><i class="fa-solid fa-location-dot icon"></i></td>
                     <td><select name="txtLocation" class="info" required>
-                            <option value="Taman Merah" <?php if ($location == 'Taman Merah')
-                                echo 'selected'; ?>>Taman
-                                Merah</option>
-                            <option value="Taman Siakap" <?php if ($location == 'Taman Siakap')
-                                echo 'selected'; ?>>Taman
-                                Siakap</option>
-                            <option value="Taman Cempaka>" <?php if ($location == 'Taman Cempaka')
-                                echo 'selected'; ?>>
-                                Taman Cempaka</option>
-                            <option value="Taman Anggerik" <?php if ($location == 'Taman Anggerik')
-                                echo 'selected'; ?>>
-                                Taman Anggerik</option>
-                            <option value="Taman Seri Mutiara" <?php if ($location == 'Taman Seri Mutiara')
-                                echo 'selected'; ?>>Taman Seri Mutiara</option>
+                            <option value="Taman Esplanad" <?php if ($location == 'Taman Esplanad')
+                                echo 'selected'; ?>>Taman Esplanad</option>
+                            <option value="Taman LTAT" <?php if ($location == 'Taman LTAT')
+                                echo 'selected'; ?>>Taman LTAT</option>
+                            <option value="Taman Puncak Jalil>" <?php if ($location == 'Taman Puncak Jalil')
+                                echo 'selected'; ?>> Taman Puncak Jalil</option>
+                            <option value="Taman Yarl" <?php if ($location == 'Taman Yarl')
+                                echo 'selected'; ?>> Taman Yarl</option>
+                            <option value="Taman Equine Park" <?php if ($location == 'Taman Equine Park')
+                                echo 'selected'; ?>>Taman Equine Park</option>
+                            <option value="Taman Lestari Putra" <?php if ($location == 'Taman Lestari Putra')
+                                echo 'selected'; ?>>Taman Lestari Putra</option>
+                            <option value="Kuala Lumpur" <?php if ($location == 'Kuala Lumpur')
+                                echo 'selected'; ?>>Kuala Lumpur</option>
                         </select></td>
                 </tr>
 
