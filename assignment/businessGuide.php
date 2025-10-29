@@ -121,7 +121,6 @@ $result = mysqli_query($conn, $sql);
               <a href="businessDetails.php?busID=<?= $busID ?>" class="view-reviews-btn">View Details & Reviews</a>
             </div>
           </div>
-            </div>
           </div>
 
         <?php endwhile; ?>
@@ -133,7 +132,6 @@ $result = mysqli_query($conn, $sql);
 </main>
   <?php include 'footer.php'; ?>
   <script src="scripts/hamburger.js"></script>
-  <script src="scripts/busiFav.js"></script>
   <script src="scripts/businessGuide.js"></script>
 </body>
 </html>

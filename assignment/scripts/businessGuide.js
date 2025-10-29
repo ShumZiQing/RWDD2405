@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (favBtn) {
       const busID = favBtn.getAttribute("data-id");
 
-      fetch("toggleBusinessLike.php", {
+      fetch("businessFavAction.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `busID=${busID}`,
